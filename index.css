@@ -18,18 +18,17 @@
     
 
 }
-/* unvisited link */
 a:link {
     color:#000;
     text-decoration: none;
   }
   
-  /* visited link */
+
   a:visited {
     color: #000;
   }
   
-  /* mouse over link */
+
   a:hover {
     color: grey;
   }
