@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Spotify song popularity predictor",
+    "description": "Implemented linear regression to predict song popularity, created synthetic data ", 
+    "file": "spotify.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/Song-Popularity-Predictor-"
+    }
+  },
+  
+  {
+    "title": "whatsapp bot",
+    "description": "simple whatsapp built using twilio", 
+    "file": "project1.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/Whatsapp-Bot"
+    }
+  },
+  {
+    "title": "SIMCLR implementation on medical dataset",
+    "description": "Self supervised learning implementation on medical dataset", 
+    "file": "simclr.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/Whatsapp-Bot"
+    }
+  }
+]
