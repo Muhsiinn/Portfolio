@@ -1,25 +1,25 @@
-# Austrian Food Price Analysis & Email Automation
+# Austrian Food Price Analysis
 
-This was one of my first proper data projects. I wanted to see how food prices in Austria changed over time, so I compared the Producer Price Index (PPI) with the Consumer Price Index (CPI).
-
-I used Python with NumPy and Pandas to clean up the messy CSV files, align the years, and calculate the “gap” between producer and consumer prices. Then I made some plots to see how the gap changed over the years (spoiler: it really widened after 2010).
-
-On top of that, I added a small email automation script: it takes the latest plots and summary data and sends them out automatically. Nothing fancy, but it showed me how to mix data analysis with a bit of practical automation.
+I wanted to understand how food prices move in Austria, so I compared the Producer Price Index (PPI) with the Consumer Price Index (CPI). I used Python with NumPy and Pandas to clean the CSVs, align dates, and calculate a simple gap = normalized(CPI) − normalized(PPI).
+I also plotted the trends to see when the gap widens or closes (it clearly grew after 2010).
+Nothing fancy—just solid data wrangling and clear visuals.
 
 ### What I did
 
-Cleaned and transformed raw data with Pandas/NumPy.
+Loaded/cleaned PPI & CPI data (handled non-numeric rows, missing values, misaligned periods).
 
-Normalized values and calculated producer vs consumer price gaps.
+Normalized series to compare shapes.
 
-Made simple time-series plots to spot trends.
+Aggregated monthly → yearly (also kept monthly for detail).
 
-Wrote a Python script to automatically email results (charts + CSV).
+Plotted PPI vs CPI and the gap over time.
+
+Wrote up key takeaways + limitations in the README.
 
 ### What I learned
 
-How to properly clean and align datasets.
+Practical cleanup with Pandas (types, filtering, grouping, resampling).
 
-How simple normalization can help compare two different indices.
+Why normalization helps comparisons but can hide scale.
 
-Basics of automating tasks with Python (sending emails with attachments).
+How a small “gap” metric can tell an easy story.
