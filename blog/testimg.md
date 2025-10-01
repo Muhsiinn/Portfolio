@@ -4,7 +4,7 @@
 
 just testing if images work. this should show john cena above.
 
-## ya all FRONTEND mfs get paid for shit like this....?????
+## yayyy... it works, well there will be no passionate programming thinki here 
 
 ![another test](https://pbs.twimg.com/media/Gz7AnXdXwAAj5HK?format=jpg&name=medium)
 
