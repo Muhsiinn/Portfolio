@@ -1,4 +1,4 @@
-### Austrian Food Price Analysis & Email Automation
+#### Austrian Food Price Analysis & Email Automation
 
 This was one of my first proper data projects. I wanted to see how food prices in Austria changed over time, so I compared the Producer Price Index (PPI) with the Consumer Price Index (CPI).
 
