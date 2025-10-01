@@ -23,5 +23,13 @@
     "links": {
       "github": "https://github.com/Muhsiinn/Whatsapp-Bot"
     }
+  },
+  {
+    "title": "Austrian Food Price Analysis & Email Automation",
+    "description": "Analyzed Austrian food price indices (Producer Price Index vs Consumer Price Index) using Python (NumPy, Pandas), and automated reporting via email scripts",
+    "file": "data_analysis.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/Austrian-food-price-analysis/tree/main"
+    }
   }
 ]
