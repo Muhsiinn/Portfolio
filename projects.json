@@ -21,15 +21,23 @@
     "description": "Self supervised learning implementation on medical dataset", 
     "file": "simclr.md",
     "links": {
-      "github": "https://github.com/Muhsiinn/Whatsapp-Bot"
+      "coming soon gotta clean up the code :)": "https://github.com/Muhsiinn"
     }
   },
   {
     "title": "Austrian Food Price Analysis & Email Automation",
-    "description": "Analyzed Austrian food price indices (Producer Price Index vs Consumer Price Index) using Python (NumPy, Pandas), and automated reporting via email scripts",
+    "description": "Analyzed Austrian food price indices (Producer Price Index vs Consumer Price Index) using Python (NumPy, Pandas).",
     "file": "data_analysis.md",
     "links": {
       "github": "https://github.com/Muhsiinn/Austrian-food-price-analysis/tree/main"
+    }
+  },
+  {
+    "title": "Sales Report Automation",
+    "description": "Raw data to insights: Automated sales report generation using Python (Pandas, Matplotlib) and email dispatch.",
+    "file": "sales_report.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/sales-report-automation"
     }
   }
 ]
