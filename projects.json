@@ -39,5 +39,13 @@
     "links": {
       "github": "https://github.com/Muhsiinn/sales-report-automation"
     }
+  },
+   {
+    "title": "Malaria Cell Image Classification (CNN)",
+    "description": "Classified malaria-infected vs healthy cells using Convolutional Neural Networks (CNN) in Python (TensorFlow, Keras).",
+    "file": "malaria_cell.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/Malaria-Cell-Image-Classification-with-CNN"
+    }
   }
 ]

@@ -4,7 +4,7 @@ This project takes raw sales data and automatically turns it into clean Excel re
 
 The idea was to make something practical — a report that a manager could open without touching code.
 
-## What I did
+### What I did
 
 Cleaned and organized raw transactional data.
 
