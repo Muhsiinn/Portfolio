@@ -1,0 +1,50 @@
+muhsin
+Student - Artificial Intelligence
+ muhsinahmdtk@gmail.com
+phone: +4369020067065 | github: https://github.com/Muhsiinn | instagram: https://www.instagram.com/meowsi.n/ | twitter: https://twitter.com/_Muhsin____
+==============================
+
+Education
+------------------------------
+Bachelor of Science in Artificial Intelligence  --  Johannes Kepler University Linz
+(2025 – Ongoing)  |  Linz, Austria
+- Focus on data science, machine learning, and mathematics.
+---
+High School Diploma – Computer Science  --  PPMHSS KOTTUKKARA, Kerala
+(2020 – 2022)  |  Kerala, India
+- c,c++ Basics
+---
+===
+Side Quests
+------------------------------
+Machine Learning Zoomcamp  --  DataTalks Club
+(2025 – Ongoing)
+- Practical ML, deployment, cloud, and MLOps.
+- Online Bootcamp
+---
+Gardening & Urban Farming  --  Self-learning, Austria
+- Lifestyle & Nature
+---
+===
+Projects
+------------------------------
+Song popularity predictor  --  Implemented linear regression to predict song popularity, created synthetic data 
+- github: https://github.com/Muhsiinn/Song-Popularity-Predictor-
+---
+Whatsapp Bot  --  simple whatsapp built using twilio
+- github: https://github.com/Muhsiinn/Whatsapp-Bot
+---
+SIMCLR implementation on medical dataset  --  Self supervised learning implementation on medical dataset
+- coming soon gotta clean up the code :): https://github.com/Muhsiinn
+---
+Austrian Food Price Analysis & Email Automation  --  Analyzed Austrian food price indices (Producer Price Index vs Consumer Price Index) using Python (NumPy, Pandas).
+- github: https://github.com/Muhsiinn/Austrian-food-price-analysis/tree/main
+---
+Sales Report Automation  --  Raw data to insights: Automated sales report generation using Python (Pandas, Matplotlib) and email dispatch.
+- github: https://github.com/Muhsiinn/sales-report-automation
+---
+Malaria Cell Image Classification (CNN)  --  Classified malaria-infected vs healthy cells using Convolutional Neural Networks (CNN) in Python (TensorFlow, Keras).
+- github: https://github.com/Muhsiinn/Malaria-Cell-Image-Classification-with-CNN
+---
+===
+Updated: October 2025

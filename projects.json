@@ -1,6 +1,6 @@
 [
   {
-    "title": "Spotify song popularity predictor",
+    "title": "Song popularity predictor",
     "description": "Implemented linear regression to predict song popularity, created synthetic data ", 
     "file": "spotify.md",
     "links": {
@@ -9,7 +9,7 @@
   },
   
   {
-    "title": "whatsapp bot",
+    "title": "Whatsapp Bot",
     "description": "simple whatsapp built using twilio", 
     "file": "project1.md",
     "links": {

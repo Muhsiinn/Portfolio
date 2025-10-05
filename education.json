@@ -1,0 +1,36 @@
+{
+  "formal": [
+    {
+      "institution": "Johannes Kepler University Linz",
+      "degree": "Bachelor of Science in Artificial Intelligence",
+      "start": "2025",
+      "end": "Ongoing",
+      "location": "Linz, Austria",
+      "details": "Focus on data science, machine learning, and mathematics."
+    },
+    {
+      "institution": "PPMHSS KOTTUKKARA, Kerala",
+      "degree": "High School Diploma – Computer Science",
+      "start": "2020",
+      "end": "2022",
+      "location": "Kerala, India",
+      "details": "c,c++ Basics"
+    }
+  ],
+  "side_quests": [
+    {
+      "title": "Machine Learning Zoomcamp",
+      "organizer": "DataTalks Club",
+      "type": "Online Bootcamp",
+      "start": "2025",
+      "end": "Ongoing",
+      "focus": "Practical ML, deployment, cloud, and MLOps."
+    },
+    {
+      "title": "Gardening & Urban Farming",
+      "organizer": "Self-learning, Austria",
+      "type": "Lifestyle & Nature",
+      "focus": ""
+    }
+  ]
+}

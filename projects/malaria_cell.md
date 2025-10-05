@@ -1,6 +1,5 @@
 This was one of my early deep learning projects. The goal was to classify blood cell images as infected or uninfected with malaria using a Convolutional Neural Network (CNN).
 
-### What I did
 
 Prepared the dataset by resizing and normalizing images.
 
@@ -14,7 +13,7 @@ Evaluated performance with accuracy/loss plots and a confusion matrix.
 
 Tested the model on sample images to check predictions.
 
-### What I learned
+
 
 Basics of how CNNs process images through filters and pooling.
 
@@ -24,6 +23,6 @@ Learned the importance of using validation data and dropout to reduce overfittin
 
 Gained experience in monitoring training with plots and metrics, not just final accuracy.
 
-### Room for improvement
+ <ins> Room for improvement </ins>
 
 There is room for improvement in this project. Since working on later projects like SimCLR, I have learned additional techniques and evaluation methods. In the future, I may revisit this project to apply data augmentation, richer evaluation metrics, and better regularization strategies.
