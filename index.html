@@ -1,79 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>muhsin</title>
   <link href="https://fonts.googleapis.com/css?family=JetBrains Mono" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* ===== Scrollbar Hidden / Minimal ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.15);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(0,0,0,0.25);
+    }
+
+    html, body {
+      overflow-y: scroll;
+      scrollbar-width: thin;
+      scrollbar-color: transparent transparent;
+    }
+
     body {
       font-family: 'JetBrains Mono', monospace;
       background: #fff;
       color: #000;
-      line-height: 1.7;
+      line-height: 1.6;
       font-size: 14px;
     }
 
     .container {
       max-width: 850px;
       margin: 0 auto;
-      padding: 40px 20px 80px;
+      padding: 40px 20px 60px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Header */
+    /* ===== Header ===== */
     .header {
       text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 35px;
     }
 
     .profile-pic {
-      width: 100px; height: 100px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid #eee;
-      filter: grayscale(20%);
-      transition: transform .2s ease, filter .3s ease;
-      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
     }
-    .profile-pic:hover { transform: scale(1.05); filter: grayscale(0%); }
 
-    .name { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
-    .bio { color: #777; font-size: 14px; margin-bottom: 12px; }
+    .name {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
 
-    /* Sections */
-    section { width: 100%; max-width: 700px; margin-bottom: 45px; }
+    .bio {
+      color: #555;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    /* ===== Sections ===== */
+    section {
+      width: 100%;
+      max-width: 700px;
+      margin-bottom: 35px;
+    }
 
     h2 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 15px;
+      font-size: 14px;
+      text-transform: uppercase;
       border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
+      margin-bottom: 10px;
+      padding-bottom: 3px;
+      color: #222;
+      letter-spacing: 0.5px;
     }
 
-    p { margin-bottom: 14px; }
+    p { margin-bottom: 10px; color: #222; }
 
-    /* Contact directly under header */
-    #contact { text-align: center; margin-top: 0; }
-    .contact-item { margin-bottom: 8px; }
+    /* ===== Contact ===== */
+    #contact { text-align: center; }
+    .contact-item { margin-bottom: 6px; }
     .contact-item a { color: #0a58ff; text-decoration: none; }
-    .contact-item a:hover { text-decoration: underline; }
 
-    /* Projects */
-    .item { border-bottom: 1px solid #eee; padding: 15px 0; }
-    .item-title { font-weight: 700; margin-bottom: 6px; }
-    .item-desc { color: #555; margin-bottom: 8px; }
-    .item-date { color: #aaa; font-size: 12px; margin-bottom: 10px; }
-    .item-content { margin-top: 10px; }
-    .project-links { margin-top: 8px; }
-    .project-links a { color: #0a58ff; text-decoration: none; margin-right: 15px; }
-    .project-links a:hover { text-decoration: underline; }
-    .tech { color: #999; font-size: 12px; margin-top: 4px; }
+    /* ===== Education / Side Quests ===== */
+    .edu-entry, .side-entry {
+      margin-bottom: 10px;
+      padding-left: 6px;
+      border-left: 1px solid #eee;
+    }
+
+    /* ===== Projects (Pure Accordion) ===== */
+    .item {
+      border-top: 1px solid #eee;
+      padding-top: 12px;
+      padding-bottom: 8px;
+    }
+
+    .item-header {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      color: #111;
+      padding-left: 4px;
+    }
+
+    .item-header.active {
+      color: #000;
+    }
+
+    .item-desc {
+      padding: 4px 0 6px 6px;
+      color: #555;
+      font-size: 13px;
+    }
+
+    .item-content {
+      display: none;
+      padding-left: 10px;
+      border-left: 1px dashed #ddd;
+      margin-top: 4px;
+    }
+
+    .item-content.show { display: block; }
+
+    .item-content p { margin: 8px 0; color: #333; }
+    .item-content a { color: #0a58ff; text-decoration: none; }
+    .item-content a:hover { text-decoration: underline; }
 
     @media (max-width: 768px) {
       .container { padding: 25px 15px; }
@@ -84,23 +147,32 @@
 <body>
   <div class="container">
 
+    <!-- HEADER -->
     <header class="header">
-      <img id="avatar" class="profile-pic" alt="profile">
-      <div class="name" id="site-name">muhsin</div>
-      <div class="bio" id="site-bio">loading...</div>
+      <img id="avatar" class="profile-pic" alt="profile picture">
+      <div id="site-name" class="name">muhsin</div>
+      <div id="site-bio" class="bio">loading...</div>
     </header>
 
-    <!-- CONTACT FIRST -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div id="contact-content">loading...</div>
-    </section>
-
+    <!-- ABOUT -->
     <section id="about">
       <h2>About</h2>
       <div id="about-content">loading...</div>
     </section>
 
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div id="contact-content">loading...</div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2>Education</h2>
+      <div id="education-list">loading...</div>
+    </section>
+
+    <!-- PROJECTS -->
     <section id="projects">
       <h2>Projects</h2>
       <div id="projects-list">loading...</div>
@@ -109,41 +181,34 @@
   </div>
 
   <script>
-    let config = {};
-    let projects = [];
+    let config = {}, education = {}, projects = [];
 
     async function loadData() {
       try {
-        const res = await fetch('data.json');
-        if (res.ok) config = await res.json();
-        else loadDefaults();
-      } catch { loadDefaults(); }
-
+        const [dataRes, eduRes, projRes] = await Promise.all([
+          fetch('data.json'),
+          fetch('education.json'),
+          fetch('projects.json')
+        ]);
+        config = await dataRes.json();
+        education = await eduRes.json();
+        projects = await projRes.json();
+      } catch (error) {
+        console.error("Error loading data:", error);
+      }
       updateUI();
-      loadProjects();
-    }
-
-    function loadDefaults() {
-      config = {
-        name: "muhsin",
-        bio: "Student – Artificial Intelligence",
-        about: "Currently learning AI and building random projects. Interested in automation, reverse engineering, and making computers do cool stuff.",
-        email: "muhsinahmdtk@gmail.com",
-        avatar: "images/profile.jpg",
-        socials: {
-          "github": "https://github.com/Muhsiinn",
-          "instagram": "https://www.instagram.com/meowsi.n/",
-          "twitter": "https://twitter.com/_Muhsin____"
-        }
-      };
     }
 
     function updateUI() {
+      // Profile
       document.getElementById('site-name').textContent = config.name || 'muhsin';
       document.getElementById('site-bio').textContent = config.bio || '';
-      document.getElementById('about-content').innerHTML = `<p>${config.about || ''}</p>`;
       document.getElementById('avatar').src = config.avatar || 'images/profile.jpg';
 
+      // About
+      document.getElementById('about-content').innerHTML = `<p>${config.about || ''}</p>`;
+
+      // Contact
       let contactHTML = '';
       if (config.email)
         contactHTML += `<div class="contact-item">email: <a href="mailto:${config.email}">${config.email}</a></div>`;
@@ -151,18 +216,25 @@
         Object.entries(config.socials).forEach(([p, url]) =>
           contactHTML += `<div class="contact-item">${p}: <a href="${url}" target="_blank">${url}</a></div>`
         );
-      document.getElementById('contact-content').innerHTML = contactHTML;
-    }
+      document.getElementById('contact-content').innerHTML = contactHTML || '—';
 
-    async function loadProjects() {
-      try {
-        const res = await fetch('projects.json');
-        if (!res.ok) throw new Error();
-        projects = await res.json();
-        displayProjects();
-      } catch {
-        document.getElementById('projects-list').innerHTML = '<div class="error">no projects.json found</div>';
+      // Education
+      let eduHTML = '';
+      if (education.formal) {
+        education.formal.forEach(e => {
+          eduHTML += `<div class="edu-entry"><strong>${e.degree}</strong>, ${e.institution} (${e.start}–${e.end})<br>${e.location || ''}</div>`;
+        });
       }
+      if (education.side_quests) {
+        eduHTML += `<h3 style="margin-top:15px;font-size:13px;color:#333;">Side Quests</h3>`;
+        education.side_quests.forEach(s => {
+          eduHTML += `<div class="side-entry"><strong>${s.title}</strong> — ${s.organizer}<br>${s.focus || ''}</div>`;
+        });
+      }
+      document.getElementById('education-list').innerHTML = eduHTML || '—';
+
+      // Projects
+      displayProjects();
     }
 
     async function displayProjects() {
@@ -174,36 +246,41 @@
         const div = document.createElement('div');
         div.className = 'item';
         div.innerHTML = `
-          <div class="item-title">${p.title || 'Untitled'}</div>
+          <div class="item-header" onclick="toggleProject(this, ${i})">${p.title || 'Untitled'}</div>
           <div class="item-desc">${p.description || ''}</div>
-          ${p.date ? `<div class="item-date">${p.date}</div>` : ''}
-        `;
+          <div class="item-content" id="project-${i}">
+            <p style="color:#777;">Loading content...</p>
+          </div>`;
         container.appendChild(div);
 
-        let content = '';
+        // Markdown
         if (p.file) {
           try {
-            const resp = await fetch('projects/' + p.file);
-            if (resp.ok) content = marked.parse(await resp.text());
-            else content = `<p>${p.content || ''}</p>`;
-          } catch { content = `<p>${p.content || ''}</p>`; }
-        } else if (p.content) content = `<p>${p.content}</p>`;
-
-        if (p.links) {
-          content += '<div class="project-links">';
-          Object.entries(p.links).forEach(([label, url]) =>
-            content += `<a href="${url}" target="_blank">${label}</a>`
-          );
-          content += '</div>';
+            const res = await fetch('projects/' + p.file);
+            if (res.ok) {
+              const md = await res.text();
+              const html = marked.parse(md);
+              const links = p.links
+                ? Object.entries(p.links)
+                    .map(([label, url]) => `<p><a href="${url}" target="_blank">${label}</a></p>`)
+                    .join('')
+                : '';
+              document.getElementById('project-' + i).innerHTML = html + links;
+            } else {
+              document.getElementById('project-' + i).innerHTML = `<p>Missing file: ${p.file}</p>`;
+            }
+          } catch {
+            document.getElementById('project-' + i).innerHTML = `<p>Error loading ${p.file}</p>`;
+          }
         }
-
-        if (p.tech) content += `<div class="tech">${p.tech.join(', ')}</div>`;
-
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'item-content';
-        contentDiv.innerHTML = content;
-        div.appendChild(contentDiv);
       }
+    }
+
+    function toggleProject(header, index) {
+      const content = document.getElementById('project-' + index);
+      const isOpen = content.classList.contains('show');
+      content.classList.toggle('show', !isOpen);
+      header.classList.toggle('active', !isOpen);
     }
 
     loadData();
