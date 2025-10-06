@@ -1,5 +1,3 @@
-
-
 Context:
 I wanted to understand how self-supervised learning works at a fundamental level, so I implemented SimCLR from scratch on the HAM10000 skin disease dataset. Instead of using ready-made libraries, I experimented step by step, fixing bugs and visualizing the process.
 

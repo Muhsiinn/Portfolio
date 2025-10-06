@@ -8,22 +8,11 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ===== Scrollbar Hidden / Minimal ===== */
+    /* Minimal scroll bar */
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(0,0,0,0.15);
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(0,0,0,0.25);
-    }
-
-    html, body {
-      overflow-y: scroll;
-      scrollbar-width: thin;
-      scrollbar-color: transparent transparent;
-    }
+    ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.25); }
+    html, body { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.2) transparent; }
 
     body {
       font-family: 'JetBrains Mono', monospace;
@@ -31,51 +20,33 @@
       color: #000;
       line-height: 1.6;
       font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .container {
       max-width: 850px;
       margin: 0 auto;
-      padding: 40px 20px 60px;
+      padding: 40px 20px 80px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* ===== Header ===== */
-    .header {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
+    /* Header */
+    .header { text-align: center; margin-bottom: 35px; }
     .profile-pic {
-      width: 110px;
-      height: 110px;
+      width: 110px; height: 110px;
       border-radius: 50%;
       object-fit: cover;
       border: 1px solid #ccc;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
+    .name { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+    .bio { color: #555; font-size: 13px; margin-bottom: 10px; }
 
-    .name {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    .bio {
-      color: #555;
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    /* ===== Sections ===== */
-    section {
-      width: 100%;
-      max-width: 700px;
-      margin-bottom: 35px;
-    }
-
+    /* Sections */
+    section { width: 100%; max-width: 700px; margin-bottom: 35px; }
     h2 {
       font-size: 14px;
       text-transform: uppercase;
@@ -85,94 +56,108 @@
       color: #222;
       letter-spacing: 0.5px;
     }
-
     p { margin-bottom: 10px; color: #222; }
 
-    /* ===== Contact ===== */
+    /* Contact */
     #contact { text-align: center; }
     .contact-item { margin-bottom: 6px; }
     .contact-item a { color: #0a58ff; text-decoration: none; }
 
-    /* ===== Education / Side Quests ===== */
+    /* Education and side quests */
     .edu-entry, .side-entry {
       margin-bottom: 10px;
       padding-left: 6px;
       border-left: 1px solid #eee;
     }
 
-    /* ===== Projects (Pure Accordion) ===== */
+    /* Projects with a black pointer */
     .item {
       border-top: 1px solid #eee;
-      padding-top: 12px;
+      padding-top: 10px;
       padding-bottom: 8px;
     }
-
     .item-header {
       cursor: pointer;
       font-weight: 600;
       font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       color: #111;
-      padding-left: 4px;
+      padding-left: 2px;
     }
-
-    .item-header.active {
-      color: #000;
+    .item-header .indicator {
+      font-size: 13px;
+      color: #000;             /* black pointer */
+      margin-left: 6px;
+      flex-shrink: 0;
+      transition: transform 0.15s ease;
     }
-
+    .item-header.active .indicator { transform: rotate(90deg); }
     .item-desc {
       padding: 4px 0 6px 6px;
       color: #555;
       font-size: 13px;
     }
-
     .item-content {
       display: none;
       padding-left: 10px;
       border-left: 1px dashed #ddd;
       margin-top: 4px;
     }
-
     .item-content.show { display: block; }
-
     .item-content p { margin: 8px 0; color: #333; }
     .item-content a { color: #0a58ff; text-decoration: none; }
     .item-content a:hover { text-decoration: underline; }
 
+    /* Mobile tweaks */
     @media (max-width: 768px) {
+      body { font-size: 13px; line-height: 1.55; }
       .container { padding: 25px 15px; }
-      section { max-width: 100%; }
+      .profile-pic { width: 90px; height: 90px; }
+      h2 { font-size: 13px; }
+      .item-header { font-size: 13px; }
+      .item-desc { font-size: 12px; }
+      section { margin-bottom: 28px; }
+    }
+    @media (max-width: 420px) {
+      .container { padding: 20px 12px; }
+      .name { font-size: 18px; }
+      .bio { font-size: 12px; }
+      h2 { font-size: 12px; }
+      .item-header { font-size: 12px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
 
-    <!-- HEADER -->
+    <!-- Header -->
     <header class="header">
       <img id="avatar" class="profile-pic" alt="profile picture">
       <div id="site-name" class="name">muhsin</div>
       <div id="site-bio" class="bio">loading...</div>
     </header>
 
-    <!-- ABOUT -->
+    <!-- About -->
     <section id="about">
       <h2>About</h2>
       <div id="about-content">loading...</div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2>
       <div id="contact-content">loading...</div>
     </section>
 
-    <!-- EDUCATION -->
+    <!-- Education and side quests -->
     <section id="education">
       <h2>Education</h2>
       <div id="education-list">loading...</div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- Projects -->
     <section id="projects">
       <h2>Projects</h2>
       <div id="projects-list">loading...</div>
@@ -190,9 +175,9 @@
           fetch('education.json'),
           fetch('projects.json')
         ]);
-        config = await dataRes.json();
+        config    = await dataRes.json();
         education = await eduRes.json();
-        projects = await projRes.json();
+        projects  = await projRes.json();
       } catch (error) {
         console.error("Error loading data:", error);
       }
@@ -202,20 +187,23 @@
     function updateUI() {
       // Profile
       document.getElementById('site-name').textContent = config.name || 'muhsin';
-      document.getElementById('site-bio').textContent = config.bio || '';
-      document.getElementById('avatar').src = config.avatar || 'images/profile.jpg';
+      document.getElementById('site-bio').textContent  = config.bio || '';
+      document.getElementById('avatar').src           = config.avatar || 'images/profile.jpg';
 
       // About
-      document.getElementById('about-content').innerHTML = `<p>${config.about || ''}</p>`;
+      document.getElementById('about-content').innerHTML =
+        `<p>${config.about || ''}</p>`;
 
       // Contact
       let contactHTML = '';
-      if (config.email)
+      if (config.email) {
         contactHTML += `<div class="contact-item">email: <a href="mailto:${config.email}">${config.email}</a></div>`;
-      if (config.socials)
-        Object.entries(config.socials).forEach(([p, url]) =>
-          contactHTML += `<div class="contact-item">${p}: <a href="${url}" target="_blank">${url}</a></div>`
-        );
+      }
+      if (config.socials) {
+        Object.entries(config.socials).forEach(([p, url]) => {
+          contactHTML += `<div class="contact-item">${p}: <a href="${url}" target="_blank">${url}</a></div>`;
+        });
+      }
       document.getElementById('contact-content').innerHTML = contactHTML || '—';
 
       // Education
@@ -242,24 +230,27 @@
       container.innerHTML = '';
 
       for (let i = 0; i < projects.length; i++) {
-        const p = projects[i];
+        const p   = projects[i];
         const div = document.createElement('div');
         div.className = 'item';
         div.innerHTML = `
-          <div class="item-header" onclick="toggleProject(this, ${i})">${p.title || 'Untitled'}</div>
+          <div class="item-header" onclick="toggleProject(this, ${i})">
+            <span>${p.title || 'Untitled'}</span>
+            <span class="indicator">▸</span>
+          </div>
           <div class="item-desc">${p.description || ''}</div>
           <div class="item-content" id="project-${i}">
             <p style="color:#777;">Loading content...</p>
           </div>`;
         container.appendChild(div);
 
-        // Markdown
+        // Load markdown
         if (p.file) {
           try {
             const res = await fetch('projects/' + p.file);
             if (res.ok) {
-              const md = await res.text();
-              const html = marked.parse(md);
+              const md    = await res.text();
+              const html  = marked.parse(md);
               const links = p.links
                 ? Object.entries(p.links)
                     .map(([label, url]) => `<p><a href="${url}" target="_blank">${label}</a></p>`)
@@ -277,8 +268,8 @@
     }
 
     function toggleProject(header, index) {
-      const content = document.getElementById('project-' + index);
-      const isOpen = content.classList.contains('show');
+      const content   = document.getElementById('project-' + index);
+      const isOpen    = content.classList.contains('show');
       content.classList.toggle('show', !isOpen);
       header.classList.toggle('active', !isOpen);
     }

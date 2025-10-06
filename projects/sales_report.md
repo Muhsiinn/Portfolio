@@ -1,4 +1,3 @@
-
 This project takes raw sales data and automatically turns it into clean Excel reports. Using Python (Pandas, NumPy, openpyxl), I process transactions, calculate key metrics like revenue totals, top buyers, and most cancelled items, and then export everything into a multi-sheet Excel file.
 
 The idea was to make something practical — a report that a manager could open without touching code.
