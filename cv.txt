@@ -10,9 +10,9 @@ Bachelor of Science in Artificial Intelligence  --  Johannes Kepler University L
 (2025 – Ongoing)  |  Linz, Austria
 - Focus on data science, machine learning, and mathematics.
 ---
-High School Diploma – Computer Science  --  PPMHSS KOTTUKKARA, Kerala
+High School Diploma – Computer Science  --  PPMHSS KOTTUKKARA
 (2020 – 2022)  |  Kerala, India
-- c,c++ Basics
+- c,c++ Basics,DSA Basics,DBMS Basics,Web Development Basics
 ---
 ===
 Side Quests
@@ -21,9 +21,6 @@ Machine Learning Zoomcamp  --  DataTalks Club
 (2025 – Ongoing)
 - Practical ML, deployment, cloud, and MLOps.
 - Online Bootcamp
----
-Gardening & Urban Farming  --  Self-learning, Austria
-- Lifestyle & Nature
 ---
 ===
 Projects

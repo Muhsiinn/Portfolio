@@ -1,16 +1,23 @@
 [
   {
+    "title": "Jonas: Your Personal Austrian German Tutor",
+    "description": "Meet Jonas, a friendly AI chatbot designed to be your personal guide to Austrian German and culture. I built Jonas to be more than just a language app; he's a conversational partner who makes learning feel like chatting with a local. Using a fine-tuned language model and a Retrieval-Augmented Generation (RAG) system I built with FAISS, Jonas can answer your questions about Austria, explain grammar in a simple way, and teach you everything from classic phrases to modern slang. The whole experience is delivered through a web interface I created with Flask, with streaming responses for a natural, real-time conversation. It was a fun project that combined my passion for language, culture, and cutting-edge AI.",
+    "file": "jonas.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/Jonas"
+    }
+  },
+  {
     "title": "Song popularity predictor",
-    "description": "Implemented linear regression to predict song popularity, created synthetic data ", 
+    "description": "Implemented linear regression to predict song popularity, created synthetic data ",
     "file": "spotify.md",
     "links": {
       "github": "https://github.com/Muhsiinn/Song-Popularity-Predictor-"
     }
   },
-  
   {
     "title": "Whatsapp Bot",
-    "description": "simple whatsapp built using twilio", 
+    "description": "simple whatsapp built using twilio",
     "file": "project1.md",
     "links": {
       "github": "https://github.com/Muhsiinn/Whatsapp-Bot"
@@ -18,7 +25,7 @@
   },
   {
     "title": "SIMCLR implementation on medical dataset",
-    "description": "Self supervised learning implementation on medical dataset", 
+    "description": "Self supervised learning implementation on medical dataset",
     "file": "simclr.md",
     "links": {
       "coming soon gotta clean up the code :)": "https://github.com/Muhsiinn"
@@ -40,7 +47,7 @@
       "github": "https://github.com/Muhsiinn/sales-report-automation"
     }
   },
-   {
+  {
     "title": "Malaria Cell Image Classification (CNN)",
     "description": "Classified malaria-infected vs healthy cells using Convolutional Neural Networks (CNN) in Python (TensorFlow, Keras).",
     "file": "malaria_cell.md",
