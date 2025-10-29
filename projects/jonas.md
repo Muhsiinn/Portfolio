@@ -1,4 +1,4 @@
-## Jonas: Your Personal Austrian German Tutor
+
 
 Meet Jonas, a friendly chatbot designed to be your personal guide to Austrian German and culture. I built Jonas to be more than just a language app; he's a conversational partner who makes learning feel like chatting with a local.
 
