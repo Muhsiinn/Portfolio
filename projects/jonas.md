@@ -1,5 +1,5 @@
 
-I built Jonas to be more than just a language learning bot; he's a conversational partner who makes learning feel like chatting with a local.
+
 
 ## The Story
 
