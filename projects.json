@@ -54,5 +54,13 @@
     "links": {
       "github": "https://github.com/Muhsiinn/Malaria-Cell-Image-Classification-with-CNN"
     }
+  },
+  {
+    "title": "Klinikum Report Editor",
+    "description": "A comprehensive Flask web application for managing mental health report data with customizable fields, interactive graphs, and PDF export functionality.",
+    "file": "med_data.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/med_data"
+    }
   }
 ]
