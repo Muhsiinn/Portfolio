@@ -1,5 +1,13 @@
 [
   {
+    "title": "Offline Wiki: RAG-Powered Knowledge Base",
+    "description": "A fully offline Wikipedia/Wikivoyage search system with intelligent Q&A capabilities. Built with FAISS vector search, Sentence Transformers for embeddings, and Ollama for natural language generation. Access thousands of articles about European destinations without an internet connection.",
+    "file": "offline_wiki.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/Offline_wiki"
+    }
+  },
+  {
     "title": "Jonas: Your Personal Austrian German Tutor",
     "description": "Meet Jonas, a friendly AI chatbot designed to be your personal guide to Austrian German and culture. I built Jonas to be more than just a language app; he's a conversational partner who makes learning feel like chatting with a local. Using a fine-tuned language model and a Retrieval-Augmented Generation (RAG) system I built with FAISS, Jonas can answer your questions about Austria, explain grammar in a simple way, and teach you everything from classic phrases to modern slang. ",
     "file": "jonas.md",
