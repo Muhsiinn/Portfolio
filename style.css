@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap');
 
+/* Hide scrollbar for all browsers */
+html {
+    overflow: auto;
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+}
+
 body {
     font-family: 'Roboto Mono', monospace;
     background-color: #f5f5f5;
@@ -8,6 +19,12 @@ body {
     margin: 0;
     padding: 20px;
     overflow-x: hidden;
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
 }
 
 .lines {
