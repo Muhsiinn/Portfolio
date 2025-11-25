@@ -68,7 +68,7 @@ The project follows a modular architecture with distinct components:
 
 ## Links
 
-- [GitHub Repository](https://github.com/Muhsiinn/Gmail1)
+- [GitHub](https://github.com/Muhsiinn/Gmail-LLM-Assistant)
 
 ## Technologies Used
 
