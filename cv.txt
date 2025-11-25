@@ -25,6 +25,12 @@ Machine Learning Zoomcamp  --  DataTalks Club
 ===
 Projects
 ------------------------------
+Offline Wiki: RAG-Powered Knowledge Base  --  A fully offline Wikipedia/Wikivoyage search system with intelligent Q&A capabilities. Built with FAISS vector search, Sentence Transformers for embeddings, and Ollama for natural language generation. Access thousands of articles about European destinations without an internet connection.
+- github: https://github.com/Muhsiinn/Offline_wiki
+---
+Jonas: Your Personal Austrian German Tutor  --  Meet Jonas, a friendly AI chatbot designed to be your personal guide to Austrian German and culture. I built Jonas to be more than just a language app; he's a conversational partner who makes learning feel like chatting with a local. Using a fine-tuned language model and a Retrieval-Augmented Generation (RAG) system I built with FAISS, Jonas can answer your questions about Austria, explain grammar in a simple way, and teach you everything from classic phrases to modern slang. 
+- github: https://github.com/Muhsiinn/Jonas
+---
 Song popularity predictor  --  Implemented linear regression to predict song popularity, created synthetic data 
 - github: https://github.com/Muhsiinn/Song-Popularity-Predictor-
 ---
@@ -43,5 +49,8 @@ Sales Report Automation  --  Raw data to insights: Automated sales report genera
 Malaria Cell Image Classification (CNN)  --  Classified malaria-infected vs healthy cells using Convolutional Neural Networks (CNN) in Python (TensorFlow, Keras).
 - github: https://github.com/Muhsiinn/Malaria-Cell-Image-Classification-with-CNN
 ---
+Klinikum Report Editor  --  A comprehensive Flask web application for managing mental health report data with customizable fields, interactive graphs, and PDF export functionality.
+- github: https://github.com/Muhsiinn/med_data
+---
 ===
-Updated: October 2025
+Updated: November 2025
