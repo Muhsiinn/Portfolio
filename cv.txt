@@ -25,6 +25,9 @@ Machine Learning Zoomcamp  --  DataTalks Club
 ===
 Projects
 ------------------------------
+Gmail Automation Tool: AI-Powered Email Management  --  A Python-based Gmail automation tool that uses local LLMs via Ollama to intelligently summarize emails and generate automated reply drafts. Combines Gmail API with Mistral 7B for streamlined email management, content cleaning, and AI-powered productivity features.
+- github: https://github.com/Muhsiinn/Gmail1
+---
 Offline Wiki: RAG-Powered Knowledge Base  --  A fully offline Wikipedia/Wikivoyage search system with intelligent Q&A capabilities. Built with FAISS vector search, Sentence Transformers for embeddings, and Ollama for natural language generation. Access thousands of articles about European destinations without an internet connection.
 - github: https://github.com/Muhsiinn/Offline_wiki
 ---

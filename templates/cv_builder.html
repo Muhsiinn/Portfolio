@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        html::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .line {
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background-color: #000;
+            animation: move-line 10s linear infinite;
+        }
+
+        .line:nth-child(1) { left: 5%; animation-duration: 10s; }
+        .line:nth-child(2) { left: 15%; animation-duration: 12s; }
+        .line:nth-child(3) { left: 25%; animation-duration: 8s; }
+        .line:nth-child(4) { left: 35%; animation-duration: 15s; }
+        .line:nth-child(5) { left: 45%; animation-duration: 9s; }
+        .line:nth-child(6) { left: 55%; animation-duration: 11s; }
+        .line:nth-child(7) { left: 65%; animation-duration: 13s; }
+        .line:nth-child(8) { left: 75%; animation-duration: 7s; }
+        .line:nth-child(9) { left: 85%; animation-duration: 14s; }
+        .line:nth-child(10) { left: 95%; animation-duration: 16s; }
+
+        @keyframes move-line {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9em;
+            color: #333;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #333;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 1px solid #333;
+            background-color: #fff;
+            color: #333;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .btn-add {
+            margin-top: 10px;
+            font-size: 0.85em;
+        }
+
+        .btn-remove {
+            background-color: transparent;
+            border: 1px solid #999;
+            color: #999;
+            padding: 5px 15px;
+            font-size: 0.8em;
+        }
+
+        .btn-remove:hover {
+            background-color: #999;
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #333;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #000;
+        }
+
+        .section-block {
+            border: 1px solid #eee;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #fafafa;
+        }
+
+        .section-block h3 {
+            font-size: 1em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+        }
+
+        .helper-text {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        .section-type-selector {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px dashed #ccc;
+            background-color: #fafafa;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <div class="container">
+        <h1>CV Builder</h1>
+
+        <form id="cvForm" action="/generate-pdf" method="POST">
+
+            <!-- Basic Info -->
+            <h2>Basic Information</h2>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" name="name" value="{{ data.name if data else '' }}" required>
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" name="email" value="{{ data.email if data else '' }}" required>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" name="phone" value="{{ data.socials.phone if data and data.socials and data.socials.phone else '' }}">
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" name="location" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Links (GitHub, LinkedIn, etc.)</label>
+                <textarea name="links" placeholder="One link per line">{% if data and data.socials %}{{ data.socials.github if data.socials.github else '' }}
+{{ data.socials.instagram if data.socials.instagram else '' }}
+{{ data.socials.twitter if data.socials.twitter else '' }}{% endif %}</textarea>
+                <p class="helper-text">Enter each link on a new line</p>
+            </div>
+
+            <!-- Dynamic Sections -->
+            <h2>Sections</h2>
+            <div id="sectionsContainer"></div>
+
+            <div class="section-type-selector">
+                <label>Add Section:</label>
+                <select id="sectionTypeSelect">
+                    <option value="">Choose section type...</option>
+                    <option value="text">Text Section</option>
+                    <option value="list">List Section</option>
+                    <option value="experience">Experience Entry</option>
+                    <option value="education">Education Entry</option>
+                    <option value="project">Project Entry</option>
+                </select>
+                <button type="button" class="btn-add" onclick="addSection()">+ Add Section</button>
+            </div>
+
+            <!-- Hidden counter -->
+            <input type="hidden" id="sectionCount" name="sectionCount" value="0">
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit" class="btn-primary">Generate PDF</button>
+                <button type="button" onclick="location.reload()">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let sectionCount = 0;
+
+        // Pre-populate sections from JSON data
+        window.addEventListener('DOMContentLoaded', function() {
+            {% if prepopulated_sections %}
+                {% for section in prepopulated_sections %}
+                    prepopulateSection({{ section | tojson }});
+                {% endfor %}
+            {% endif %}
+        });
+
+        function prepopulateSection(sectionData) {
+            const container = document.getElementById('sectionsContainer');
+            const sectionDiv = document.createElement('div');
+            sectionDiv.className = 'section-block';
+            sectionDiv.id = `section_${sectionCount}`;
+
+            let html = '';
+            const type = sectionData.type;
+
+            if (type === 'text') {
+                html = `
+                    <div class="section-header">
+                        <h3>Text Section</h3>
+                        <button type="button" class="btn-remove" onclick="removeSection(${sectionCount})">Remove</button>
+                    </div>
+                    <input type="hidden" name="section_${sectionCount}_type" value="text">
+                    <div class="form-group">
+                        <label>Section Title</label>
+                        <input type="text" name="section_${sectionCount}_title" placeholder="e.g., Summary, About" value="${sectionData.title || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea name="section_${sectionCount}_content" placeholder="Enter text content">${sectionData.content || ''}</textarea>
+                    </div>
+                `;
+            } else if (type === 'list') {
+                const itemsText = Array.isArray(sectionData.items) ? sectionData.items.join('\n') : '';
+                html = `
+                    <div class="section-header">
+                        <h3>List Section</h3>
+                        <button type="button" class="btn-remove" onclick="removeSection(${sectionCount})">Remove</button>
+                    </div>
+                    <input type="hidden" name="section_${sectionCount}_type" value="list">
+                    <div class="form-group">
+                        <label>Section Title</label>
+                        <input type="text" name="section_${sectionCount}_title" placeholder="e.g., Skills, Languages" value="${sectionData.title || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Items</label>
+                        <textarea name="section_${sectionCount}_items" placeholder="One item per line">${itemsText}</textarea>
+                        <p class="helper-text">Enter each item on a new line</p>
+                    </div>
+                `;
+            } else if (type === 'education') {
+                html = `
+                    <div class="section-header">
+                        <h3>Education Entry</h3>
+                        <button type="button" class="btn-remove" onclick="removeSection(${sectionCount})">Remove</button>
+                    </div>
+                    <input type="hidden" name="section_${sectionCount}_type" value="education">
+                    <div class="form-group">
+                        <label>Section Title (e.g., Education)</label>
+                        <input type="text" name="section_${sectionCount}_title" placeholder="Education" value="${sectionData.title || ''}">
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Degree</label>
+                            <input type="text" name="section_${sectionCount}_degree" value="${sectionData.degree || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label>Institution</label>
+                            <input type="text" name="section_${sectionCount}_institution" value="${sectionData.institution || ''}">
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Duration</label>
+                            <input type="text" name="section_${sectionCount}_duration" placeholder="2020 - 2024" value="${sectionData.duration || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" name="section_${sectionCount}_location" value="${sectionData.location || ''}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Details</label>
+                        <textarea name="section_${sectionCount}_details" placeholder="GPA, honors, relevant coursework">${sectionData.details || ''}</textarea>
+                    </div>
+                `;
+            } else if (type === 'project') {
+                html = `
+                    <div class="section-header">
+                        <h3>Project Entry</h3>
+                        <button type="button" class="btn-remove" onclick="removeSection(${sectionCount})">Remove</button>
+                    </div>
+                    <input type="hidden" name="section_${sectionCount}_type" value="project">
+                    <div class="form-group">
+                        <label>Section Title (e.g., Projects)</label>
+                        <input type="text" name="section_${sectionCount}_title" placeholder="Projects" value="${sectionData.title || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="text" name="section_${sectionCount}_project_name" value="${sectionData.project_name || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="section_${sectionCount}_description">${sectionData.description || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Technologies</label>
+                        <input type="text" name="section_${sectionCount}_technologies" placeholder="Python, Flask, TensorFlow" value="${sectionData.technologies || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Link</label>
+                        <input type="text" name="section_${sectionCount}_link" placeholder="GitHub URL" value="${sectionData.link || ''}">
+                    </div>
+                `;
+            }
+
+            sectionDiv.innerHTML = html;
+            container.appendChild(sectionDiv);
+
+            sectionCount++;
+            document.getElementById('sectionCount').value = sectionCount;
+        }
+
+        function addSection() {
+            const sectionType = document.getElementById('sectionTypeSelect').value;
+            if (!sectionType) {
+                alert('Please select a section type');
+                return;
+            }
+
+            const container = document.getElementById('sectionsContainer');
+            const sectionDiv = document.createElement('div');
+            sectionDiv.className = 'section-block';
+            sectionDiv.id = `section_${sectionCount}`;
+
+            let html = '';
+
+            if (sectionType === 'text') {
+                html = `
+                    <div class="section-header">
+                        <h3>Text Section</h3>
+                        <button type="button" class="btn-remove" onclick="removeSection(${sectionCount})">Remove</button>
+                    </div>
+                    <input type="hidden" name="section_${sectionCount}_type" value="text">
+                    <div class="form-group">
+                        <label>Section Title</label>
+                        <input type="text" name="section_${sectionCount}_title" placeholder="e.g., Summary, About">
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea name="section_${sectionCount}_content" placeholder="Enter text content"></textarea>
+                    </div>
+                `;
+            } else if (sectionType === 'list') {
+                html = `
+                    <div class="section-header">
+                        <h3>List Section</h3>
+                        <button type="button" class="btn-remove" onclick="removeSection(${sectionCount})">Remove</button>
+                    </div>
+                    <input type="hidden" name="section_${sectionCount}_type" value="list">
+                    <div class="form-group">
+                        <label>Section Title</label>
+                        <input type="text" name="section_${sectionCount}_title" placeholder="e.g., Skills, Languages">
+                    </div>
+                    <div class="form-group">
+                        <label>Items</label>
+                        <textarea name="section_${sectionCount}_items" placeholder="One item per line"></textarea>
+                        <p class="helper-text">Enter each item on a new line</p>
+                    </div>
+                `;
+            } else if (sectionType === 'experience') {
+                html = `
+                    <div class="section-header">
+                        <h3>Experience Entry</h3>
+                        <button type="button" class="btn-remove" onclick="removeSection(${sectionCount})">Remove</button>
+                    </div>
+                    <input type="hidden" name="section_${sectionCount}_type" value="experience">
+                    <div class="form-group">
+                        <label>Section Title (e.g., Work Experience)</label>
+                        <input type="text" name="section_${sectionCount}_title" placeholder="Work Experience">
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Job Title</label>
+                            <input type="text" name="section_${sectionCount}_job">
+                        </div>
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" name="section_${sectionCount}_company">
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Duration</label>
+                            <input type="text" name="section_${sectionCount}_duration" placeholder="Jan 2020 - Present">
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" name="section_${sectionCount}_location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description/Responsibilities</label>
+                        <textarea name="section_${sectionCount}_description" placeholder="One point per line"></textarea>
+                        <p class="helper-text">Enter each responsibility on a new line</p>
+                    </div>
+                `;
+            } else if (sectionType === 'education') {
+                html = `
+                    <div class="section-header">
+                        <h3>Education Entry</h3>
+                        <button type="button" class="btn-remove" onclick="removeSection(${sectionCount})">Remove</button>
+                    </div>
+                    <input type="hidden" name="section_${sectionCount}_type" value="education">
+                    <div class="form-group">
+                        <label>Section Title (e.g., Education)</label>
+                        <input type="text" name="section_${sectionCount}_title" placeholder="Education">
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Degree</label>
+                            <input type="text" name="section_${sectionCount}_degree">
+                        </div>
+                        <div class="form-group">
+                            <label>Institution</label>
+                            <input type="text" name="section_${sectionCount}_institution">
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Duration</label>
+                            <input type="text" name="section_${sectionCount}_duration" placeholder="2020 - 2024">
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" name="section_${sectionCount}_location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Details</label>
+                        <textarea name="section_${sectionCount}_details" placeholder="GPA, honors, relevant coursework"></textarea>
+                    </div>
+                `;
+            } else if (sectionType === 'project') {
+                html = `
+                    <div class="section-header">
+                        <h3>Project Entry</h3>
+                        <button type="button" class="btn-remove" onclick="removeSection(${sectionCount})">Remove</button>
+                    </div>
+                    <input type="hidden" name="section_${sectionCount}_type" value="project">
+                    <div class="form-group">
+                        <label>Section Title (e.g., Projects)</label>
+                        <input type="text" name="section_${sectionCount}_title" placeholder="Projects">
+                    </div>
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="text" name="section_${sectionCount}_project_name">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="section_${sectionCount}_description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Technologies</label>
+                        <input type="text" name="section_${sectionCount}_technologies" placeholder="Python, Flask, TensorFlow">
+                    </div>
+                    <div class="form-group">
+                        <label>Link</label>
+                        <input type="text" name="section_${sectionCount}_link" placeholder="GitHub URL">
+                    </div>
+                `;
+            }
+
+            sectionDiv.innerHTML = html;
+            container.appendChild(sectionDiv);
+
+            sectionCount++;
+            document.getElementById('sectionCount').value = sectionCount;
+        }
+
+        function removeSection(id) {
+            const section = document.getElementById(`section_${id}`);
+            if (section) {
+                section.remove();
+            }
+        }
+    </script>
+</body>
+</html>

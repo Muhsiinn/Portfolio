@@ -1,5 +1,13 @@
 [
   {
+    "title": "Should I Go Outside? Weather-Based Activity Advisor",
+    "description": "A production-ready web application that provides personalized outdoor activity recommendations based on real-time weather data, air quality, and calendar schedule. Features Flask API, Google Calendar integration, and AI-powered suggestions using local LLM (Ollama with Mistral 7B).",
+    "file": "should_i_go_outside.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/should_you_go_outside"
+    }
+  },
+  {
     "title": "Gmail Automation Tool: AI-Powered Email Management",
     "description": "A Python-based Gmail automation tool that uses local LLMs via Ollama to intelligently summarize emails and generate automated reply drafts. Combines Gmail API with Mistral 7B for streamlined email management, content cleaning, and AI-powered productivity features.",
     "file": "gmail_automation.md",

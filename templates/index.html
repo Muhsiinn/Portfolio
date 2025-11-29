@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional CV Maker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            padding: 50px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.8em;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .section:hover {
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.6em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 12px;
+        }
+
+        .section-icon {
+            font-size: 1.3em;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        label .required {
+            color: #e74c3c;
+            margin-left: 3px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+
+        .btn-add {
+            background: #27ae60;
+            color: white;
+            margin-top: 15px;
+            font-size: 13px;
+            padding: 10px 20px;
+        }
+
+        .btn-add:hover {
+            background: #229954;
+            transform: scale(1.05);
+        }
+
+        .btn-remove {
+            background: #e74c3c;
+            color: white;
+            padding: 8px 18px;
+            font-size: 12px;
+        }
+
+        .btn-remove:hover {
+            background: #c0392b;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .dynamic-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ecf0f1;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .dynamic-item:hover {
+            border-color: #bdc3c7;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .dynamic-item h3 {
+            color: #34495e;
+            font-size: 1.15em;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .item-number {
+            background: #667eea;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+        }
+
+        .remove-btn-container {
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        .success-message,
+        .error-message {
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: none;
+            font-weight: 500;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+
+        .helper-text {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .section {
+                padding: 18px;
+            }
+        }
+
+        .collapse-toggle {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .collapse-content {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Professional CV Maker</h1>
+        <p class="subtitle">Create your professional CV with comprehensive sections</p>
+
+        <div id="successMessage" class="success-message"></div>
+        <div id="errorMessage" class="error-message"></div>
+
+        <form id="cvForm" action="/generate-pdf" method="POST">
+
+            <!-- Personal Information -->
+            <div class="section">
+                <h2><span class="section-icon">👤</span> Personal Information</h2>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" value="{{ data.name if data else '' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Professional Title <span class="required">*</span></label>
+                        <input type="text" id="bio" name="bio" value="{{ data.bio if data else '' }}" placeholder="e.g., AI Engineer, Data Scientist" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="summary">Professional Summary</label>
+                    <textarea id="summary" name="summary" placeholder="Brief professional summary (2-3 sentences)">{{ data.summary if data and data.summary else '' }}</textarea>
+                    <p class="helper-text">Summarize your professional background and key strengths</p>
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" value="{{ data.email if data else '' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone" name="phone" value="{{ data.socials.phone if data and data.socials and data.socials.phone else '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" value="" placeholder="City, Country">
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="website">Personal Website</label>
+                        <input type="text" id="website" name="website" value="" placeholder="https://yourwebsite.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn</label>
+                        <input type="text" id="linkedin" name="linkedin" value="" placeholder="https://linkedin.com/in/yourprofile">
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="github">GitHub</label>
+                        <input type="text" id="github" name="github" value="{{ data.socials.github if data and data.socials and data.socials.github else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="twitter">Twitter/X</label>
+                        <input type="text" id="twitter" name="twitter" value="{{ data.socials.twitter if data and data.socials and data.socials.twitter else '' }}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work Experience -->
+            <div class="section">
+                <h2><span class="section-icon">💼</span> Work Experience</h2>
+                <div id="experienceContainer">
+                    {% if experience and experience|length > 0 %}
+                        {% for exp in experience %}
+                        <div class="dynamic-item">
+                            <h3><span class="item-number">{{ loop.index }}</span> Experience Entry</h3>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Job Title</label>
+                                    <input type="text" name="exp_title_{{ loop.index0 }}" value="{{ exp.title }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Company</label>
+                                    <input type="text" name="exp_company_{{ loop.index0 }}" value="{{ exp.company }}">
+                                </div>
+                            </div>
+                            <div class="grid-3">
+                                <div class="form-group">
+                                    <label>Start Date</label>
+                                    <input type="text" name="exp_start_{{ loop.index0 }}" value="{{ exp.start }}" placeholder="Jan 2023">
+                                </div>
+                                <div class="form-group">
+                                    <label>End Date</label>
+                                    <input type="text" name="exp_end_{{ loop.index0 }}" value="{{ exp.end }}" placeholder="Present">
+                                </div>
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <input type="text" name="exp_location_{{ loop.index0 }}" value="{{ exp.location }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Responsibilities & Achievements</label>
+                                <textarea name="exp_responsibilities_{{ loop.index0 }}" placeholder="One responsibility per line">{{ exp.responsibilities|join('\n') if exp.responsibilities else '' }}</textarea>
+                                <p class="helper-text">Enter each responsibility on a new line</p>
+                            </div>
+                            <div class="remove-btn-container">
+                                <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <input type="hidden" id="exp_count" name="exp_count" value="{{ experience|length if experience else 0 }}">
+                <button type="button" class="btn btn-add" onclick="addExperience()">+ Add Work Experience</button>
+            </div>
+
+            <!-- Skills -->
+            <div class="section">
+                <h2><span class="section-icon">🛠️</span> Skills</h2>
+                <div id="skillsContainer">
+                    {% if skills and skills|length > 0 %}
+                        {% for skill in skills %}
+                        <div class="dynamic-item">
+                            <h3><span class="item-number">{{ loop.index }}</span> Skill Category</h3>
+                            <div class="form-group">
+                                <label>Category Name</label>
+                                <input type="text" name="skill_category_{{ loop.index0 }}" value="{{ skill.category }}" placeholder="e.g., Programming Languages">
+                            </div>
+                            <div class="form-group">
+                                <label>Skills (comma-separated)</label>
+                                <input type="text" name="skill_items_{{ loop.index0 }}" value="{{ skill.skills|join(', ') if skill.skills else '' }}" placeholder="Python, JavaScript, React">
+                                <p class="helper-text">Separate each skill with a comma</p>
+                            </div>
+                            <div class="remove-btn-container">
+                                <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="dynamic-item">
+                            <h3><span class="item-number">1</span> Skill Category</h3>
+                            <div class="form-group">
+                                <label>Category Name</label>
+                                <input type="text" name="skill_category_0" placeholder="e.g., Programming Languages">
+                            </div>
+                            <div class="form-group">
+                                <label>Skills (comma-separated)</label>
+                                <input type="text" name="skill_items_0" placeholder="Python, JavaScript, React">
+                                <p class="helper-text">Separate each skill with a comma</p>
+                            </div>
+                            <div class="remove-btn-container">
+                                <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <input type="hidden" id="skill_count" name="skill_count" value="{{ skills|length if skills else 1 }}">
+                <button type="button" class="btn btn-add" onclick="addSkill()">+ Add Skill Category</button>
+            </div>
+
+            <!-- Education -->
+            <div class="section">
+                <h2><span class="section-icon">🎓</span> Education</h2>
+                <div id="educationContainer">
+                    {% if education and education.formal %}
+                        {% for edu in education.formal %}
+                        <div class="dynamic-item">
+                            <h3><span class="item-number">{{ loop.index }}</span> Education Entry</h3>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Degree/Qualification</label>
+                                    <input type="text" name="edu_degree_{{ loop.index0 }}" value="{{ edu.degree }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Institution</label>
+                                    <input type="text" name="edu_institution_{{ loop.index0 }}" value="{{ edu.institution }}">
+                                </div>
+                            </div>
+                            <div class="grid-3">
+                                <div class="form-group">
+                                    <label>Start Year</label>
+                                    <input type="text" name="edu_start_{{ loop.index0 }}" value="{{ edu.start }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>End Year</label>
+                                    <input type="text" name="edu_end_{{ loop.index0 }}" value="{{ edu.end }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>GPA (Optional)</label>
+                                    <input type="text" name="edu_gpa_{{ loop.index0 }}" value="{{ edu.gpa if edu.gpa else '' }}" placeholder="3.8/4.0">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" name="edu_location_{{ loop.index0 }}" value="{{ edu.location }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Details/Highlights</label>
+                                <textarea name="edu_details_{{ loop.index0 }}">{{ edu.details }}</textarea>
+                            </div>
+                            <div class="remove-btn-container">
+                                <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="dynamic-item">
+                            <h3><span class="item-number">1</span> Education Entry</h3>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Degree/Qualification</label>
+                                    <input type="text" name="edu_degree_0">
+                                </div>
+                                <div class="form-group">
+                                    <label>Institution</label>
+                                    <input type="text" name="edu_institution_0">
+                                </div>
+                            </div>
+                            <div class="grid-3">
+                                <div class="form-group">
+                                    <label>Start Year</label>
+                                    <input type="text" name="edu_start_0">
+                                </div>
+                                <div class="form-group">
+                                    <label>End Year</label>
+                                    <input type="text" name="edu_end_0">
+                                </div>
+                                <div class="form-group">
+                                    <label>GPA (Optional)</label>
+                                    <input type="text" name="edu_gpa_0" placeholder="3.8/4.0">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" name="edu_location_0">
+                            </div>
+                            <div class="form-group">
+                                <label>Details/Highlights</label>
+                                <textarea name="edu_details_0"></textarea>
+                            </div>
+                            <div class="remove-btn-container">
+                                <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <input type="hidden" id="edu_count" name="edu_count" value="{{ education.formal|length if education and education.formal else 1 }}">
+                <button type="button" class="btn btn-add" onclick="addEducation()">+ Add Education</button>
+            </div>
+
+            <!-- Certifications & Courses -->
+            <div class="section">
+                <h2><span class="section-icon">📜</span> Certifications & Online Courses</h2>
+                <div id="sideQuestContainer">
+                    {% if education and education.side_quests %}
+                        {% for sq in education.side_quests %}
+                        <div class="dynamic-item">
+                            <h3><span class="item-number">{{ loop.index }}</span> Certification/Course</h3>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" name="sq_title_{{ loop.index0 }}" value="{{ sq.title }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Organizer/Platform</label>
+                                    <input type="text" name="sq_organizer_{{ loop.index0 }}" value="{{ sq.organizer }}">
+                                </div>
+                            </div>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Start Year</label>
+                                    <input type="text" name="sq_start_{{ loop.index0 }}" value="{{ sq.start }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>End Year</label>
+                                    <input type="text" name="sq_end_{{ loop.index0 }}" value="{{ sq.end }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Focus/Topics</label>
+                                <textarea name="sq_focus_{{ loop.index0 }}">{{ sq.focus }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Type</label>
+                                <input type="text" name="sq_type_{{ loop.index0 }}" value="{{ sq.type }}" placeholder="e.g., Online Bootcamp, Workshop">
+                            </div>
+                            <div class="remove-btn-container">
+                                <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <input type="hidden" id="sq_count" name="sq_count" value="{{ education.side_quests|length if education and education.side_quests else 0 }}">
+                <button type="button" class="btn btn-add" onclick="addSideQuest()">+ Add Certification/Course</button>
+            </div>
+
+            <!-- Projects -->
+            <div class="section">
+                <h2><span class="section-icon">🚀</span> Projects</h2>
+                <div id="projectsContainer">
+                    {% if projects %}
+                        {% for proj in projects %}
+                        <div class="dynamic-item">
+                            <h3><span class="item-number">{{ loop.index }}</span> Project</h3>
+                            <div class="form-group">
+                                <label>Project Title</label>
+                                <input type="text" name="proj_title_{{ loop.index0 }}" value="{{ proj.title }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea name="proj_description_{{ loop.index0 }}">{{ proj.description }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Technologies (comma-separated)</label>
+                                <input type="text" name="proj_tech_{{ loop.index0 }}" value="{{ proj.tech|join(', ') if proj.tech else '' }}" placeholder="Python, Flask, TensorFlow">
+                                <p class="helper-text">Separate each technology with a comma</p>
+                            </div>
+                            <div class="form-group">
+                                <label>GitHub/Project Link</label>
+                                <input type="text" name="proj_github_{{ loop.index0 }}" value="{{ proj.links.github if proj.links and proj.links.github else '' }}">
+                            </div>
+                            <div class="remove-btn-container">
+                                <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="dynamic-item">
+                            <h3><span class="item-number">1</span> Project</h3>
+                            <div class="form-group">
+                                <label>Project Title</label>
+                                <input type="text" name="proj_title_0">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea name="proj_description_0"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Technologies (comma-separated)</label>
+                                <input type="text" name="proj_tech_0" placeholder="Python, Flask, TensorFlow">
+                                <p class="helper-text">Separate each technology with a comma</p>
+                            </div>
+                            <div class="form-group">
+                                <label>GitHub/Project Link</label>
+                                <input type="text" name="proj_github_0">
+                            </div>
+                            <div class="remove-btn-container">
+                                <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <input type="hidden" id="proj_count" name="proj_count" value="{{ projects|length if projects else 1 }}">
+                <button type="button" class="btn btn-add" onclick="addProject()">+ Add Project</button>
+            </div>
+
+            <!-- Languages -->
+            <div class="section">
+                <h2><span class="section-icon">🌍</span> Languages</h2>
+                <div id="languagesContainer">
+                    {% if languages and languages|length > 0 %}
+                        {% for lang in languages %}
+                        <div class="dynamic-item">
+                            <h3><span class="item-number">{{ loop.index }}</span> Language</h3>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Language</label>
+                                    <input type="text" name="lang_name_{{ loop.index0 }}" value="{{ lang.language }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Proficiency Level</label>
+                                    <select name="lang_proficiency_{{ loop.index0 }}">
+                                        <option value="">Select level...</option>
+                                        <option value="Native" {% if lang.proficiency == 'Native' %}selected{% endif %}>Native</option>
+                                        <option value="Fluent" {% if lang.proficiency == 'Fluent' %}selected{% endif %}>Fluent</option>
+                                        <option value="Advanced" {% if lang.proficiency == 'Advanced' %}selected{% endif %}>Advanced</option>
+                                        <option value="Intermediate" {% if lang.proficiency == 'Intermediate' %}selected{% endif %}>Intermediate</option>
+                                        <option value="Basic" {% if lang.proficiency == 'Basic' %}selected{% endif %}>Basic</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="remove-btn-container">
+                                <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="dynamic-item">
+                            <h3><span class="item-number">1</span> Language</h3>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Language</label>
+                                    <input type="text" name="lang_name_0">
+                                </div>
+                                <div class="form-group">
+                                    <label>Proficiency Level</label>
+                                    <select name="lang_proficiency_0">
+                                        <option value="">Select level...</option>
+                                        <option value="Native">Native</option>
+                                        <option value="Fluent">Fluent</option>
+                                        <option value="Advanced">Advanced</option>
+                                        <option value="Intermediate">Intermediate</option>
+                                        <option value="Basic">Basic</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="remove-btn-container">
+                                <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <input type="hidden" id="lang_count" name="lang_count" value="{{ languages|length if languages else 1 }}">
+                <button type="button" class="btn btn-add" onclick="addLanguage()">+ Add Language</button>
+            </div>
+
+            <!-- Awards & Achievements -->
+            <div class="section">
+                <h2><span class="section-icon">🏆</span> Awards & Achievements</h2>
+                <div id="awardsContainer">
+                    {% if awards and awards|length > 0 %}
+                        {% for award in awards %}
+                        <div class="dynamic-item">
+                            <h3><span class="item-number">{{ loop.index }}</span> Award</h3>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Award Title</label>
+                                    <input type="text" name="award_title_{{ loop.index0 }}" value="{{ award.title }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Issuing Organization</label>
+                                    <input type="text" name="award_issuer_{{ loop.index0 }}" value="{{ award.issuer }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="text" name="award_date_{{ loop.index0 }}" value="{{ award.date }}" placeholder="Month Year">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea name="award_description_{{ loop.index0 }}">{{ award.description }}</textarea>
+                            </div>
+                            <div class="remove-btn-container">
+                                <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <input type="hidden" id="award_count" name="award_count" value="{{ awards|length if awards else 0 }}">
+                <button type="button" class="btn btn-add" onclick="addAward()">+ Add Award</button>
+            </div>
+
+            <!-- Custom Fields -->
+            <div class="section">
+                <h2><span class="section-icon">➕</span> Custom Sections</h2>
+                <p class="helper-text" style="margin-bottom: 20px;">Add any additional sections like Volunteer Work, Publications, Interests, etc.</p>
+                <div id="customContainer">
+                </div>
+                <input type="hidden" id="custom_count" name="custom_count" value="0">
+                <button type="button" class="btn btn-add" onclick="addCustomField()">+ Add Custom Section</button>
+            </div>
+
+            <!-- Submit Buttons -->
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">📄 Generate PDF</button>
+                <button type="button" class="btn btn-secondary" onclick="loadExisting()">🔄 Load Existing Data</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let expCount = {{ experience|length if experience else 0 }};
+        let eduCount = {{ education.formal|length if education and education.formal else 1 }};
+        let skillCount = {{ skills|length if skills else 1 }};
+        let sqCount = {{ education.side_quests|length if education and education.side_quests else 0 }};
+        let projCount = {{ projects|length if projects else 1 }};
+        let langCount = {{ languages|length if languages else 1 }};
+        let awardCount = {{ awards|length if awards else 0 }};
+        let customCount = 0;
+
+        function addExperience() {
+            const container = document.getElementById('experienceContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'dynamic-item';
+            newItem.innerHTML = `
+                <h3><span class="item-number">${expCount + 1}</span> Experience Entry</h3>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        <input type="text" name="exp_title_${expCount}">
+                    </div>
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" name="exp_company_${expCount}">
+                    </div>
+                </div>
+                <div class="grid-3">
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="text" name="exp_start_${expCount}" placeholder="Jan 2023">
+                    </div>
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="text" name="exp_end_${expCount}" placeholder="Present">
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" name="exp_location_${expCount}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Responsibilities & Achievements</label>
+                    <textarea name="exp_responsibilities_${expCount}" placeholder="One responsibility per line"></textarea>
+                    <p class="helper-text">Enter each responsibility on a new line</p>
+                </div>
+                <div class="remove-btn-container">
+                    <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                </div>
+            `;
+            container.appendChild(newItem);
+            expCount++;
+            document.getElementById('exp_count').value = expCount;
+        }
+
+        function addSkill() {
+            const container = document.getElementById('skillsContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'dynamic-item';
+            newItem.innerHTML = `
+                <h3><span class="item-number">${skillCount + 1}</span> Skill Category</h3>
+                <div class="form-group">
+                    <label>Category Name</label>
+                    <input type="text" name="skill_category_${skillCount}" placeholder="e.g., Programming Languages">
+                </div>
+                <div class="form-group">
+                    <label>Skills (comma-separated)</label>
+                    <input type="text" name="skill_items_${skillCount}" placeholder="Python, JavaScript, React">
+                    <p class="helper-text">Separate each skill with a comma</p>
+                </div>
+                <div class="remove-btn-container">
+                    <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                </div>
+            `;
+            container.appendChild(newItem);
+            skillCount++;
+            document.getElementById('skill_count').value = skillCount;
+        }
+
+        function addEducation() {
+            const container = document.getElementById('educationContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'dynamic-item';
+            newItem.innerHTML = `
+                <h3><span class="item-number">${eduCount + 1}</span> Education Entry</h3>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Degree/Qualification</label>
+                        <input type="text" name="edu_degree_${eduCount}">
+                    </div>
+                    <div class="form-group">
+                        <label>Institution</label>
+                        <input type="text" name="edu_institution_${eduCount}">
+                    </div>
+                </div>
+                <div class="grid-3">
+                    <div class="form-group">
+                        <label>Start Year</label>
+                        <input type="text" name="edu_start_${eduCount}">
+                    </div>
+                    <div class="form-group">
+                        <label>End Year</label>
+                        <input type="text" name="edu_end_${eduCount}">
+                    </div>
+                    <div class="form-group">
+                        <label>GPA (Optional)</label>
+                        <input type="text" name="edu_gpa_${eduCount}" placeholder="3.8/4.0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" name="edu_location_${eduCount}">
+                </div>
+                <div class="form-group">
+                    <label>Details/Highlights</label>
+                    <textarea name="edu_details_${eduCount}"></textarea>
+                </div>
+                <div class="remove-btn-container">
+                    <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                </div>
+            `;
+            container.appendChild(newItem);
+            eduCount++;
+            document.getElementById('edu_count').value = eduCount;
+        }
+
+        function addSideQuest() {
+            const container = document.getElementById('sideQuestContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'dynamic-item';
+            newItem.innerHTML = `
+                <h3><span class="item-number">${sqCount + 1}</span> Certification/Course</h3>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" name="sq_title_${sqCount}">
+                    </div>
+                    <div class="form-group">
+                        <label>Organizer/Platform</label>
+                        <input type="text" name="sq_organizer_${sqCount}">
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Start Year</label>
+                        <input type="text" name="sq_start_${sqCount}">
+                    </div>
+                    <div class="form-group">
+                        <label>End Year</label>
+                        <input type="text" name="sq_end_${sqCount}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Focus/Topics</label>
+                    <textarea name="sq_focus_${sqCount}"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <input type="text" name="sq_type_${sqCount}" placeholder="e.g., Online Bootcamp, Workshop">
+                </div>
+                <div class="remove-btn-container">
+                    <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                </div>
+            `;
+            container.appendChild(newItem);
+            sqCount++;
+            document.getElementById('sq_count').value = sqCount;
+        }
+
+        function addProject() {
+            const container = document.getElementById('projectsContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'dynamic-item';
+            newItem.innerHTML = `
+                <h3><span class="item-number">${projCount + 1}</span> Project</h3>
+                <div class="form-group">
+                    <label>Project Title</label>
+                    <input type="text" name="proj_title_${projCount}">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="proj_description_${projCount}"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Technologies (comma-separated)</label>
+                    <input type="text" name="proj_tech_${projCount}" placeholder="Python, Flask, TensorFlow">
+                    <p class="helper-text">Separate each technology with a comma</p>
+                </div>
+                <div class="form-group">
+                    <label>GitHub/Project Link</label>
+                    <input type="text" name="proj_github_${projCount}">
+                </div>
+                <div class="remove-btn-container">
+                    <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                </div>
+            `;
+            container.appendChild(newItem);
+            projCount++;
+            document.getElementById('proj_count').value = projCount;
+        }
+
+        function addLanguage() {
+            const container = document.getElementById('languagesContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'dynamic-item';
+            newItem.innerHTML = `
+                <h3><span class="item-number">${langCount + 1}</span> Language</h3>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Language</label>
+                        <input type="text" name="lang_name_${langCount}">
+                    </div>
+                    <div class="form-group">
+                        <label>Proficiency Level</label>
+                        <select name="lang_proficiency_${langCount}">
+                            <option value="">Select level...</option>
+                            <option value="Native">Native</option>
+                            <option value="Fluent">Fluent</option>
+                            <option value="Advanced">Advanced</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Basic">Basic</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="remove-btn-container">
+                    <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                </div>
+            `;
+            container.appendChild(newItem);
+            langCount++;
+            document.getElementById('lang_count').value = langCount;
+        }
+
+        function addAward() {
+            const container = document.getElementById('awardsContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'dynamic-item';
+            newItem.innerHTML = `
+                <h3><span class="item-number">${awardCount + 1}</span> Award</h3>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Award Title</label>
+                        <input type="text" name="award_title_${awardCount}">
+                    </div>
+                    <div class="form-group">
+                        <label>Issuing Organization</label>
+                        <input type="text" name="award_issuer_${awardCount}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="text" name="award_date_${awardCount}" placeholder="Month Year">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="award_description_${awardCount}"></textarea>
+                </div>
+                <div class="remove-btn-container">
+                    <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                </div>
+            `;
+            container.appendChild(newItem);
+            awardCount++;
+            document.getElementById('award_count').value = awardCount;
+        }
+
+        function addCustomField() {
+            const container = document.getElementById('customContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'dynamic-item';
+            newItem.innerHTML = `
+                <h3><span class="item-number">${customCount + 1}</span> Custom Section</h3>
+                <div class="form-group">
+                    <label>Section Title</label>
+                    <input type="text" name="custom_title_${customCount}" placeholder="e.g., Volunteer Work, Publications, Interests">
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <textarea name="custom_content_${customCount}" placeholder="One item per line"></textarea>
+                    <p class="helper-text">Enter each item on a new line</p>
+                </div>
+                <div class="remove-btn-container">
+                    <button type="button" class="btn btn-remove" onclick="removeItem(this)">✕ Remove</button>
+                </div>
+            `;
+            container.appendChild(newItem);
+            customCount++;
+            document.getElementById('custom_count').value = customCount;
+        }
+
+        function removeItem(button) {
+            const item = button.closest('.dynamic-item');
+            const container = item.parentElement;
+            item.remove();
+
+            // Renumber remaining items
+            const items = container.querySelectorAll('.dynamic-item');
+            items.forEach((item, index) => {
+                const numberSpan = item.querySelector('.item-number');
+                if (numberSpan) {
+                    numberSpan.textContent = index + 1;
+                }
+            });
+        }
+
+        function loadExisting() {
+            location.reload();
+        }
+
+        function showMessage(type, message) {
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (type === 'success') {
+                successMsg.textContent = message;
+                successMsg.style.display = 'block';
+                errorMsg.style.display = 'none';
+            } else {
+                errorMsg.textContent = message;
+                errorMsg.style.display = 'block';
+                successMsg.style.display = 'none';
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
