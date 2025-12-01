@@ -32,6 +32,14 @@
     }
   },
   {
+    "title": "Austrian News Summarizer: AI-Powered News Translation",
+    "description": "An intelligent RSS news aggregator that automatically fetches Austrian news from ORF.at, scrapes full article content, and uses local LLM (Ollama with Mistral 7B) to translate and summarize German news articles into concise, neutral English summaries. Built with feedparser, BeautifulSoup, and Ollama for multilingual news consumption.",
+    "file": "news_summarizer.md",
+    "links": {
+      "github": "Coming soon"
+    }
+  },
+  {
     "title": "Song popularity predictor",
     "description": "Implemented linear regression to predict song popularity, created synthetic data ",
     "file": "spotify.md",
