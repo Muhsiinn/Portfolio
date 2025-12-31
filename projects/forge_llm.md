@@ -1,7 +1,7 @@
 
 ## The Story
 
-Fine-tuning language models usually means dealing with multiple tools and a lot of manual work - downloading models, preparing datasets, writing training scripts. I wanted something that handled the entire workflow in one place. Forge LLM takes care of everything from processing your documents to testing your fine-tuned model, so you can focus on what you want the model to learn rather than wrestling with infrastructure.
+Fine-tuning language models usually means dealing with multiple tools and a lot of manual work - downloading models, preparing datasets, writing training scripts. My friend and I wanted something that handled the entire workflow in one place. Forge LLM takes care of everything from processing your documents to testing your fine-tuned model, so you can focus on what you want the model to learn rather than wrestling with infrastructure.
 
 ## How it Works
 

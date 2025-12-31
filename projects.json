@@ -1,7 +1,7 @@
 [
   {
     "title": "Forge LLM: Document-Based Model Fine-Tuning Tool",
-    "description": "I built this to make fine-tuning language models less of a headache. Upload PDFs, and it automatically extracts the text and generates training data from your documents. Then you can fine-tune models using LoRA - a technique that lets you customize models without needing a supercomputer. The whole workflow from document to trained model is in one place, so you don't have to juggle multiple tools.",
+    "description": "My friend and I built this to make fine-tuning language models less of a headache. Upload PDFs, and it automatically extracts the text and generates training data from your documents. Then you can fine-tune models using LoRA - a technique that lets you customize models without needing a supercomputer. The whole workflow from document to trained model is in one place, so you don't have to juggle multiple tools.",
     "file": "forge_llm.md",
     "links": {
       "github": "https://github.com/Muhsiinn/forge-llm"
