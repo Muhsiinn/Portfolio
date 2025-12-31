@@ -1,5 +1,13 @@
 [
   {
+    "title": "Forge LLM: Document-Based Model Fine-Tuning Tool",
+    "description": "I built this to make fine-tuning language models less of a headache. Upload PDFs, and it automatically extracts the text and generates training data from your documents. Then you can fine-tune models using LoRA - a technique that lets you customize models without needing a supercomputer. The whole workflow from document to trained model is in one place, so you don't have to juggle multiple tools.",
+    "file": "forge_llm.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/forge-llm"
+    }
+  },
+  {
     "title": "Should I Go Outside? Weather-Based Activity Advisor",
     "description": "Ever checked the weather and still wondered if it's actually nice enough to go outside? I built this to solve that exact problem. It pulls real-time weather and air quality data, checks your calendar, and tells you if it's a good day for outdoor activities. I even threw in an AI that suggests what you should do based on the conditions - all running locally with Ollama.",
     "file": "should_i_go_outside.md",
