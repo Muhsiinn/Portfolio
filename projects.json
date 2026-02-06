@@ -8,22 +8,6 @@
     }
   },
   {
-    "title": "Should I Go Outside? Weather-Based Activity Advisor",
-    "description": "Ever checked the weather and still wondered if it's actually nice enough to go outside? I built this to solve that exact problem. It pulls real-time weather and air quality data, checks your calendar, and tells you if it's a good day for outdoor activities. I even threw in an AI that suggests what you should do based on the conditions - all running locally with Ollama.",
-    "file": "should_i_go_outside.md",
-    "links": {
-      "github": "https://github.com/Muhsiinn/should_you_go_outside"
-    }
-  },
-  {
-    "title": "Gmail Automation Tool: AI-Powered Email Management",
-    "description": "I got tired of drowning in emails, so I built this to help me out. It connects to Gmail, reads through your messages, and uses a local AI to summarize them and even draft replies. No cloud services needed - everything runs on your machine with Ollama, so your emails stay private.",
-    "file": "gmail_automation.md",
-    "links": {
-      "github": "https://github.com/Muhsiinn/Gmail1"
-    }
-  },
-  {
     "title": "Offline Wiki: RAG-Powered Knowledge Base",
     "description": "I wanted to have Wikipedia access without internet, so I built this offline search system. You can ask it questions about European destinations in natural language, and it'll search through thousands of Wikipedia and Wikivoyage articles to give you answers. Perfect for when you're traveling and don't have data or just want a fast, private way to look things up.",
     "file": "offline_wiki.md",
@@ -37,14 +21,6 @@
     "file": "jonas.md",
     "links": {
       "github": "https://github.com/Muhsiinn/Jonas"
-    }
-  },
-  {
-    "title": "Austrian News Summarizer: AI-Powered News Translation",
-    "description": "Living in Austria but not fluent in German yet? I made this to keep up with local news from ORF.at. It grabs the latest articles, translates them from German to English, and gives you clean summaries - all using a local AI so you're not sending your data anywhere. Now I can actually understand what's happening in my city.",
-    "file": "news_summarizer.md",
-    "links": {
-      "github": "Coming soon"
     }
   },
   {
@@ -64,14 +40,6 @@
     }
   },
   {
-    "title": "SIMCLR implementation on medical dataset",
-    "description": "Implemented self-supervised learning on medical images using SimCLR. It's a cool technique that lets the model learn useful features without needing labeled data - pretty helpful when you're working with medical datasets where labels are expensive to get.",
-    "file": "simclr.md",
-    "links": {
-      "coming soon gotta clean up the code :)": "https://github.com/Muhsiinn"
-    }
-  },
-  {
     "title": "Austrian Food Price Analysis & Email Automation",
     "description": "I dug into Austrian food prices to see how much producers vs consumers are getting squeezed. Analyzed the gap between what producers charge and what we pay at the store using official price data. The numbers tell an interesting story about who's really benefiting.",
     "file": "data_analysis.md",
@@ -85,22 +53,6 @@
     "file": "sales_report.md",
     "links": {
       "github": "https://github.com/Muhsiinn/sales-report-automation"
-    }
-  },
-  {
-    "title": "Malaria Cell Image Classification (CNN)",
-    "description": "Built a neural network to detect malaria-infected cells from microscope images. The model learns to spot the differences between healthy and infected cells - the kind of task that could help speed up diagnosis in places where trained specialists are scarce.",
-    "file": "malaria_cell.md",
-    "links": {
-      "github": "https://github.com/Muhsiinn/Malaria-Cell-Image-Classification-with-CNN"
-    }
-  },
-  {
-    "title": "Klinikum Report Editor",
-    "description": "A web app I built for managing mental health report data. You can customize fields, visualize trends with interactive graphs, and export everything to PDF. Made it flexible enough to adapt to different reporting needs while keeping the interface clean and straightforward.",
-    "file": "med_data.md",
-    "links": {
-      "github": "https://github.com/Muhsiinn/med_data"
     }
   }
 ]
