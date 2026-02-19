@@ -1,5 +1,8 @@
+# Jonas: Your Personal Austrian German Tutor
 
-[Youtube](https://youtu.be/lOE8pAQAz4M)
+## Demo
+
+[YouTube Demo](https://youtu.be/lOE8pAQAz4M)
 
 ## The Story
 
@@ -20,6 +23,7 @@ The frontend is a simple and clean chat interface built with HTML, CSS, and Java
 *   **Backend:** Python, Flask
 *   **Machine Learning:** PyTorch, Hugging Face Transformers, Sentence-Transformers, FAISS
 *   **Frontend:** HTML, CSS, JavaScript
-## Use Jonas
+
+## Run Jonas
 
 ollama run muhsinahmdtk/Jonas

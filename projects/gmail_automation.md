@@ -1,5 +1,3 @@
-
-
 ## Overview
 
 A Python-based Gmail automation tool that leverages local LLMs via Ollama to intelligently summarize emails and generate automated reply drafts. This project combines the Gmail API with AI capabilities to streamline email management and boost productivity.
@@ -24,14 +22,14 @@ A Python-based Gmail automation tool that leverages local LLMs via Ollama to int
 
 The project follows a modular architecture with distinct components:
 
-```
-├── auth/           # Gmail API authentication module
-├── reader/         # Email fetching and content extraction
-├── cleaner/        # Email content cleaning utilities
-├── summarizer/     # Email summarization with Ollama
-├── reply/          # Automated reply generation
-├── main.py         # Email summarization script
-└── main_reply.py   # Automatic reply generation script
+```text
+|- auth/         # Gmail API authentication module
+|- reader/       # Email fetching and content extraction
+|- cleaner/      # Email content cleaning utilities
+|- summarizer/   # Email summarization with Ollama
+|- reply/        # Automated reply generation
+|- main.py       # Email summarization script
+`- main_reply.py # Automatic reply generation script
 ```
 
 ## How It Works
@@ -51,7 +49,7 @@ The project follows a modular architecture with distinct components:
 - Reducing time spent on routine email responses
 - Maintaining email productivity while traveling
 
-## Privacy & Security
+## Privacy and Security
 
 - All AI processing happens locally via Ollama (no data sent to external servers)
 - Uses secure OAuth 2.0 authentication
