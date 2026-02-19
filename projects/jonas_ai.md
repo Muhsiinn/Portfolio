@@ -1,4 +1,4 @@
-### Jonas AI
+
 
 
 Jonas AI is a full-stack AI-powered German learning platform that delivers personalized daily practice through reading, writing, roleplay, and teacher-style chat.

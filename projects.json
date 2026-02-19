@@ -1,4 +1,18 @@
 [
+  
+  
+   {
+    "title": "Jonas AI",
+    "description": "Jonas AI is an AI-powered German learning platform that creates personalized daily lessons from real-life situations. It combines reading, writing, and roleplay practice with instant feedback, progress tracking, and premium subscription support in a full-stack SaaS app.",
+    "file": "jonas_ai.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/Jonas-AI"
+    }
+  },
+  
+  
+  
+  
   {
     "title": "Forge LLM: Document-Based Model Fine-Tuning Tool",
     "description": "My friend and I built this to make fine-tuning language models less of a headache. Upload PDFs, and it automatically extracts the text and generates training data from your documents. Then you can fine-tune models using LoRA - a technique that lets you customize models without needing a supercomputer. The whole workflow from document to trained model is in one place, so you don't have to juggle multiple tools.",
@@ -55,13 +69,6 @@
       "github": "https://github.com/Muhsiinn/sales-report-automation"
     }
   }
-  ,
-  {
-    "title": "Jonas AI",
-    "description": "Jonas AI is an AI-powered German learning platform that creates personalized daily lessons from real-life situations. It combines reading, writing, and roleplay practice with instant feedback, progress tracking, and premium subscription support in a full-stack SaaS app.",
-    "file": "jonas_ai.md",
-    "links": {
-      "github": "https://github.com/Muhsiinn/Jonas-AI"
-    }
-  }
+  
+ 
 ]
