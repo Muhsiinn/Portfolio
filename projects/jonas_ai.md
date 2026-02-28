@@ -25,3 +25,5 @@ The app generates a lesson from each learner's daily situation, including articl
 ## Outcome
 
 This project demonstrates end-to-end product engineering: designing learning workflows, integrating AI into user-facing features, building secure APIs, and shipping a monetized SaaS-style experience.
+
+[Jonas German App](https://jonas-jade.vercel.app/)
