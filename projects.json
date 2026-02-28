@@ -6,7 +6,8 @@
     "description": "Jonas AI is an AI-powered German learning platform that creates personalized daily lessons from real-life situations. It combines reading, writing, and roleplay practice with instant feedback, progress tracking, and premium subscription support in a full-stack SaaS app.",
     "file": "jonas_ai.md",
     "links": {
-      "github": "https://github.com/Muhsiinn/Jonas-AI"
+      "github": "https://github.com/Muhsiinn/Jonas-AI",
+      "app":"https://jonas-jade.vercel.app/"
     }
   },
   
