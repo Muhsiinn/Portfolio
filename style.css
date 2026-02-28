@@ -160,3 +160,16 @@ section {
     display: block;
 }
 
+.links {
+    margin-top: 10px;
+}
+
+.links a {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.links a:last-child {
+    margin-bottom: 0;
+}
+
