@@ -1,9 +1,9 @@
 {
   "formal": [
     {
-      "institution": "Johannes Kepler University Linz",
+      "institution": "FH Hagenberg",
       "degree": "Bachelor of Science in Artificial Intelligence",
-      "start": "2025",
+      "start": "2026",
       "end": "Ongoing",
       "location": "Linz, Austria",
       "details": "Focus on data science, machine learning, and mathematics."
@@ -16,15 +16,4 @@
       "location": "Kerala, India",
       "details": "c,c++ Basics,DSA Basics,DBMS Basics,Web Development Basics"
     }
-  ],
-  "side_quests": [
-    {
-      "title": "Machine Learning Zoomcamp",
-      "organizer": "DataTalks Club",
-      "type": "Online Bootcamp",
-      "start": "2025",
-      "end": "Ongoing",
-      "focus": "Practical ML, deployment, cloud, and MLOps."
-    }
   ]
-}
