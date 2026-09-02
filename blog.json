@@ -2,11 +2,13 @@
   {
     "title": "Testing everything is fine - don't open this :)",
     "date": "01-01-1696",
-    "file": "testimg.md"
+    "file": "testimg.md",
+    "cover": "https://www.wwe.com/f/styles/gallery_img_l/public/all/2022/06/01_Cena_0412005CA105R--a91acd5601fb4dc8929ad76e63ed2fdb.jpg"
   },
   {
     "title": "Do eveything? Why you don't need explanations to things you do?",
-    "date": "2025-01-15", 
-    "file": "muhsin.md"
+    "date": "2025-01-15",
+    "file": "muhsin.md",
+    "cover": ""
   }
 ]

@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhsin</title>
+    <title>Blog Post - Muhsin</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
+        <a href="index.html">Home</a>
         <a href="blog.html">Blogs</a>
     </nav>
     <div class="lines">
@@ -23,35 +24,16 @@
         <div class="line"></div>
     </div>
     <div class="container">
+        <div id="post-cover" class="post-cover"></div>
         <header>
-            <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
-            <h1 id="name"></h1>
-            <p id="bio"></p>
+            <h1 id="post-title"></h1>
+            <p id="post-date"></p>
         </header>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <div id="contact-content"></div>
-        </section>
-
         <main>
-            <section id="about">
-                <h2>About</h2>
-                <p id="about-content"></p>
-            </section>
-
-            <section id="projects">
-                <h2>Projects</h2>
-                <div id="projects-content"></div>
-            </section>
-
-            <section id="education">
-                <h2>Education</h2>
-                <div id="education-content"></div>
-            </section>
+            <div id="post-content"></div>
         </main>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
-    <script src="script.js"></script>
+    <script src="blog.js"></script>
 </body>
 </html>
