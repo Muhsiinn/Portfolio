@@ -11,7 +11,7 @@ So now we are moving to the real stuff that's going to keep you alive for the ne
 
 You may not have this thing to consume by your side, whooaahhaa you need to go outside. Great!! Don't hesitate just go out and get that thing. If you want, spend sometime there. Do it bravo!! I don't recommend vending machines. Just go to a shop where you can feel a physical connection. Believe it can help you.
 
-Our job is not to comfort or figure out entire life, our job is to live for the next 24 hrs. So do not go back to your room. Sit somewhere with people. I know it is disturbing because we want to kill ourselves, end the pain end the suffering that has been going on for so long. But we need to stay alive for the next 24 hrs somehow, because things will change in 24 hrs. Fooling our brain is easy.
+Our job is not to comfort or figure out entire life, our job is to live for the next 24 hrs. So do not go back to your room. Sit somewhere with people.if you feel safe and comfortable and confident that you don't hurt yourself in your room you can go back.I know it is disturbing because we want to kill ourselves, end the pain end the suffering that has been going on for so long. But we need to stay alive for the next 24 hrs somehow, because things will change in 24 hrs. Fooling our brain is easy.
 
 My favorite places:
 - railway station
