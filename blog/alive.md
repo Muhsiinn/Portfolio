@@ -4,8 +4,8 @@ To the reader:
 All of this is from my personal experience. I do not guarantee anything. If you kill yourself I am not responsible.
 
 Well, Hello there it is nice/not nice to meet you. You may be at a very vulnerable state in your life. I understand that.
-We will move to my first tip, this is very niche but please if you can call the crisis line, do it! I don't recommend calling everyone and going crazy. Call your best friend if you don't have one, no problem this step is not necessary. There are reasons for that. But it's better not to discuss it here.
-I think it is our safest and best shot. You'll get help from professionals. At any point you can call the crisis line or ambulance. Those angels are waiting to help you. They will be grateful if you call.
+We will move to my first tip, this is very niche but please if you can call the crisis line, do it! I don't recommend calling everyone and going crazy. Call your best friend, if you don't have one, no problem this step is not necessary. There are reasons for that. But it's better not to discuss it here.crisis line or ambulance 
+I think this is our safest and best shot. You'll get help from professionals. At any point you can call the crisis line or ambulance. Those angels are waiting to help you. They will be grateful if you call.
 
 So now we are moving to the real stuff that's going to keep you alive for the next 24 hrs at least. Think of something that you can consume through nose/mouth. For me it was coke (not cocaine; if that's an option I won't entertain using it for the very acute moment). I liked the sugar and caffeine hit. Here we have a lot of options smoke/drink/inhale whatever you want; that don't kill you and make you go woozy woozy. No recreational drugs! Why? It can make you lose control, make you go crazy, and there is a possibility that you will kill yourself. We don't want that for the next 24 hours.
 
@@ -25,7 +25,6 @@ Enough of it?? Okay now something that worked for me, although I am against reli
 - jotting down your thoughts, frustrations, trauma etc (trauma triggers can vary please be careful)
 - find a dog or cat to pet and cuddle ( it works all the time)
 - imagining a perfect world
-- sex
 - I am not sure about short form content sometimes works, sometimes it makes things worse.
 - I had sedatives they helped. But it was prescribed by my doctor. It's better to get some of these if you are in a struggle.
 
