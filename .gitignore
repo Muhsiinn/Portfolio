@@ -1,0 +1,14 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+_site/
+/content-index.json
+/illustrations-index.json
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# Local design references are never published or changed by the build.
+references/

@@ -1,22 +1,40 @@
 [
-  
-  
-   {
+  {
+    "title": "Fortran Neural Network Library",
+    "status": "IN PROGRESS",
+    "featured": true,
+    "tech": ["Fortran", "Neural networks"],
+    "description": "A neural network library written in Fortran, currently a work in progress. This entry will grow alongside the implementation; architecture, supported operations, and experiments remain to be documented.",
+    "file": "",
+    "links": {}
+  },
+  {
+    "title": "Computational Models of Neurons and the Brain",
+    "status": "PLANNED",
+    "featured": false,
+    "tech": ["Computational modeling", "Neuroscience"],
+    "description": "A possible direction for a future experiment: building small computational models of neurons or brain processes. No implementation or result is claimed yet; any future model would be exploratory, not a clinical method.",
+    "file": "",
+    "links": {}
+  },
+  {
     "title": "Jonas AI",
-    "description": "Jonas AI is an AI-powered German learning platform that creates personalized daily lessons from real-life situations. It combines reading, writing, and roleplay practice with instant feedback, progress tracking, and premium subscription support in a full-stack SaaS app.",
+    "status": "COMPLETED",
+    "featured": true,
+    "tech": ["Next.js", "TypeScript", "Tailwind", "FastAPI", "PostgreSQL", "Stripe"],
+    "description": "An AI-powered German learning platform that creates personalized daily lessons from real-life situations. It combines reading, writing, and roleplay practice with instant feedback, progress tracking, and premium subscription support in a full-stack SaaS app.",
     "file": "jonas_ai.md",
     "links": {
       "github": "https://github.com/Muhsiinn/Jonas-AI",
-      "youtube demo":"https://youtu.be/RmBGWz9405w"
+      "youtube demo": "https://youtu.be/RmBGWz9405w"
     }
   },
-  
-  
-  
-  
   {
-    "title": "Forge LLM: Document-Based Model Fine-Tuning Tool",
-    "description": "My friend and I built this to make fine-tuning language models less of a headache. Upload PDFs, and it automatically extracts the text and generates training data from your documents. Then you can fine-tune models using LoRA - a technique that lets you customize models without needing a supercomputer. The whole workflow from document to trained model is in one place, so you don't have to juggle multiple tools.",
+    "title": "Forge LLM: Document-Based Model Fine-Tuning",
+    "status": "COMPLETED",
+    "featured": true,
+    "tech": ["FastAPI", "Python", "Hugging Face", "PEFT / LoRA", "Docling", "React"],
+    "description": "Built with a friend to make fine-tuning language models less of a headache. Upload PDFs, and it automatically extracts the text and generates training data from your documents, then fine-tunes models using LoRA. The whole workflow from document to trained model lives in one place.",
     "file": "forge_llm.md",
     "links": {
       "github": "https://github.com/Muhsiinn/forge-llm"
@@ -24,39 +42,94 @@
   },
   {
     "title": "Offline Wiki: RAG-Powered Knowledge Base",
-    "description": "I wanted to have Wikipedia access without internet, so I built this offline search system. You can ask it questions about European destinations in natural language, and it'll search through thousands of Wikipedia and Wikivoyage articles to give you answers. Perfect for when you're traveling and don't have data or just want a fast, private way to look things up.",
+    "status": "COMPLETED",
+    "featured": true,
+    "tech": ["Python", "Flask", "Sentence Transformers", "FAISS", "Ollama", "ZIM"],
+    "description": "A fully offline Wikipedia/Wikivoyage search system. Ask questions about European destinations in natural language and it searches thousands of articles, using a local RAG pipeline to answer without an internet connection.",
     "file": "offline_wiki.md",
     "links": {
-      "github": "https://github.com/Muhsiinn/Offline_wiki"
+      "github": "https://github.com/Muhsiinn/Offline_wiki",
+      "youtube demo": "https://youtu.be/4T2OyjqdU_A"
     }
   },
   {
     "title": "Jonas: Your Personal Austrian German Tutor",
-    "description": "Meet Jonas, a friendly AI chatbot designed to be your personal guide to Austrian German and culture. I built Jonas to be more than just a language app; he's a conversational partner who makes learning feel like chatting with a local. Using a fine-tuned language model and a Retrieval-Augmented Generation (RAG) system I built with FAISS, Jonas can answer your questions about Austria, explain grammar in a simple way, and teach you everything from classic phrases to modern slang.",
+    "status": "COMPLETED",
+    "tech": ["Python", "Flask", "PyTorch", "Transformers", "FAISS", "Ollama"],
+    "description": "A friendly AI chatbot built as a guide to Austrian German and culture. A fine-tuned model combined with a RAG system I built with FAISS lets it explain grammar, answer questions about Austria, and chat like a local.",
     "file": "jonas.md",
     "links": {
-      "github": "https://github.com/Muhsiinn/Jonas"
+      "github": "https://github.com/Muhsiinn/Jonas",
+      "youtube demo": "https://youtu.be/lOE8pAQAz4M"
     }
   },
   {
-    "title": "Song popularity predictor",
-    "description": "I got curious about what makes songs popular, so I built a model to predict it. Used linear regression on synthetic song data to see which features matter most. Simple project, but it was fun to see what the numbers said about hit songs.",
+    "title": "Song Popularity Predictor",
+    "status": "EXPERIMENTAL",
+    "tech": ["Python", "Linear Regression", "Pandas", "scikit-learn"],
+    "description": "I got curious about what makes songs popular, so I built a model to predict it. Used linear regression on Spotify data (plus synthetic variations) to see which features matter most. Simple project, fun to see what the numbers said about hit songs.",
     "file": "spotify.md",
     "links": {
       "github": "https://github.com/Muhsiinn/Song-Popularity-Predictor-"
     }
   },
   {
-    "title": "Whatsapp Bot",
-    "description": "A simple WhatsApp bot I threw together using Twilio's API. Nothing fancy, just wanted to experiment with automating messages and see how the Twilio integration works.",
-    "file": "project1.md",
+    "title": "Malaria Cell Classifier",
+    "status": "COMPLETED",
+    "tech": ["Python", "TensorFlow / Keras", "CNN", "NumPy", "Matplotlib"],
+    "description": "An early deep learning project classifying blood cell images as infected or uninfected with malaria using a CNN. Prepared the data, trained with binary crossentropy and Adam, and evaluated with accuracy/loss plots and a confusion matrix.",
+    "file": "malaria_cell.md",
+    "links": {}
+  },
+  {
+    "title": "SimCLR from Scratch",
+    "status": "EXPERIMENTAL",
+    "tech": ["PyTorch", "ResNet", "Self-supervised learning", "HAM10000"],
+    "description": "A from-scratch implementation of SimCLR (Chen et al., 2020) on the HAM10000 skin lesion dataset, to understand self-supervised learning at a fundamental level. An ongoing experiment — mostly trial, error, and compute limits.",
+    "file": "simclr.md",
+    "links": {}
+  },
+  {
+    "title": "Klinikum Report Editor",
+    "status": "COMPLETED",
+    "tech": ["Python", "Flask", "Pandas", "Matplotlib", "ReportLab", "CSV"],
+    "description": "A local tool to track daily wellness metrics, medication dosages, and emotional states over time. Management of mental health data with customizable fields, 9+ chart types, and privacy-preserving PDF export for healthcare providers.",
+    "file": "med_data.md",
+    "links": {}
+  },
+  {
+    "title": "Gmail LLM Assistant",
+    "status": "COMPLETED",
+    "tech": ["Python", "Gmail API", "OAuth 2.0", "Ollama", "Mistral 7B"],
+    "description": "A Gmail automation tool that uses a local LLM via Ollama to summarize emails and generate reply drafts. All AI processing happens locally, and drafts are reviewed before sending.",
+    "file": "gmail_automation.md",
     "links": {
-      "github": "https://github.com/Muhsiinn/Whatsapp-Bot"
+      "github": "https://github.com/Muhsiinn/Gmail-LLM-Assistant"
     }
   },
   {
-    "title": "Austrian Food Price Analysis & Email Automation",
-    "description": "I dug into Austrian food prices to see how much producers vs consumers are getting squeezed. Analyzed the gap between what producers charge and what we pay at the store using official price data. The numbers tell an interesting story about who's really benefiting.",
+    "title": "News Summarizer",
+    "status": "EXPERIMENTAL",
+    "tech": ["Python", "feedparser", "BeautifulSoup4", "Ollama", "Mistral 7B"],
+    "description": "An RSS news aggregator that fetches Austrian news from ORF.at, scrapes the full articles, and uses a local LLM to translate and summarize German articles into concise English. Runs entirely locally.",
+    "file": "news_summarizer.md",
+    "links": {}
+  },
+  {
+    "title": "Should I Go Outside?",
+    "status": "COMPLETED",
+    "tech": ["Python", "Flask", "OpenWeatherMap API", "Google Calendar API", "Ollama", "Docker"],
+    "description": "A web app that recommends outdoor activities from real-time weather, air quality, and your calendar schedule, with personalized suggestions from a local LLM.",
+    "file": "should_i_go_outside.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/should_you_go_outside"
+    }
+  },
+  {
+    "title": "Austrian Food Price Analysis",
+    "status": "COMPLETED",
+    "tech": ["Python", "NumPy", "Pandas", "Matplotlib"],
+    "description": "Compared the Producer Price Index with the Consumer Price Index for Austrian food to see how producers and consumers are affected. Cleaned and aligned the CSVs, then plotted the widening gap over time.",
     "file": "data_analysis.md",
     "links": {
       "github": "https://github.com/Muhsiinn/Austrian-food-price-analysis/tree/main"
@@ -64,12 +137,22 @@
   },
   {
     "title": "Sales Report Automation",
-    "description": "Turned a manual, repetitive task into a one-click operation. Takes raw sales data, generates charts and insights automatically, and emails out the reports. Saved me (and probably others) hours of copy-pasting into Excel every week.",
+    "status": "COMPLETED",
+    "tech": ["Python", "Pandas", "NumPy", "openpyxl"],
+    "description": "Takes raw sales data and turns it into clean, multi-sheet Excel reports — revenue totals, top buyers, most cancelled items — so a manager can open a report without touching code.",
     "file": "sales_report.md",
     "links": {
       "github": "https://github.com/Muhsiinn/sales-report-automation"
     }
+  },
+  {
+    "title": "WhatsApp Bot",
+    "status": "COMPLETED",
+    "tech": ["Python", "Twilio API", "WhatsApp"],
+    "description": "A small WhatsApp bot built with Twilio's API to look up football scores. My first meaningful project — simple rule-based replies that solved a real problem at the time.",
+    "file": "project1.md",
+    "links": {
+      "github": "https://github.com/Muhsiinn/Whatsapp-Bot"
+    }
   }
-  
- 
 ]

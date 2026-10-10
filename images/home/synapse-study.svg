@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-labelledby="t d">
+  <title id="t">Synapse study</title><desc id="d">A simple labeled illustration of neurotransmitter release across a synaptic cleft.</desc>
+  <g fill="none" stroke="#514a40" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M42 42c27 2 41 19 45 42v21c2 12 15 19 32 19h82c18 0 31-7 32-19V84c4-23 19-40 45-42" stroke-width="2.4"/>
+    <path d="M42 177c27-2 41-19 45-42m191 0c4 23 19 40 45 42" stroke-width="2.4"/>
+    <path d="M43 48c28 3 39 22 41 41v15m194-56c-28 3-39 22-41 41v15" stroke-width="1" opacity=".5"/>
+    <path d="M119 72v33m0 0-8-9m8 9 8-9m38-22v33m0 0-8-9m8 9 8-9m38-22v33m0 0-8-9m8 9 8-9" stroke-width="1.4"/>
+  </g>
+  <g fill="#8a6056" opacity=".8"><circle cx="113" cy="58" r="3"/><circle cx="129" cy="50" r="2.5"/><circle cx="153" cy="62" r="3"/><circle cx="179" cy="49" r="2.5"/><circle cx="205" cy="60" r="3"/><circle cx="117" cy="144" r="3"/><circle cx="159" cy="151" r="3"/><circle cx="201" cy="143" r="3"/></g>
+  <g fill="#675c50" font-family="Georgia,serif" font-size="11" font-style="italic"><text x="97" y="33">terminal</text><text x="115" y="194">synaptic cleft</text><text x="230" y="162">receptors</text></g>
+  <path d="M112 183c46-4 88 5 136-1" fill="none" stroke="#986861" stroke-width="1" opacity=".55"/>
+</svg>

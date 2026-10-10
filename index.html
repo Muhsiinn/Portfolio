@@ -1,57 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="home-document">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhsin</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A collection of writing, research notes, code, and working images by Musi.">
+  <title>Musi.</title><link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <nav>
-        <a href="blog.html">Blogs</a>
-    </nav>
-    <div class="lines">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+<body class="home-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="masthead"><a class="brand" href="index.html" aria-label="Musi home">Musi<span>.</span></a></header>
+  <main id="main" class="collage" aria-label="Recent work and archive links">
+    <div class="paper-number">H—01 <span>working archive</span></div>
+    <figure class="collage-piece brain-piece"><img data-illustration-slot="home-brain" src="images/home/brain-study.webp" alt="Graphite study of the human brain, viewed from the side" width="1536" height="1024" fetchpriority="high" decoding="async"><figcaption data-caption-slot="home-brain">Brain study</figcaption></figure>
+    <figure class="collage-piece flower-piece"><img data-illustration-slot="home-poppy" src="images/home/pressed-poppy.webp" alt="Poppy study in graphite and muted burgundy" width="1024" height="1536" loading="lazy" decoding="async"><figcaption data-caption-slot="home-poppy">Poppy</figcaption></figure>
+    <figure class="collage-piece writer-piece"><img data-illustration-slot="home-writer" src="images/home/writer-study.webp" alt="Original illustration of a writer seated at a desk" width="1312" height="1199" loading="lazy" decoding="async"><figcaption data-caption-slot="home-writer" hidden></figcaption></figure>
+    <aside class="scribble scribble-top" aria-label="Handwritten annotation">anatomy / 01<br>graphite study</aside>
+    <aside class="scribble scribble-side" aria-label="Handwritten annotation">figure study<br>left view</aside>
+    <section class="intro-slip">
+      <p class="typed">Musi · papers, code, questions</p>
+      <p>I study the brain and try to understand the mind. This is where I collect my work, reading, and thoughts on neuroscience, psychiatry, philosophy, and, somewhere along the way, artificial intelligence.</p>
+      <a href="about.html">About me <span aria-hidden="true">↗</span></a>
+    </section>
+    <div class="archive-links" aria-label="Archive sections">
+      <a href="research.html"><span>Research</span><small>questions · reading · models</small><i aria-hidden="true">∿</i></a>
+      <a href="projects.html"><span>Projects</span><small>code · experiments · tools</small><i aria-hidden="true">⌘</i></a>
+      <a href="thoughts.html"><span>Thoughts</span><small>essays · fragments</small><i aria-hidden="true">¶</i></a>
+      <a href="blog.html"><span>Blog</span><small>longer notes</small><i aria-hidden="true">✎</i></a>
+      <a href="scrapper.html"><span>Scrapper</span><small>small things to remember</small><i aria-hidden="true">·</i></a>
+      <a href="about.html"><span>About</span><small>the person behind the pages</small><i aria-hidden="true">↗</i></a>
     </div>
-    <div class="container">
-        <header>
-            <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
-            <h1 id="name"></h1>
-            <p id="bio"></p>
-        </header>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <div id="contact-content"></div>
-        </section>
-
-        <main>
-            <section id="about">
-                <h2>About</h2>
-                <p id="about-content"></p>
-            </section>
-
-            <section id="projects">
-                <h2>Projects</h2>
-                <div id="projects-content"></div>
-            </section>
-
-            <section id="education">
-                <h2>Education</h2>
-                <div id="education-content"></div>
-            </section>
-        </main>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+    <div id="home-illustrations" class="home-illustrations" aria-label="Additional notebook studies"></div>
+    <div class="archive-stamp">notes<br>+<br>experiments</div>
+    <div class="pencil-mark" aria-hidden="true">∴</div>
+  </main>
+  <footer class="home-footer"><span>Content lives in Markdown; site assembled at build.</span><span>© <span data-year></span> Musi</span></footer>
+  <script src="site.js"></script>
+</body></html>
