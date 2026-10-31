@@ -4,13 +4,12 @@ title: Muhsin's Digital Field Notebook
 description: A notebook about AI, neuroscience, mathematics, programming, and understanding how things work.
 permalink: /
 ---
-<div class="home-grid">
+<div class="home-grid home-simple">
   <section class="home-intro">
-    <p class="eyebrow">FIELD NOTES <span>·</span> AUSTRIA</p>
+    <p class="eyebrow">FIELD NOTES</p>
     <h1>A notebook for<br><em>figuring things out.</em></h1>
     <p class="lede">{{ site.bio }}</p>
-    <div class="home-links"><a href="{{ '/about/' | url }}">A little more about me <span aria-hidden="true">↗</span></a></div>
-    <p class="live-date"><time data-live-date></time></p>
+    <div class="home-links"><a href="{{ '/about/' | url }}">About <span aria-hidden="true">↗</span></a><a href="{{ '/thoughts/' | url }}">Thoughts <span aria-hidden="true">↗</span></a></div>
   </section>
   <figure class="home-study">
     <img src="{{ '/assets/images/home/brain-study.webp' | url }}" alt="Graphite study of a human brain on warm paper" width="1536" height="1024" fetchpriority="high">
@@ -18,21 +17,47 @@ permalink: /
     <span class="scribble" aria-hidden="true">still a lot to learn ↗</span>
   </figure>
 </div>
-<section class="home-section" aria-labelledby="featured-heading">
-  <div class="section-heading"><p class="eyebrow">PROJECTS</p><h2 id="featured-heading">Things I’ve been making</h2><a href="{{ '/projects/' | url }}">Project archive <span aria-hidden="true">↗</span></a></div>
-  <ol class="entry-list">
-  {% for item in collections.projects %}
-    {% if not item.data.draft or previewDrafts %}
-    <li><a class="project-row" href="{{ item.url | url }}"><span class="row-number">{{ loop.index }}</span><span class="row-title">{{ item.data.title }}<span class="project-peek">{{ item.data.description }}{% if item.data.tags and item.data.tags.length %}<span class="peek-tags">{{ item.data.tags | join(' · ') }}</span>{% endif %}</span></span><span class="row-status">{{ item.data.status or 'Notes' }}</span><span class="row-arrow" aria-hidden="true">↗</span></a></li>
-    {% endif %}
-  {% endfor %}
-  </ol>
+
+<div class="home-now-grid">
+<section class="home-section working-section" aria-labelledby="working-heading">
+  <div class="section-heading"><p class="eyebrow">IN PROGRESS</p><h2 id="working-heading">Currently working on</h2></div>
+  {% if collections.workingOn.length %}
+  <div class="working-list">
+    {% for item in collections.workingOn %}
+    <article class="working-item">
+      <span class="working-kind">{% if item.data.type == 'reading-note' %}READING NOTE{% else %}PROJECT{% endif %}</span>
+      <div><h3><a href="{{ item.url | url }}">{{ item.data.title }} <span aria-hidden="true">↗</span></a></h3>{% if item.data.description %}<p>{{ item.data.description }}</p>{% endif %}</div>
+      {% if item.data.date %}<time>{{ item.data.date | date }}</time>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}<p class="working-empty lazy-placeholder">{{ site.emptySection }}</p>{% endif %}
 </section>
-<section class="home-section notes-preview">
-  <div class="section-heading"><p class="eyebrow">RECENT OBSERVATIONS</p><h2>From the notebook</h2><a href="{{ '/thoughts/' | url }}">All thoughts <span aria-hidden="true">↗</span></a></div>
-  <ol class="entry-list">
-  {% for item in collections.thoughts | limit(6) %}
-    {% if not item.data.draft or previewDrafts %}<li><a class="project-row" href="{{ item.url | url }}"><span class="row-number">{{ loop.index }}</span><span class="row-title">{{ item.data.title }}{% if item.data.draft %}<span class="draft-label"> · DRAFT PREVIEW</span>{% endif %}<span class="project-peek">{{ item.data.description }}</span></span>{% if item.data.date %}<time class="row-status">{{ item.data.date | date }}</time>{% endif %}<span class="row-arrow" aria-hidden="true">↗</span></a></li>{% endif %}
-  {% endfor %}
-  </ol>
+
+<section class="home-section reading-now" aria-labelledby="reading-now-heading">
+  <div class="section-heading"><p class="eyebrow">ON MY MIND</p><h2 id="reading-now-heading">Currently reading / hyperfixating</h2><a href="{{ '/thoughts/reading/' | url }}">Reading notes <span aria-hidden="true">↗</span></a></div>
+  {% if collections.readingNow.length %}<div class="working-list">
+    {% for item in collections.readingNow %}<article class="working-item"><span class="working-kind">READING</span><div><h3><a href="{{ item.url | url }}">{{ item.data.sourceTitle or item.data.title }} <span aria-hidden="true">↗</span></a></h3>{% if item.data.sourceAuthor %}<p>by {{ item.data.sourceAuthor }}</p>{% elif item.data.description %}<p>{{ item.data.description }}</p>{% endif %}</div>{% if item.data.dateRead %}<time>{{ item.data.dateRead | date }}</time>{% endif %}</article>{% endfor %}
+  </div>{% else %}<p class="working-empty lazy-placeholder">{{ site.emptySection }}</p>{% endif %}
+</section>
+</div>
+
+<section class="home-section recent-writing" aria-labelledby="recent-writing-heading">
+  <div class="section-heading"><p class="eyebrow">LATEST PAGES</p><h2 id="recent-writing-heading">Recent writing</h2><a href="{{ '/thoughts/' | url }}">All thoughts <span aria-hidden="true">↗</span></a></div>
+  {% if collections.thoughts.length %}
+  <div class="working-list">
+    {% for item in collections.thoughts | limit(5) %}
+    <article class="working-item">
+      <span class="working-kind">{% if item.data.type == 'reading-note' %}READING NOTE{% elif item.data.type == 'blog' %}BLOG{% elif item.data.type == 'daily-note' %}DAILY NOTE{% else %}NOTE{% endif %}</span>
+      <div><h3><a href="{{ item.url | url }}">{{ item.data.title }} <span aria-hidden="true">↗</span></a></h3>{% if item.data.description %}<p>{{ item.data.description }}</p>{% endif %}</div>
+      {% if item.data.date %}<time>{{ item.data.date | date }}</time>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}<p class="working-empty lazy-placeholder">{{ site.emptySection }}</p>{% endif %}
+</section>
+
+<section class="home-contact" aria-labelledby="contact-heading">
+  <div><p class="eyebrow">CONTACT</p><h2 id="contact-heading">Want to get in touch?</h2></div>
+  <div class="home-contact-links"><a class="email-contact" data-email-code="96,120,101,126,100,99,108,101,96,105,121,102,77,106,96,108,100,97,46,99,127,96">Email me</a></div>
 </section>

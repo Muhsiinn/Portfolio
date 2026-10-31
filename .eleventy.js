@@ -91,14 +91,31 @@ module.exports = function (eleventyConfig) {
     .filter((item) => item.data.archived && (!item.data.draft || process.env.ELEVENTY_ENV !== 'production'))
     .sort((a, b) => a.data.title.localeCompare(b.data.title)));
   const visible = (item) => (!item.data.draft || process.env.ELEVENTY_ENV !== 'production') && !item.data.archived;
+  const activeProjects = (api) => api.getFilteredByGlob('src/projects/**/*.md').filter(visible);
+  eleventyConfig.addCollection('completedProjects', (api) => activeProjects(api).filter((item) => item.data.status === 'Completed'));
+  eleventyConfig.addCollection('ongoingProjects', (api) => activeProjects(api).filter((item) => item.data.status !== 'Completed'));
   const dated = (a, b) => (b.data.date ? new Date(b.data.date).getTime() : 0) - (a.data.date ? new Date(a.data.date).getTime() : 0);
-  eleventyConfig.addCollection('blogs', (api) => api.getFilteredByGlob('src/thoughts/blogs/*.md').filter(visible).sort(dated));
-  eleventyConfig.addCollection('readingNotes', (api) => api.getFilteredByGlob('src/thoughts/reading/*.md').filter(visible).sort(dated));
-  eleventyConfig.addCollection('notes', (api) => api.getFilteredByGlob('src/thoughts/notes/*.md').filter(visible).sort(dated));
-  eleventyConfig.addCollection('dailyNotes', (api) => api.getFilteredByGlob('src/thoughts/notes/daily/*.md').filter(visible).sort((a, b) => dated(b, a)));
-  eleventyConfig.addCollection('thoughts', (api) => [...api.getFilteredByGlob('src/thoughts/blogs/*.md'), ...api.getFilteredByGlob('src/thoughts/reading/*.md'), ...api.getFilteredByGlob('src/thoughts/notes/**/*.md')].filter(visible).sort(dated));
+  const tagList = (value) => (Array.isArray(value) ? value : String(value || '').split(','))
+    .map((tag) => String(tag).trim().toLowerCase())
+    .filter(Boolean);
+  const hasAnyTag = (item, names) => tagList(item.data.tags).some((tag) => names.includes(tag));
+  eleventyConfig.addCollection('blogs', (api) => api.getFilteredByGlob('src/thoughts/blogs/**/*.md').filter(visible).sort(dated));
+  eleventyConfig.addCollection('readingNotes', (api) => api.getFilteredByGlob('src/thoughts/reading/**/*.md').filter(visible).sort(dated));
+  eleventyConfig.addCollection('workingOn', (api) => [
+    ...api.getFilteredByGlob('src/projects/**/*.md'),
+    ...api.getFilteredByGlob('src/thoughts/reading/**/*.md')
+  ].filter(visible).filter((item) => hasAnyTag(item, ['working'])).sort(dated));
+  eleventyConfig.addCollection('readingNow', (api) => api.getFilteredByGlob('src/thoughts/reading/**/*.md')
+    .filter(visible)
+    .filter((item) => hasAnyTag(item, ['currently-reading', 'hyperfixating']))
+    .sort(dated));
+  eleventyConfig.addCollection('notes', (api) => api.getFilteredByGlob('src/thoughts/notes/**/*.md')
+    .filter((item) => item.data.type !== 'daily-note')
+    .filter(visible).sort(dated));
+  eleventyConfig.addCollection('dailyNotes', (api) => api.getFilteredByGlob('src/thoughts/notes/daily/**/*.md').filter(visible).sort(dated));
+  eleventyConfig.addCollection('thoughts', (api) => [...api.getFilteredByGlob('src/thoughts/blogs/**/*.md'), ...api.getFilteredByGlob('src/thoughts/reading/**/*.md'), ...api.getFilteredByGlob('src/thoughts/notes/**/*.md')].filter(visible).sort(dated));
   eleventyConfig.addCollection('archivedThoughts', (api) => api.getFilteredByGlob('src/thoughts/{blogs,reading,notes}/**/*.md').filter((item) => item.data.archived && (!item.data.draft || process.env.ELEVENTY_ENV !== 'production')).sort(dated));
-  eleventyConfig.addCollection('articles', (api) => api.getFilteredByGlob('src/thoughts/blogs/*.md').filter(visible).sort(dated));
+  eleventyConfig.addCollection('articles', (api) => api.getFilteredByGlob('src/thoughts/blogs/**/*.md').filter(visible).sort(dated));
   eleventyConfig.addFilter('limit', (items, count) => items.slice(0, count));
   eleventyConfig.addCollection('published', (api) => api.getAll().filter((item) =>
     item.outputPath && item.url && !item.data.draft && !item.data.excludeFromSitemap));
@@ -120,7 +137,7 @@ module.exports = function (eleventyConfig) {
   return {
     dir: { input: 'src', output: '_site', includes: '_includes', data: '_data' },
     templateFormats: ['md', 'njk', '11ty.js', 'txt'],
-    markdownTemplateEngine: 'njk',
+    markdownTemplateEngine: false,
     htmlTemplateEngine: 'njk',
     pathPrefix: '/portfolio/'
   };

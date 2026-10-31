@@ -10,5 +10,5 @@ eleventyExcludeFromCollections: true
   <link href="{{ site.url }}{{ '/' | url }}"/>
   <updated>{{ currentTime }}</updated>
   <author><name>{{ site.name }}</name></author>
-  {% for item in collections.thoughts %}{% if (not item.data.draft or previewDrafts) and item.data.date %}<entry><title>{{ item.data.title | xml }}</title><id>{{ site.url }}{{ item.url | url }}</id><link href="{{ site.url }}{{ item.url | url }}"/><updated>{{ item.data.date | isoDate }}T00:00:00Z</updated><summary>{{ item.data.description | xml }}</summary></entry>{% endif %}{% endfor %}
+  {% for item in collections.thoughts %}{% if (not item.data.draft or previewDrafts) and item.data.date %}<entry><title>{{ item.data.title | xml | safe }}</title><id>{{ site.url }}{{ item.url | url }}</id><link href="{{ site.url }}{{ item.url | url }}"/><updated>{{ item.data.date | isoDate }}T00:00:00Z</updated><summary>{{ item.data.description | xml | safe }}</summary></entry>{% endif %}{% endfor %}
 </feed>

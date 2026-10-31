@@ -4,12 +4,39 @@ title: Thoughts
 description: Blogs, reading notes, daily entries, and small observations from Muhsin's notebook.
 permalink: /thoughts/index.html
 ---
-<article class="listing-page">
-  <header class="page-heading"><p class="eyebrow">A NOTEBOOK IN PROGRESS</p><h1>Thoughts</h1><p class="lede">Longer writing, ideas gathered while reading, and small things worth remembering.</p></header>
-  <div class="thought-destinations">
-    {% for item in [{title:'Blogs', href:'/thoughts/blogs/', description:'Essays, explanations, technical writing, and reflections.'}, {title:'Reading Notes', href:'/thoughts/reading/', description:'Observations connected to books, papers, and other sources.'}, {title:'Notes', href:'/thoughts/notes/', description:'Daily entries, experiments, questions, and small discoveries.'}] %}
-    <a class="thought-destination" href="{{ item.href | url }}"><span class="eyebrow">{{ loop.index | string }} / 03</span><h2>{{ item.title }} ↗</h2><p>{{ item.description }}</p></a>
-    {% endfor %}
-  </div>
-  <section class="listing-section"><p class="eyebrow">RECENT WRITING</p><ol class="entry-list">{% for item in collections.thoughts | limit(8) %}<li><a class="project-row" href="{{ item.url | url }}"><span class="row-number">{{ loop.index }}</span><span class="row-title">{{ item.data.title }}<span class="project-peek">{{ item.data.description }}</span></span><time class="row-status">{{ item.data.date | date }}</time><span class="row-arrow" aria-hidden="true">↗</span></a></li>{% endfor %}</ol><p class="listing-more"><a href="{{ '/thoughts/archive/' | url }}">Browse archived writing →</a></p></section>
+<article class="listing-page thoughts-page">
+  {% set blogItems = collections.blogs %}
+  {% set readingItems = collections.readingNotes %}
+  {% set noteItems = collections.notes %}
+  {% set dailyItems = collections.dailyNotes %}
+  {% set categories = [
+    {title:'Blogs', href:'/thoughts/blogs/', description:'Essays, explanations, technical writing, and reflections.', items:blogItems, mark:'01'},
+    {title:'Reading Notes', href:'/thoughts/reading/', description:'Ideas kept close to the books, papers, and articles that prompted them.', items:readingItems, mark:'02'},
+    {title:'Notes', href:'/thoughts/notes/', description:'Small discoveries, experiments, questions, and daily entries.', items:noteItems, mark:'03'}
+  ] %}
+  <header class="thoughts-intro">
+    <div><p class="eyebrow">MUHSIN'S NOTEBOOK · {{ collections.thoughts | length }} ENTRIES</p><h1>Thoughts</h1>
+      <p class="lede">A place for things I am trying to understand: ideas from reading, experiments that teach me something, and observations too small to become an essay.</p></div>
+    <span class="thoughts-pencil" aria-hidden="true">field notes<br>— kept along the way</span>
+  </header>
+  <section class="thought-category-grid" aria-label="Writing categories">
+    {% for category in categories %}{% set recent = category.items[0] %}
+    {% set count = category.items | length %}
+    {% if category.title == 'Notes' %}{% set dailyCount = dailyItems | length %}{% set count = count + dailyCount %}{% if not recent and dailyItems | length %}{% set recent = dailyItems[0] %}{% endif %}{% endif %}
+    <article class="thought-category thought-category-{{ loop.index }}">
+      <div class="thought-category-top"><span class="eyebrow">{{ category.mark }} / 03</span><span class="thought-count">{{ count }} {% if count == 1 %}entry{% else %}entries{% endif %}</span></div>
+      <h2><a href="{{ category.href | url }}">{{ category.title }}<span aria-hidden="true"> ↗</span></a></h2>
+      <p>{{ category.description }}</p>
+      {% if recent %}<a class="thought-representative" href="{{ recent.url | url }}"><span class="eyebrow">LATEST</span><strong>{{ recent.data.title }}</strong><time>{{ recent.data.date | date }}</time></a>
+      {% else %}<span class="thought-representative thought-empty lazy-placeholder"><span class="eyebrow">PLACEHOLDER</span><strong>{{ site.emptySection }}</strong></span>{% endif %}
+      <a class="thought-archive-link" href="{{ category.href | url }}">Browse {{ category.title }} <span aria-hidden="true">→</span></a>
+    </article>{% endfor %}
+  </section>
+  <section class="thought-recent-section">
+    <header class="thought-feed-heading"><div><p class="eyebrow">RECENTLY WRITTEN</p><h2>Loose pages, in time</h2></div><a href="{{ '/thoughts/archive/' | url }}">Browse the archive <span aria-hidden="true">↗</span></a></header>
+    <div class="thought-feed">{% for item in collections.thoughts | limit(8) %}
+      {% set label = 'Blog' %}{% if item.data.type == 'reading-note' %}{% set label = 'Reading note' %}{% elif item.data.type == 'daily-note' or item.data.type == 'note' %}{% set label = 'Note' %}{% endif %}
+      <article class="thought-feed-item"><a href="{{ item.url | url }}"><span class="thought-feed-meta"><span>{{ label }}</span><time>{{ item.data.date | date }}</time></span><span class="thought-feed-copy"><strong>{{ item.data.title }}</strong>{% if item.data.description %}<span>{{ item.data.description }}</span>{% endif %}</span><span class="thought-feed-arrow" aria-hidden="true">↗</span></a></article>
+    {% else %}<p class="muted lazy-placeholder">{{ site.emptySection }}</p>{% endfor %}</div>
+  </section>
 </article>

@@ -1,7 +1,3 @@
-.venv/
-venv/
-__pycache__/
-*.pyc
 _site/
 node_modules/
 /content-index.json

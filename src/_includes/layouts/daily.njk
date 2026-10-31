@@ -6,9 +6,9 @@ layout: layouts/base.njk
     <a class="back-link" href="{{ '/thoughts/notes/daily/' | url }}">← All daily notes</a>
     <p class="eyebrow">DAILY NOTE · {{ date | date }}</p>
     <h1>{{ title }}</h1>
-    {% if description %}<p class="lede">{{ description }}</p>{% endif %}
+    {% if description %}<p class="lede">{{ description }}</p>{% else %}<p class="lede lazy-placeholder">{{ site.emptySection }}</p>{% endif %}
   </header>
-  <div class="reading-layout"><article class="prose">{{ content | safe }}</article></div>
+  <div class="reading-layout"><article class="prose">{% if content | trim %}{{ content | safe }}{% else %}<p class="lazy-placeholder">{{ site.emptySection }}</p>{% endif %}</article></div>
   {% set days = collections.dailyNotes %}
   {% for item in days %}{% if item.url == page.url %}{% set previous = days[loop.index0 - 1] %}{% set next = days[loop.index0 + 1] %}{% endif %}{% endfor %}
   <nav class="day-navigation" aria-label="Daily note navigation">

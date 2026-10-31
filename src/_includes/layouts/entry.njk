@@ -6,13 +6,13 @@ layout: layouts/base.njk
     <a class="back-link" href="{{ (isProject and '/projects/' or type == 'blog' and '/thoughts/blogs/' or type == 'reading-note' and '/thoughts/reading/' or '/thoughts/notes/') | url }}">← {{ isProject and 'Projects' or type == 'blog' and 'Blogs' or type == 'reading-note' and 'Reading Notes' or 'Notes' }}</a>
     <p class="eyebrow">{% if isProject %}PROJECT NOTE{% elif type == 'blog' %}BLOG{% elif type == 'reading-note' %}READING NOTE{% else %}FIELD NOTE{% endif %}{% if date %}<span> · </span>{{ date | date }}{% endif %}{% if archived %}<span> · </span>ARCHIVED{% endif %}</p>
     <h1>{{ title }}</h1>
-    <p class="lede">{{ description }}</p>
+    {% if description %}<p class="lede">{{ description }}</p>{% else %}<p class="lede lazy-placeholder">{{ site.emptySection }}</p>{% endif %}
     {% if sourceTitle or sourceAuthor or sourceType or sourceUrl %}<div class="entry-meta source-meta"><span>Source{% if sourceTitle %}: {{ sourceTitle }}{% endif %}{% if sourceAuthor %} · {{ sourceAuthor }}{% endif %}{% if sourceType %} · {{ sourceType }}{% endif %}</span>{% if sourceUrl %}<a href="{{ sourceUrl }}" rel="external">Open source ↗</a>{% endif %}{% if chapter or pages %}<span>{{ chapter or pages }}</span>{% endif %}</div>{% endif %}
     {% if status or tags %}<div class="entry-meta">{% if status %}<span>{{ status }}</span>{% endif %}{% if tags %}<span>{{ tags | join(' · ') }}</span>{% endif %}</div>{% endif %}
     {% if github or demo %}<p class="entry-outlink">{% if github %}<a href="{{ github }}" rel="external">Project repository ↗</a>{% endif %}{% if github and demo %}<span> · </span>{% endif %}{% if demo %}<a href="{{ demo }}" rel="external">Demo ↗</a>{% endif %}</p>{% endif %}
   </header>
   <div class="reading-layout">
-    <article class="prose">{{ content | safe }}</article>
+    <article class="prose">{% if content | trim %}{{ content | safe }}{% else %}<p class="lazy-placeholder">{{ site.emptySection }}</p>{% endif %}</article>
     <aside class="margin-note" aria-label="Notebook note"><span>✳</span><p>Written while learning. Ideas and details may change as I understand more.</p></aside>
   </div>
 </article>

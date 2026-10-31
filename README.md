@@ -7,11 +7,15 @@ A small static personal site made with Eleventy, Nunjucks, Markdown, CSS, and a 
     npm install
     npm run serve
 
-Eleventy serves the site locally and includes draft previews. npm run build creates the production site in _site/, excluding drafts. The deployment workflow builds on pushes to Portfolio- and deploys to GitHub Pages.
+Eleventy serves the site locally and includes draft previews. `npm run build` creates the production site in `_site/`, excluding drafts. The deployment workflow builds on pushes to `Portfolio-` and deploys to GitHub Pages.
 
 ## Content
 
-Create Markdown files directly in src/projects/ or src/notes/. Their filenames determine their page URLs. There is no content registry to update. See CONTENT_GUIDE.md for front matter, examples, drafts, archiving, images, and publishing.
+Create Markdown files in `src/projects/`, `src/thoughts/blogs/`, `src/thoughts/reading/`, or `src/thoughts/notes/`. Their filenames determine their page URLs. There is no content registry to update. See `CONTENT_GUIDE.md` for front matter, examples, drafts, archiving, images, and publishing.
+
+`_site/` is generated output. Never paste or edit content there: the next build replaces it. Always add Markdown under `src/`.
+
+Front matter is optional. A pasted file with no front matter gets its title from its first heading (or filename), its description from its first paragraph, and its date from the filename or file date.
 
 ## Site details
 
@@ -25,8 +29,7 @@ The repository is https://github.com/Muhsiinn/portfolio. Its current Pages base 
 
 ## Preserved files
 
-Existing project and writing content now lives under src/. Original artwork and source images remain in images/, with selected web-ready assets copied into src/assets/images/. CV utilities and their generated PDFs remain separate from the website. ARTWORK_CREDITS.md preserves the former illustration manifest. A full pre-reconstruction snapshot was saved outside this repository during the rebuild.
-
+Existing project and writing content lives under src/. Original artwork and source images remain in images/, with selected web-ready assets copied into src/assets/images/. ARTWORK_CREDITS.md preserves the former illustration manifest. A full pre-reconstruction snapshot was saved outside this repository during the rebuild.
 
 ## Local Publishing Desk
 
