@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+title: Muhsin's Digital Field Notebook
+description: A notebook about AI, neuroscience, mathematics, programming, and understanding how things work.
+permalink: /
+---
+<div class="home-grid">
+  <section class="home-intro">
+    <p class="eyebrow">FIELD NOTES <span>·</span> AUSTRIA</p>
+    <h1>A notebook for<br><em>figuring things out.</em></h1>
+    <p class="lede">{{ site.bio }}</p>
+    <div class="home-links"><a href="{{ '/about/' | url }}">A little more about me <span aria-hidden="true">↗</span></a></div>
+    <p class="live-date"><time data-live-date></time></p>
+  </section>
+  <figure class="home-study">
+    <img src="{{ '/assets/images/home/brain-study.webp' | url }}" alt="Graphite study of a human brain on warm paper" width="1536" height="1024" fetchpriority="high">
+    <figcaption>Fig. 01 <span>— a study of the thinking organ</span></figcaption>
+    <span class="scribble" aria-hidden="true">still a lot to learn ↗</span>
+  </figure>
+</div>
+<section class="home-section" aria-labelledby="featured-heading">
+  <div class="section-heading"><p class="eyebrow">PROJECTS</p><h2 id="featured-heading">Things I’ve been making</h2><a href="{{ '/projects/' | url }}">Project archive <span aria-hidden="true">↗</span></a></div>
+  <ol class="entry-list">
+  {% for item in collections.projects %}
+    {% if not item.data.draft or previewDrafts %}
+    <li><a class="project-row" href="{{ item.url | url }}"><span class="row-number">{{ loop.index }}</span><span class="row-title">{{ item.data.title }}<span class="project-peek">{{ item.data.description }}{% if item.data.tags and item.data.tags.length %}<span class="peek-tags">{{ item.data.tags | join(' · ') }}</span>{% endif %}</span></span><span class="row-status">{{ item.data.status or 'Notes' }}</span><span class="row-arrow" aria-hidden="true">↗</span></a></li>
+    {% endif %}
+  {% endfor %}
+  </ol>
+</section>
+<section class="home-section notes-preview">
+  <div class="section-heading"><p class="eyebrow">RECENT OBSERVATIONS</p><h2>From the notebook</h2><a href="{{ '/thoughts/' | url }}">All thoughts <span aria-hidden="true">↗</span></a></div>
+  <ol class="entry-list">
+  {% for item in collections.thoughts | limit(6) %}
+    {% if not item.data.draft or previewDrafts %}<li><a class="project-row" href="{{ item.url | url }}"><span class="row-number">{{ loop.index }}</span><span class="row-title">{{ item.data.title }}{% if item.data.draft %}<span class="draft-label"> · DRAFT PREVIEW</span>{% endif %}<span class="project-peek">{{ item.data.description }}</span></span>{% if item.data.date %}<time class="row-status">{{ item.data.date | date }}</time>{% endif %}<span class="row-arrow" aria-hidden="true">↗</span></a></li>{% endif %}
+  {% endfor %}
+  </ol>
+</section>

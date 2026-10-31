@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+---
+<article class="reading-page daily-page">
+  <header class="document-header">
+    <a class="back-link" href="{{ '/thoughts/notes/daily/' | url }}">← All daily notes</a>
+    <p class="eyebrow">DAILY NOTE · {{ date | date }}</p>
+    <h1>{{ title }}</h1>
+    {% if description %}<p class="lede">{{ description }}</p>{% endif %}
+  </header>
+  <div class="reading-layout"><article class="prose">{{ content | safe }}</article></div>
+  {% set days = collections.dailyNotes %}
+  {% for item in days %}{% if item.url == page.url %}{% set previous = days[loop.index0 - 1] %}{% set next = days[loop.index0 + 1] %}{% endif %}{% endfor %}
+  <nav class="day-navigation" aria-label="Daily note navigation">
+    {% if previous %}<a href="{{ previous.url | url }}">← {{ previous.data.title }}</a>{% else %}<span></span>{% endif %}
+    {% if next %}<a href="{{ next.url | url }}">{{ next.data.title }} →</a>{% endif %}
+  </nav>
+</article>

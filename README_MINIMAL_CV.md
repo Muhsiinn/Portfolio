@@ -4,7 +4,7 @@ A clean, minimal CV/Resume builder with your portfolio's aesthetic. Build profes
 
 ## Features
 
-- **Auto-Loads Your Data**: Fetches from existing JSON files (data.json, education.json, projects.json)
+- **Auto-Loads Your Data**: Fetches profile and education details from JSON and discovers projects from src/projects/*.md
 - **Minimal Design**: Black and white theme with Roboto Mono font
 - **Animated Background**: Same animated lines as your portfolio
 - **Flexible Sections**: Add any type of section you need
@@ -58,7 +58,7 @@ The form will **automatically load**:
 - Your "About" section as a Summary
 - All education entries from `education.json`
 - All certifications/side quests from `education.json`
-- All projects from `projects.json`
+- Published projects discovered from the portfolio Markdown files (draft templates are skipped)
 
 Just review, edit, and add anything else you need!
 

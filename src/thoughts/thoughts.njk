@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+title: Thoughts
+description: Blogs, reading notes, daily entries, and small observations from Muhsin's notebook.
+permalink: /thoughts/index.html
+---
+<article class="listing-page">
+  <header class="page-heading"><p class="eyebrow">A NOTEBOOK IN PROGRESS</p><h1>Thoughts</h1><p class="lede">Longer writing, ideas gathered while reading, and small things worth remembering.</p></header>
+  <div class="thought-destinations">
+    {% for item in [{title:'Blogs', href:'/thoughts/blogs/', description:'Essays, explanations, technical writing, and reflections.'}, {title:'Reading Notes', href:'/thoughts/reading/', description:'Observations connected to books, papers, and other sources.'}, {title:'Notes', href:'/thoughts/notes/', description:'Daily entries, experiments, questions, and small discoveries.'}] %}
+    <a class="thought-destination" href="{{ item.href | url }}"><span class="eyebrow">{{ loop.index | string }} / 03</span><h2>{{ item.title }} ↗</h2><p>{{ item.description }}</p></a>
+    {% endfor %}
+  </div>
+  <section class="listing-section"><p class="eyebrow">RECENT WRITING</p><ol class="entry-list">{% for item in collections.thoughts | limit(8) %}<li><a class="project-row" href="{{ item.url | url }}"><span class="row-number">{{ loop.index }}</span><span class="row-title">{{ item.data.title }}<span class="project-peek">{{ item.data.description }}</span></span><time class="row-status">{{ item.data.date | date }}</time><span class="row-arrow" aria-hidden="true">↗</span></a></li>{% endfor %}</ol><p class="listing-more"><a href="{{ '/thoughts/archive/' | url }}">Browse archived writing →</a></p></section>
+</article>

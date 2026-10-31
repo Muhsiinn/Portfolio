@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://muhsiinn.github.io/portfolio/sitemap.xml

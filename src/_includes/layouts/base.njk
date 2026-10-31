@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>{{ pageTitle or title or site.shortName }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url | url }}">
+  <meta property="og:type" content="{% if page.url == '/' %}website{% else %}article{% endif %}">
+  <meta property="og:title" content="{{ pageTitle or title or site.shortName }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url | url }}">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="{{ site.url }}{{ '/assets/images/home/brain-study.webp' | url }}">
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": (page.url == "/" and "WebSite" or "Person"),
+    "name": site.name,
+    "description": description or site.description,
+    "url": site.url + (page.url | url),
+    "author": { "@type": "Person", "name": site.name }
+  } | jsonSafe | safe }}</script>
+  <link rel="alternate" type="application/atom+xml" title="Muhsin's notebook" href="{{ '/feed.xml' | url }}">
+  <link rel="alternate" type="application/atom+xml" title="Blogs" href="{{ '/thoughts/blogs/feed.xml' | url }}">
+  <link rel="alternate" type="application/atom+xml" title="Reading Notes" href="{{ '/thoughts/reading/feed.xml' | url }}">
+  <link rel="alternate" type="application/atom+xml" title="Notes" href="{{ '/thoughts/notes/feed.xml' | url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/katex.css' | url }}">
+  <script>
+    (() => {
+      const stored = localStorage.getItem('notebook-theme');
+      const preferred = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = stored || preferred;
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header">
+    <a class="wordmark" href="{{ '/' | url }}" aria-label="Muhsin's notebook home">m<span>.</span></a>
+    <nav aria-label="Main navigation">
+      <a href="{{ '/projects/' | url }}" {% if page.url.startsWith('/projects') %}aria-current="page"{% endif %}>Projects</a>
+      <a href="{{ '/thoughts/' | url }}" {% if page.url.startsWith('/thoughts') or page.url.startsWith('/notes') %}aria-current="page"{% endif %}>Thoughts</a>
+      <a href="{{ '/about/' | url }}" {% if page.url.startsWith('/about') %}aria-current="page"{% endif %}>About</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme"><span aria-hidden="true">◐</span><span class="toggle-label">Theme</span></button>
+  </header>
+  <main id="main">{{ content | safe }}</main>
+  <footer class="site-footer">
+    <a href="{{ '/' | url }}">Muhsin's notebook</a><span>Kept with curiosity in Austria.</span>
+    {% for name, url in site.socials %}<a href="{{ url }}" rel="me">{{ name }}</a>{% endfor %}
+    <a href="{{ '/feed.xml' | url }}">RSS</a><a class="email-contact" data-email-code="96,120,101,126,100,99,108,101,96,105,121,102,77,106,96,108,100,97,46,99,127,96">Contact</a>
+    <small>© <span data-year></span></small>
+  </footer>
+  <button class="back-top" type="button" aria-label="Back to top" title="Back to top">↑</button>
+  <script src="{{ '/assets/js/site.js' | url }}" defer></script>
+</body>
+</html>

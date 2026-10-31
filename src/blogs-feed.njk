@@ -1,0 +1,6 @@
+---
+permalink: /thoughts/blogs/feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Muhsin's Blogs</title><id>{{ site.url }}{{ '/thoughts/blogs/' | url }}</id><link href="{{ site.url }}{{ '/thoughts/blogs/feed.xml' | url }}" rel="self"/><link href="{{ site.url }}{{ '/thoughts/blogs/' | url }}"/><updated>{{ currentTime }}</updated><author><name>{{ site.name }}</name></author>{% for item in collections.blogs %}<entry><title>{{ item.data.title | xml }}</title><id>{{ site.url }}{{ item.url | url }}</id><link href="{{ site.url }}{{ item.url | url }}"/><updated>{{ item.data.date | isoDate }}T00:00:00Z</updated><summary>{{ item.data.description | xml }}</summary></entry>{% endfor %}</feed>

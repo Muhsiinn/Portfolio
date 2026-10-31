@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, send_file, jsonify
 from cv_generator_minimal import generate_minimal_pdf
 import json
+import re
+from pathlib import Path
 
 app = Flask(__name__)
 
@@ -12,13 +14,35 @@ def load_json(path):
     except FileNotFoundError:
         return {}
 
+def load_projects_from_markdown():
+    """Discover CV project summaries from the website's Markdown source."""
+    projects = []
+    for path in sorted(Path("src/projects").glob("*.md")):
+        source = path.read_text(encoding="utf-8")
+        match = re.match(r"---\s*\n(.*?)\n---", source, re.S)
+        if not match:
+            continue
+        if re.search(r"^draft:\s*true\s*$", match.group(1), re.M):
+            continue
+        metadata = {}
+        for key in ("title", "description", "github"):
+            field = re.search(r"^" + key + r":\s*(.+)$", match.group(1), re.M)
+            if field:
+                try:
+                    metadata[key] = json.loads(field.group(1))
+                except json.JSONDecodeError:
+                    metadata[key] = field.group(1).strip().strip("'\"")
+        if metadata.get("title"):
+            projects.append(metadata)
+    return projects
+
 @app.route('/')
 def index():
     """Main CV builder page with pre-populated data"""
     # Load existing data
     data = load_json("data.json")
     education = load_json("education.json")
-    projects = load_json("projects.json")
+    projects = load_projects_from_markdown()
 
     # Prepare pre-populated sections
     prepopulated_sections = []
@@ -86,7 +110,7 @@ def index():
                 'project_name': proj.get('title', ''),
                 'description': proj.get('description', ''),
                 'technologies': '',
-                'link': proj.get('links', {}).get('github', '') if isinstance(proj.get('links'), dict) else ''
+                'link': proj.get('github', '')
             })
 
     return render_template('cv_builder.html',

@@ -1,0 +1,7 @@
+---
+layout: layouts/base.njk
+title: Blogs
+description: Essays, explanations, technical writing, and reflections.
+permalink: /thoughts/blogs/index.html
+---
+<article class="listing-page"><header class="page-heading"><a class="back-link" href="{{ '/thoughts/' | url }}">← Thoughts</a><p class="eyebrow">THOUGHTS / LONG-FORM</p><h1>Blogs</h1><p class="lede">Essays, explanations, technical writing, opinions, and personal reflections.</p></header><ol class="entry-list">{% for item in collections.blogs %}<li><a class="project-row" href="{{ item.url | url }}"><span class="row-number">{{ loop.index }}</span><span class="row-title">{{ item.data.title }}{% if item.data.draft %}<span class="draft-label"> · DRAFT PREVIEW</span>{% endif %}<span class="project-peek">{{ item.data.description }}</span></span><time class="row-status">{{ item.data.date | date }}</time><span class="row-arrow" aria-hidden="true">↗</span></a></li>{% endfor %}</ol></article>

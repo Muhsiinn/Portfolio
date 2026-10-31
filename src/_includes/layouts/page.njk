@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+---
+<article class="reading-page">
+  <header class="document-header"><p class="eyebrow">THE PERSON KEEPING THESE NOTES</p><h1>{{ title }}</h1><p class="lede">{{ description }}</p></header>
+  <div class="reading-layout"><article class="prose">{{ content | safe }}</article></div>
+  <section class="education-section" aria-labelledby="education-heading">
+    <p class="eyebrow">A LITTLE FORMAL LEARNING</p>
+    <h2 id="education-heading">Education</h2>
+    {% for item in education.formal %}
+    <article class="education-entry">
+      <h3>{{ item.degree }}</h3>
+      <p>{{ item.institution }} <span>·</span> {{ item.location }} <span>·</span> {{ item.start }}–{{ item.end }}</p>
+      {% if item.details %}<p>{{ item.details }}</p>{% endif %}
+    </article>
+    {% endfor %}
+  </section>
+</article>

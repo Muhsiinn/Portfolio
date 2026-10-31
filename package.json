@@ -1,0 +1,21 @@
+{
+  "name": "muhsins-field-notebook",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "node scripts/prebuild.js",
+    "preserve": "node scripts/prebuild.js",
+    "build": "ELEVENTY_ENV=production eleventy",
+    "serve": "eleventy --serve",
+    "check": "npm run build"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.7",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "markdown-it-anchor": "^9.2.0",
+    "katex": "^0.19.1"
+  },
+  "overrides": {
+    "minimatch": "^11.0.1"
+  }
+}

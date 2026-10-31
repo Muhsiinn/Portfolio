@@ -1,4 +1,5 @@
 import json
+import re
 from datetime import date
 from pathlib import Path
 
@@ -9,13 +10,38 @@ def load_json(path):
     except FileNotFoundError:
         return {}
 
+def load_projects():
+    entries = []
+    for path in sorted(Path("src/projects").glob("*.md")):
+        source = path.read_text(encoding="utf-8")
+        match = re.match(r"---\s*\n(.*?)\n---", source, re.S)
+        if not match:
+            continue
+        if re.search(r"^draft:\s*true\s*$", match.group(1), re.M):
+            continue
+        metadata = {}
+        for key in ("title", "description", "github"):
+            field = re.search(r"^" + key + r":\s*(.+)$", match.group(1), re.M)
+            if field:
+                try:
+                    metadata[key] = json.loads(field.group(1))
+                except json.JSONDecodeError:
+                    metadata[key] = field.group(1).strip().strip("'\"")
+        tags = re.search(r"^tags:\s*\n((?:\s+-.*\n)+)", match.group(1), re.M)
+        if tags:
+            metadata["tech"] = [item.strip().strip("'\"") for item in re.findall(r"^\s+-\s*(.+)$", tags.group(1), re.M)]
+        metadata["links"] = {"GitHub": metadata["github"]} if metadata.get("github") else {}
+        if metadata.get("title"):
+            entries.append(metadata)
+    return entries
+
 def line(char="-", count=3):
     return char * count
 
 def main():
     data = load_json("data.json")
     edu = load_json("education.json")
-    projects = load_json("projects.json")
+    projects = load_projects()
 
     lines = []
     # Header
