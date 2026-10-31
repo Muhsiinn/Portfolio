@@ -130,7 +130,7 @@ module.exports = function (eleventyConfig) {
     if (this.outputPath && this.outputPath.endsWith('.html')) {
       return content
         .replace(/<p>(<figure class="notebook-figure">[\s\S]*?<\/figure>)<\/p>/g, '$1')
-        .replace(/(src|href)="\/assets\//g, '$1="/portfolio/assets/');
+        .replace(/(src|href)="\/assets\//g, '$1="/Portfolio/assets/');
     }
     return content;
   });
@@ -139,6 +139,6 @@ module.exports = function (eleventyConfig) {
     templateFormats: ['md', 'njk', '11ty.js', 'txt'],
     markdownTemplateEngine: false,
     htmlTemplateEngine: 'njk',
-    pathPrefix: '/portfolio/'
+    pathPrefix: '/Portfolio/'
   };
 };
