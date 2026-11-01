@@ -1,5 +1,5 @@
 ---
-title: MutableStrings-Toy-python
+title: MutableStrings for python
 description: Implimented mutable chars for python in C.
 date: 2026-10-31
 tags:
@@ -7,7 +7,7 @@ tags:
   - Python
 featured: True 
 archived: false
-draft: true
+draft: false 
 github: https://github.com/Muhsiinn/MutableStrings-Toy-python
 status: Imported
 githubMetadata:

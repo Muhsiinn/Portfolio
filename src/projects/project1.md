@@ -12,7 +12,7 @@ status: Completed
 featured: false
 draft: false
 github: https://github.com/Muhsiinn/Whatsapp-Bot
-archived: false
+archived: true 
 ---
 
 This was the first meaningful thing I built. 

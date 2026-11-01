@@ -1,5 +1,5 @@
 ---
-title: "Jonas: Your Personal Austrian German Tutor"
+title: "Fine tuned model on Ausrian dialect"
 description: "A friendly AI chatbot built as a guide to Austrian German and culture. A fine-tuned model combined with a RAG system I built with FAISS lets it explain grammar, answer questions about Austria, and chat like a local."
 category: "Artificial Intelligence"
 tags:
