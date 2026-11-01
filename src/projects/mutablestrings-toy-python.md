@@ -1,11 +1,11 @@
 ---
 title: MutableStrings-Toy-python
-description: Add a plain-language description before publishing.
+description: Implimented mutable chars for python in C.
 date: 2026-10-31
 tags:
   - C
   - Python
-featured: false
+featured: True 
 archived: false
 draft: true
 github: https://github.com/Muhsiinn/MutableStrings-Toy-python
