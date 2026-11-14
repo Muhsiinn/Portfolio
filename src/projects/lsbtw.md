@@ -25,7 +25,3 @@ githubMetadata:
   homepage: null
 technologies: []
 ---
-
-## About this repository
-
-Describe what you built, why it matters to you, and what you learned.

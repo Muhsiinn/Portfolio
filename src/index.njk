@@ -11,11 +11,128 @@ permalink: /
     <p class="lede">{{ site.bio }}</p>
     <div class="home-links"><a href="{{ '/about/' | url }}">About <span aria-hidden="true">↗</span></a><a href="{{ '/thoughts/' | url }}">Thoughts <span aria-hidden="true">↗</span></a></div>
   </section>
+  <div class="home-right-col">
   <figure class="home-study">
     <img src="{{ '/assets/images/home/brain-study.webp' | url }}" alt="Graphite study of a human brain on warm paper" width="1536" height="1024" fetchpriority="high">
     <figcaption>Fig. 01 <span>— a study of the thinking organ</span></figcaption>
     <span class="scribble" aria-hidden="true">still a lot to learn ↗</span>
   </figure>
+
+  <figure class="home-study neuron-study" id="neuron-figure" aria-label="Anatomical neuron illustration">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 600" role="img" aria-labelledby="neuron-title neuron-desc" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="neuron-svg" id="neuron-svg">
+      <title id="neuron-title">Fig. 02 — synaptic pathways &amp; plasticity</title>
+      <desc id="neuron-desc">Detailed anatomical drawing of a pyramidal neuron with synaptic pathway, rendered in a fine-line graphite sketch style.</desc>
+
+      <!-- ═══ APICAL DENDRITE drift group ═══ -->
+      <g id="nd-apical" class="neuron-drift">
+        <path d="M260 168 Q258 142 254 118 Q250 94 244 72" stroke-width="1.0" opacity="0.78"/>
+        <path d="M254 118 Q242 106 228 96 Q218 88 204 82" stroke-width="0.75" opacity="0.65"/>
+        <path d="M228 96 Q224 84 218 74" stroke-width="0.75" opacity="0.55"/>
+        <path d="M218 74 Q212 66 204 62" stroke-width="0.75" opacity="0.45"/>
+        <path d="M254 118 Q266 102 280 92 Q292 84 306 78" stroke-width="0.75" opacity="0.65"/>
+        <path d="M280 92 Q288 80 296 72" stroke-width="0.75" opacity="0.55"/>
+        <path d="M296 72 Q302 64 310 60" stroke-width="0.75" opacity="0.45"/>
+        <path d="M244 72 Q234 58 222 48" stroke-width="0.75" opacity="0.55"/>
+        <path d="M244 72 Q246 54 250 40" stroke-width="0.75" opacity="0.55"/>
+        <path d="M244 72 Q236 52 226 38" stroke-width="0.75" opacity="0.45"/>
+        <line x1="256" y1="130" x2="250" y2="126" stroke-width="0.5" opacity="0.4"/>
+        <line x1="258" y1="110" x2="264" y2="106" stroke-width="0.5" opacity="0.4"/>
+        <line x1="252" y1="98" x2="246" y2="94" stroke-width="0.5" opacity="0.4"/>
+        <line x1="248" y1="82" x2="254" y2="78" stroke-width="0.5" opacity="0.4"/>
+        <text x="218" y="44" font-size="7" font-family="Georgia, serif" font-style="italic" fill="currentColor" stroke="none" opacity="0.32" text-anchor="end">apical dendrite</text>
+      </g>
+
+      <!-- ═══ SOMA (triangular cell body) ═══ -->
+      <path d="M260 168 L232 228 Q228 238 236 240 L260 244 L284 240 Q292 238 288 228 Z" stroke-width="1.1" opacity="0.78"/>
+      <ellipse cx="260" cy="214" rx="12" ry="10" stroke-width="0.75" opacity="0.55" stroke-dasharray="2.5 1.8"/>
+      <circle cx="261" cy="213" r="2.2" fill="currentColor" opacity="0.35"/>
+      <line x1="296" y1="210" x2="330" y2="200" stroke-width="0.4" opacity="0.3" stroke-dasharray="2 2"/>
+      <text x="332" y="204" font-size="7.5" font-family="Georgia, serif" font-style="italic" fill="currentColor" stroke="none" opacity="0.38">soma</text>
+
+      <!-- ═══ BASAL DENDRITES drift group ═══ -->
+      <g id="nd-basal" class="neuron-drift">
+        <path d="M236 238 Q218 252 198 260 Q178 268 156 272" stroke-width="0.9" opacity="0.72"/>
+        <path d="M198 260 Q186 272 172 280" stroke-width="0.75" opacity="0.55"/>
+        <path d="M172 280 Q162 286 152 288" stroke-width="0.75" opacity="0.42"/>
+        <path d="M156 272 Q144 278 132 280" stroke-width="0.75" opacity="0.45"/>
+        <path d="M240 242 Q226 262 210 278 Q196 290 180 298" stroke-width="0.85" opacity="0.65"/>
+        <path d="M210 278 Q200 290 188 296" stroke-width="0.75" opacity="0.48"/>
+        <path d="M284 238 Q302 252 322 260 Q342 268 364 272" stroke-width="0.9" opacity="0.72"/>
+        <path d="M322 260 Q334 272 348 280" stroke-width="0.75" opacity="0.55"/>
+        <path d="M348 280 Q358 286 368 288" stroke-width="0.75" opacity="0.42"/>
+        <path d="M364 272 Q376 278 388 280" stroke-width="0.75" opacity="0.45"/>
+        <path d="M280 242 Q294 262 310 278 Q324 290 340 298" stroke-width="0.85" opacity="0.65"/>
+        <path d="M310 278 Q320 290 332 296" stroke-width="0.75" opacity="0.48"/>
+        <line x1="214" y1="256" x2="208" y2="250" stroke-width="0.5" opacity="0.38"/>
+        <line x1="306" y1="256" x2="312" y2="250" stroke-width="0.5" opacity="0.38"/>
+        <text x="142" y="268" font-size="7" font-family="Georgia, serif" font-style="italic" fill="currentColor" stroke="none" opacity="0.32" text-anchor="end">basal dendrite</text>
+      </g>
+
+      <!-- ═══ AXON HILLOCK & INITIAL SEGMENT ═══ -->
+      <path d="M260 244 Q260 256 262 270 Q264 284 264 296" stroke-width="1.0" opacity="0.78"/>
+
+      <!-- ═══ AXON with MYELIN SHEATHS ═══ -->
+      <rect x="254" y="296" width="20" height="38" rx="8" ry="8" stroke-width="0.85" opacity="0.52"/>
+      <line x1="264" y1="334" x2="264" y2="342" stroke-width="1.0" opacity="0.78"/>
+      <rect x="254" y="342" width="20" height="38" rx="8" ry="8" stroke-width="0.85" opacity="0.52"/>
+      <line x1="264" y1="380" x2="264" y2="388" stroke-width="1.0" opacity="0.78"/>
+      <rect x="254" y="388" width="20" height="38" rx="8" ry="8" stroke-width="0.85" opacity="0.52"/>
+      <line x1="264" y1="426" x2="264" y2="434" stroke-width="1.0" opacity="0.78"/>
+      <rect x="254" y="434" width="20" height="34" rx="8" ry="8" stroke-width="0.85" opacity="0.52"/>
+      <line x1="276" y1="360" x2="320" y2="354" stroke-width="0.4" opacity="0.3" stroke-dasharray="2 2"/>
+      <text x="322" y="358" font-size="7.5" font-family="Georgia, serif" font-style="italic" fill="currentColor" stroke="none" opacity="0.38">myelin sheath</text>
+
+      <!-- ═══ AXON TERMINALS drift group ═══ -->
+      <g id="nd-terminal" class="neuron-drift">
+        <path d="M264 468 Q264 480 258 492" stroke-width="0.9" opacity="0.72"/>
+        <path d="M258 492 Q252 504 242 512 Q234 518 226 522" stroke-width="0.85" opacity="0.65"/>
+        <path d="M258 492 Q260 506 264 516 Q268 524 270 530" stroke-width="0.85" opacity="0.65"/>
+        <path d="M264 468 Q272 482 280 492" stroke-width="0.9" opacity="0.72"/>
+        <path d="M280 492 Q290 502 298 510 Q304 516 312 520" stroke-width="0.85" opacity="0.65"/>
+        <path d="M280 492 Q278 506 274 516" stroke-width="0.75" opacity="0.55"/>
+        <circle cx="226" cy="524" r="3.5" stroke-width="0.85" opacity="0.65"/>
+        <circle cx="270" cy="532" r="3.5" stroke-width="0.85" opacity="0.65"/>
+        <circle cx="312" cy="522" r="3.5" stroke-width="0.85" opacity="0.65"/>
+        <circle cx="274" cy="518" r="2.5" stroke-width="0.75" opacity="0.5"/>
+        <!-- vesicles -->
+        <circle cx="225" cy="522" r="0.9" fill="currentColor" opacity="0.35"/>
+        <circle cx="227" cy="525" r="0.9" fill="currentColor" opacity="0.3"/>
+        <circle cx="270" cy="530" r="0.9" fill="currentColor" opacity="0.35"/>
+        <circle cx="312" cy="520" r="0.9" fill="currentColor" opacity="0.35"/>
+        <!-- cleft dashes -->
+        <line x1="222" y1="528" x2="220" y2="534" stroke-width="0.5" opacity="0.3" stroke-dasharray="1.2 1.5"/>
+        <line x1="226" y1="528" x2="226" y2="535" stroke-width="0.5" opacity="0.3" stroke-dasharray="1.2 1.5"/>
+        <line x1="268" y1="536" x2="266" y2="542" stroke-width="0.5" opacity="0.3" stroke-dasharray="1.2 1.5"/>
+        <line x1="272" y1="536" x2="272" y2="543" stroke-width="0.5" opacity="0.3" stroke-dasharray="1.2 1.5"/>
+        <line x1="316" y1="520" x2="350" y2="512" stroke-width="0.4" opacity="0.3" stroke-dasharray="2 2"/>
+        <text x="352" y="516" font-size="7.5" font-family="Georgia, serif" font-style="italic" fill="currentColor" stroke="none" opacity="0.38">synapse</text>
+      </g>
+
+      <!-- ═══ POST-SYNAPTIC DENDRITE ═══ -->
+      <path d="M196 550 Q216 542 236 538 Q256 536 280 538 Q302 542 322 550 Q340 556 352 562" stroke-width="0.9" opacity="0.58"/>
+      <path d="M222 540 Q222 536 224 532" stroke-width="0.6" opacity="0.45"/>
+      <path d="M268 538 Q268 534 268 530" stroke-width="0.6" opacity="0.45"/>
+      <text x="196" y="558" font-size="7" font-family="Georgia, serif" font-style="italic" fill="currentColor" stroke="none" opacity="0.32" text-anchor="end">post-synaptic</text>
+
+      <!-- ═══ ACTION POTENTIAL IMPULSE OVERLAY (JS-animated) ═══ -->
+      <path id="ap-impulse" class="ap-impulse"
+        d="M260 200 Q260 232 262 270 Q264 296 264 334 Q264 342 264 380 Q264 388 264 426 Q264 434 264 468 Q264 480 258 492 Q252 504 242 512 Q234 518 226 524"/>
+    </svg>
+    <figcaption>Fig. 02 <span>— synaptic pathways &amp; plasticity</span><span class="neuron-mv" id="neuron-mv" aria-live="polite" aria-atomic="true">−70 mV</span></figcaption>
+  </figure>
+
+  <aside class="home-marginalia" aria-label="Intellectual influences and active inquiries">
+    <p class="eyebrow">MARGINALIA — INTELLECTUAL FIELD INDEX</p>
+    <ul class="marginalia-list">
+      <li><a href="{{ '/thoughts/reading/mens_search_for_meaning/' | url }}">Viktor Frankl</a> <span>— logotherapy &amp; meaning</span></li>
+      <li>Carl Jung <span>— archetypes &amp; the unconscious</span></li>
+      <li>Friedrich Nietzsche <span>— will &amp; amor fati</span></li>
+      <li>Sigmund Freud <span>— psychoanalysis &amp; drives</span></li>
+      <li>Sylvia Plath <span>— the interior life, rendered</span></li>
+    </ul>
+    <p class="marginalia-inquiries">Active inquiries: neural plasticity · consciousness · computational models of meaning · where minds and machines converge.</p>
+  </aside>
+  </div>
 </div>
 
 <div class="home-now-grid">
@@ -59,5 +176,5 @@ permalink: /
 
 <section class="home-contact" aria-labelledby="contact-heading">
   <div><p class="eyebrow">CONTACT</p><h2 id="contact-heading">Want to get in touch?</h2></div>
-  <div class="home-contact-links"><a class="email-contact" data-email-code="96,120,101,126,100,99,108,101,96,105,121,102,77,106,96,108,100,97,46,99,127,96">Email me</a></div>
+  <div class="home-contact-links"><a class="email-contact" href="#contact" data-email-code="96,120,101,126,100,99,108,101,96,105,121,102,77,106,96,108,100,97,46,99,127,96">Email me</a></div>
 </section>

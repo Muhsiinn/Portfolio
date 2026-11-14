@@ -10,13 +10,11 @@
     dateStamp.textContent = new Intl.DateTimeFormat(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }).format(today);
     dateStamp.dateTime = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, '0'), String(today.getDate()).padStart(2, '0')].join('-');
   }
-  const emailLink = document.querySelector('[data-email-code]');
-  if (emailLink) {
-    const address = emailLink.dataset.emailCode.split(',').map((code) => String.fromCharCode(Number(code) ^ 13)).join('');
-    emailLink.href = 'mailto:' + address;
-    emailLink.textContent = address;
-    emailLink.setAttribute('aria-label', 'Email Muhsin at ' + address);
-  }
+  document.querySelectorAll('[data-email-code]').forEach((el) => {
+    const address = el.dataset.emailCode.split(',').map((code) => String.fromCharCode(Number(code) ^ 13)).join('');
+    el.href = 'mailto:' + address;
+    el.setAttribute('aria-label', 'Email Muhsin at ' + address);
+  });
 
   function setTheme(theme, persist = false) {
     root.dataset.theme = theme;
@@ -115,4 +113,62 @@
       }
     });
   }
+  // ── Neuron interactivity: organic drift + action potential ──
+  const neuronFig = document.getElementById('neuron-figure');
+  const apImpulse = document.getElementById('ap-impulse');
+  const mvLabel   = document.getElementById('neuron-mv');
+  const driftGroups = neuronFig ? [...neuronFig.querySelectorAll('.neuron-drift')] : [];
+  const noMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (neuronFig && !noMotion && driftGroups.length) {
+    let mx = 0, my = 0, tx = [0,0,0], ty = [0,0,0], cx = [0,0,0], cy = [0,0,0];
+    let rafId = null, idle = false, apCooldown = false;
+    const DRIFT = [1, .6, 1.4]; // per-group drift multipliers
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function tick() {
+      let settled = true;
+      driftGroups.forEach((g, i) => {
+        cx[i] = lerp(cx[i], tx[i], .08);
+        cy[i] = lerp(cy[i], ty[i], .08);
+        if (Math.abs(cx[i] - tx[i]) > .05 || Math.abs(cy[i] - ty[i]) > .05) settled = false;
+        g.style.transform = `translate(${cx[i].toFixed(2)}px,${cy[i].toFixed(2)}px)`;
+      });
+      rafId = settled && idle ? null : requestAnimationFrame(tick);
+    }
+
+    function fireAP() {
+      if (apCooldown || !apImpulse) return;
+      apCooldown = true;
+      apImpulse.classList.remove('is-active');
+      void apImpulse.offsetWidth; // reflow to restart animation
+      apImpulse.classList.add('is-active');
+      if (mvLabel) { mvLabel.textContent = '+30 mV'; mvLabel.classList.add('is-firing'); }
+      setTimeout(() => {
+        apImpulse.classList.remove('is-active');
+        if (mvLabel) { mvLabel.textContent = '−70 mV'; mvLabel.classList.remove('is-firing'); }
+        setTimeout(() => { apCooldown = false; }, 600);
+      }, 950);
+    }
+
+    neuronFig.addEventListener('pointermove', (e) => {
+      const r = neuronFig.getBoundingClientRect();
+      const nx = ((e.clientX - r.left) / r.width  - .5) * 2;
+      const ny = ((e.clientY - r.top)  / r.height - .5) * 2;
+      DRIFT.forEach((d, i) => { tx[i] = nx * 3 * d; ty[i] = ny * 2 * d; });
+      idle = false;
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    }, { passive: true });
+
+    neuronFig.addEventListener('pointerleave', () => {
+      DRIFT.forEach((_, i) => { tx[i] = 0; ty[i] = 0; });
+      idle = true;
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    }, { passive: true });
+
+    neuronFig.addEventListener('pointerenter', fireAP, { passive: true });
+    neuronFig.addEventListener('click', fireAP);
+  }
+
 })();

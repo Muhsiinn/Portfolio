@@ -69,7 +69,7 @@ button { color: inherit; font: inherit; }
 .site-header nav a[aria-current="page"], .site-header nav a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rust); text-underline-offset: 7px; }
 .theme-toggle { border: 1px solid var(--line); padding: 6px 11px; background: transparent; cursor: pointer; font: .75rem var(--mono); }
 .theme-toggle span:first-child { color: var(--amber); margin-right: 7px; }
-.home-grid { min-height: 500px; display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(35px, 8vw, 100px); align-items: center; padding: 56px 0 72px; }
+.home-grid { min-height: 500px; display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(40px, 8vw, 100px); align-items: start; padding: 64px 0 88px; }
 .eyebrow { margin: 0 0 17px; color: var(--rust); font: 500 .67rem/1.5 var(--mono); letter-spacing: .09em; text-transform: uppercase; }
 .eyebrow span { color: var(--muted); }
 h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
@@ -83,11 +83,35 @@ h1 em { color: var(--rust); font-weight: 400; }
 .home-links span, .section-heading span { color: var(--rust); }
 .live-date { color: var(--rust); font: italic 1rem/1.5 var(--serif); margin-top: 36px; }
 .home-study { position: relative; margin: 0; }
-.home-study img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: contain; filter: saturate(.72); }
+.home-study img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: contain; filter: saturate(.75); max-height: 420px; }
 .home-study figcaption { border-top: 1px solid var(--line); padding-top: 9px; color: var(--muted); font: .65rem var(--mono); letter-spacing: .04em; }
 .home-study figcaption span { color: var(--ink-soft); }
-.scribble { position: absolute; right: -20px; bottom: 40px; color: var(--rust); font: italic 1rem var(--serif); transform: rotate(-7deg); }
-.home-section { margin: 40px 0 80px; }
+.scribble { position: absolute; right: -12px; bottom: 36px; color: var(--rust); font: italic 1rem var(--serif); transform: rotate(-7deg); }
+/* ── Neuron study (Fig. 02) ── */
+.neuron-study { margin-top: 32px; }
+.neuron-svg { display: block; width: 100%; height: auto; max-height: 380px; color: var(--ink); }
+.neuron-study figcaption { display: flex; justify-content: space-between; align-items: baseline; }
+.neuron-mv { color: var(--muted); font: .6rem var(--mono); letter-spacing: .02em; transition: color .4s ease; }
+.neuron-mv.is-firing { color: var(--rust); }
+/* action-potential impulse overlay */
+.ap-impulse {
+  fill: none; stroke: var(--rust); stroke-width: 2.4; opacity: 0;
+  stroke-linecap: round; stroke-dasharray: 14 320; stroke-dashoffset: 334;
+  pointer-events: none;
+}
+.ap-impulse.is-active { opacity: .6; animation: ap-travel .85s cubic-bezier(.4,0,.2,1) forwards; }
+@keyframes ap-travel { to { stroke-dashoffset: -10; } }
+/* dendrite drift groups — GPU-only transform, no layout paint */
+.neuron-drift { will-change: transform; }
+/* ── Marginalia index ── */
+.home-marginalia { margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--line); }
+.home-marginalia .eyebrow { margin-bottom: 10px; }
+.marginalia-list { margin: 0; padding: 0; list-style: none; }
+.marginalia-list li { padding: 6px 0; border-bottom: 1px solid var(--wash); color: var(--ink); font: .8rem/1.65 var(--serif); }
+.marginalia-list li a { color: var(--rust); text-decoration-thickness: .06em; }
+.marginalia-list li span { color: var(--muted); font-size: .73rem; }
+.marginalia-inquiries { margin: 12px 0 0; color: var(--ink-soft); font: italic .73rem/1.65 var(--serif); }
+.home-section { margin: 64px 0 96px; }
 .section-heading { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; margin-bottom: 19px; }
 .section-heading .eyebrow { grid-column: 1 / -1; margin-bottom: 2px; }
 .section-heading h2 { margin: 0; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -.035em; }
@@ -102,12 +126,13 @@ h1 em { color: var(--rust); font-weight: 400; }
 .peek-tags { display: block; color: var(--rust); font: .67rem var(--mono); margin-top: 6px; }
 .row-status { text-align: right; }
 .row-arrow { color: var(--rust); }
-.home-grid.home-simple { min-height: 0; align-items: center; }
-.home-simple { grid-template-columns: 1.08fr .92fr; gap: 34px; padding: 18px 0 22px; }
-.home-simple .home-intro h1 { margin-bottom: 14px; font-size: clamp(2.75rem, 5.5vw, 4.35rem); }
-.home-simple .home-intro .lede { max-width: 650px; margin: 0; }
-.home-simple .home-links { margin-top: 19px; }
+.home-grid.home-simple { min-height: 0; align-items: start; }
+.home-simple { grid-template-columns: 1.08fr .92fr; gap: clamp(38px, 6vw, 76px); padding: 56px 0 52px; }
+.home-simple .home-intro h1 { margin-bottom: 20px; font-size: clamp(2.75rem, 5.5vw, 4.35rem); }
+.home-simple .home-intro .lede { max-width: 650px; margin: 0; line-height: 1.8; }
+.home-simple .home-links { margin-top: 26px; gap: 24px; }
 .home-simple .home-study { width: 100%; justify-self: stretch; }
+.home-right-col { min-width: 0; display: flex; flex-direction: column; gap: 0; align-self: start; }
 .home-now-grid { display: block; }
 .home-now { min-width: 0; margin: 40px 0 80px; }
 .home-now .section-heading { min-height: 0; grid-template-columns: 1fr auto; align-items: end; margin-bottom: 19px; }
@@ -240,31 +265,65 @@ h1 em { color: var(--rust); font-weight: 400; }
 :root[data-theme="dark"] .prose .token.string, :root[data-theme="dark"] .prose .token.attr-value { color: #b9ce9e; }
 .back-top { position: fixed; right: 20px; bottom: 18px; width: 40px; height: 40px; opacity: 0; pointer-events: none; border: 1px solid var(--line); background: var(--paper); cursor: pointer; transition: opacity .2s ease; }
 .back-top.is-visible { opacity: 1; pointer-events: auto; }
-@media (min-width: 701px) and (max-width: 900px) {
-  .home-simple { grid-template-columns: 1fr .84fr; gap: 24px; padding: 16px 0 20px; }
-  .home-simple .home-intro h1 { font-size: clamp(2.45rem, 5vw, 3.5rem); }
+/* ── Responsive & Device Optimization ── */
+@media (min-width: 881px) and (max-width: 1040px) {
+  .site-header, main, .site-footer { width: min(100% - 48px, 1080px); }
+  .home-simple { grid-template-columns: 1.05fr .95fr; gap: 40px; padding: 50px 0 46px; }
+  .home-study img { max-height: 360px; }
+  .neuron-svg { max-height: 340px; }
 }
-@media (max-width: 700px) {
-  .site-header, main, .site-footer { width: min(100% - 36px, 1080px); }
-  .site-header { height: 70px; gap: 22px; }
-  .site-header nav { gap: 17px; }
-  .site-header nav a { font-size: .8rem; }
+
+/* iPad Portrait & Mid Tablets (681px – 880px) */
+@media (min-width: 681px) and (max-width: 880px) {
+  .site-header, main, .site-footer { width: min(100% - 44px, 1080px); }
+  .home-simple { min-height: 0; grid-template-columns: 1fr; gap: 44px; padding: 44px 0 40px; }
+  .home-intro h1 { font-size: clamp(2.65rem, 6.8vw, 3.8rem); margin-bottom: 18px; }
+  .home-intro .lede { max-width: 620px; font-size: 1.05rem; }
+  .home-links { margin-top: 26px; gap: 22px; }
+  .home-right-col { width: 100%; max-width: 560px; margin-inline: auto; align-self: stretch; }
+  .home-study { width: 100%; }
+  .home-study img { width: 100%; max-height: 380px; aspect-ratio: 3 / 2; object-fit: contain; }
+  .neuron-study { margin-top: 36px; width: 100%; }
+  .neuron-svg { width: 100%; max-height: 360px; margin-inline: auto; }
+  .home-marginalia { margin-top: 36px; padding-top: 20px; width: 100%; }
+  .home-section { margin: 52px 0 80px; }
+  .thought-category-grid { grid-template-columns: 1fr; margin: 36px 0 72px; }
+  .thought-category { padding: 22px; }
+  .thought-category + .thought-category { border-left: 0; border-top: 1px solid var(--line); }
+  .reading-layout { display: block; }
+  .margin-note { position: static; margin: 40px 0 0; padding: 15px 0 0; border-top: 1px solid var(--line); display: flex; gap: 12px; }
+  .margin-note p { margin: 0; }
+}
+
+/* Mobile Devices (<= 680px) */
+@media (max-width: 680px) {
+  .site-header, main, .site-footer { width: min(100% - 32px, 1080px); }
+  .site-header { height: 68px; gap: 20px; }
+  .site-header nav { gap: 18px; }
+  .site-header nav a { font-size: .82rem; }
   .theme-toggle { padding: 5px 8px; }
   .toggle-label { display: none; }
-  .home-grid { grid-template-columns: 1fr; gap: 22px; padding: 50px 0 45px; min-height: 0; }
-  .home-simple { min-height: 0; grid-template-columns: 1fr; gap: 14px; padding: 18px 0 20px; }
-  .home-intro h1 { font-size: clamp(2.65rem, 12vw, 4rem); }
-  .home-study { width: min(100%, 440px); justify-self: center; }
-  .scribble { right: 2px; }
-  .home-section { margin: 35px 0 65px; }
+  .home-grid { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 40px; min-height: 0; }
+  .home-simple { min-height: 0; grid-template-columns: 1fr; gap: 36px; padding: 32px 0 36px; }
+  .home-intro h1 { font-size: clamp(2.35rem, 11vw, 3.4rem); line-height: 1.1; margin-bottom: 16px; }
+  .home-intro .lede { font-size: 1rem; line-height: 1.7; }
+  .home-links { margin-top: 22px; gap: 18px; }
+  .home-right-col { width: 100%; max-width: 100%; align-self: stretch; }
+  .home-study { width: 100%; }
+  .home-study img { width: 100%; max-height: 340px; aspect-ratio: 3 / 2; object-fit: contain; }
+  .neuron-study { margin-top: 32px; width: 100%; }
+  .neuron-svg { width: 100%; max-width: 360px; max-height: 340px; margin-inline: auto; }
+  .home-marginalia { margin-top: 32px; padding-top: 18px; width: 100%; }
+  .scribble { right: 4px; bottom: 32px; font-size: .88rem; }
+  .home-section { margin: 44px 0 68px; }
   .home-now-grid { display: block; }
   .home-now { margin: 35px 0 65px; }
-  .working-item { grid-template-columns: 1fr; gap: 5px; padding: 16px 0; }
+  .working-item { grid-template-columns: 1fr; gap: 6px; padding: 16px 0; }
   .working-kind { grid-column: 1; }
   .working-item h3 { font-size: 1.18rem; }
   .working-item time { grid-column: 1; grid-row: auto; margin-top: 3px; }
   .working-item > div { grid-column: 1; }
-  .home-contact { align-items: start; flex-direction: column; gap: 12px; margin: 20px 0 36px; }
+  .home-contact { align-items: start; flex-direction: column; gap: 12px; margin: 24px 0 36px; }
   .home-contact-links { gap: 17px; }
   .project-row { grid-template-columns: 28px 1fr 16px; gap: 8px; }
   .row-status { display: none; }
@@ -292,11 +351,20 @@ h1 em { color: var(--rust); font-weight: 400; }
   .margin-note p { margin: 0; }
   .site-footer { flex-wrap: wrap; gap: 12px 18px; padding: 20px 0; }
 }
-@media (max-width: 390px) {
+
+/* Extra small mobile (<= 420px) */
+@media (max-width: 420px) {
+  .site-header, main, .site-footer { width: min(100% - 24px, 1080px); }
   .site-header { gap: 14px; }
   .site-header nav { gap: 12px; }
-  .site-header nav a { font-size: .73rem; }
+  .site-header nav a { font-size: .75rem; }
+  .home-simple { gap: 28px; padding: 24px 0 28px; }
+  .home-intro h1 { font-size: clamp(2.05rem, 9.5vw, 2.65rem); }
+  .home-study img { max-height: 250px; }
+  .neuron-svg { max-height: 280px; }
+  .scribble { display: none; }
 }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
