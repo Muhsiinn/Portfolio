@@ -45,7 +45,11 @@
       <a href="{{ '/thoughts/' | url }}" {% if page.url.startsWith('/thoughts') or page.url.startsWith('/notes') %}aria-current="page"{% endif %}>Thoughts</a>
       <a href="{{ '/about/' | url }}" {% if page.url.startsWith('/about') %}aria-current="page"{% endif %}>About</a>
     </nav>
-    <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme"><span aria-hidden="true">◐</span><span class="toggle-label">Theme</span></button>
+    <div class="header-controls">
+      <button class="header-btn pdf-btn" type="button" aria-label="Save page as PDF" title="Save page as PDF (Print)"><span aria-hidden="true">↘</span><span class="toggle-label">PDF</span></button>
+      <button class="header-btn present-btn" type="button" aria-label="Toggle presentation mode" title="Presentation mode (Shift+P)"><span aria-hidden="true">⤢</span><span class="toggle-label">Present</span></button>
+      <button class="header-btn theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme"><span aria-hidden="true">◐</span><span class="toggle-label">Theme</span></button>
+    </div>
   </header>
   <main id="main">{{ content | safe }}</main>
   <footer class="site-footer">
@@ -55,6 +59,7 @@
     <small>© <span data-year>2026</span></small>
   </footer>
   <button class="back-top" type="button" aria-label="Back to top" title="Back to top">↑</button>
+  <button class="exit-present" type="button" aria-label="Exit presentation mode" title="Exit presentation mode (Esc)"><span aria-hidden="true">✕</span> Exit</button>
   <script src="{{ '/assets/js/site.js' | url }}" defer></script>
 </body>
 </html>

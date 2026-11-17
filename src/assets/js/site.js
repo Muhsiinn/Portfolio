@@ -1,45 +1,79 @@
 (() => {
   const root = document.documentElement;
-  const toggle = document.querySelector('.theme-toggle');
+  const body = document.body;
+  const themeToggle = document.querySelector('.theme-toggle');
+  const pdfBtn = document.querySelector('.pdf-btn');
+  const presentBtn = document.querySelector('.present-btn');
+  const exitPresentBtn = document.querySelector('.exit-present');
   const progress = document.querySelector('.reading-progress span');
   const topButton = document.querySelector('.back-top');
-  document.querySelector('[data-year]').textContent = new Date().getFullYear();
-  const dateStamp = document.querySelector('[data-live-date]');
-  if (dateStamp) {
-    const today = new Date();
-    dateStamp.textContent = new Intl.DateTimeFormat(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }).format(today);
-    dateStamp.dateTime = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, '0'), String(today.getDate()).padStart(2, '0')].join('-');
-  }
+  const yearEl = document.querySelector('[data-year]');
+
+  // Footer copyright year
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Contact email obfuscation decoder
   document.querySelectorAll('[data-email-code]').forEach((el) => {
     const address = el.dataset.emailCode.split(',').map((code) => String.fromCharCode(Number(code) ^ 13)).join('');
     el.href = 'mailto:' + address;
     el.setAttribute('aria-label', 'Email Muhsin at ' + address);
   });
 
+  // ── Theme management ──
   function setTheme(theme, persist = false) {
     root.dataset.theme = theme;
-    toggle?.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' theme');
+    themeToggle?.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' theme');
     if (persist) localStorage.setItem('notebook-theme', theme);
   }
   setTheme(root.dataset.theme || 'light');
-  toggle?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true));
+  themeToggle?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true));
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
     if (!localStorage.getItem('notebook-theme')) setTheme(event.matches ? 'dark' : 'light');
   });
 
-  let ticking = false;
+  // ── Native PDF Export & Presentation Mode ──
+  pdfBtn?.addEventListener('click', () => window.print());
+
+  function togglePresent(force) {
+    const isNow = body.classList.toggle('is-presenting', force);
+    presentBtn?.setAttribute('aria-pressed', String(isNow));
+  }
+
+  presentBtn?.addEventListener('click', () => togglePresent());
+  exitPresentBtn?.addEventListener('click', () => togglePresent(false));
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && body.classList.contains('is-presenting')) {
+      togglePresent(false);
+    } else if (e.shiftKey && (e.key === 'P' || e.key === 'p') && !/^(INPUT|TEXTAREA|SELECT)$/.test(e.target?.tagName)) {
+      e.preventDefault();
+      togglePresent();
+    }
+  });
+
+  // ── Reading progress & back-to-top ──
+  let scrollTicking = false;
   function updateScrollUI() {
     const max = document.documentElement.scrollHeight - innerHeight;
     if (progress) progress.style.transform = 'scaleX(' + (max > 0 ? scrollY / max : 0) + ')';
     topButton?.classList.toggle('is-visible', scrollY > 600);
-    ticking = false;
+    scrollTicking = false;
   }
+
   addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(updateScrollUI); ticking = true; }
+    if (!scrollTicking) {
+      requestAnimationFrame(updateScrollUI);
+      scrollTicking = true;
+    }
   }, { passive: true });
   updateScrollUI();
-  topButton?.addEventListener('click', () => scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
 
+  topButton?.addEventListener('click', () => scrollTo({
+    top: 0,
+    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+  }));
+
+  // ── Code block copy buttons ──
   document.querySelectorAll('pre').forEach((pre) => {
     const code = pre.querySelector('code');
     if (!code) return;
@@ -53,11 +87,14 @@
         await navigator.clipboard.writeText(code.innerText);
         button.textContent = 'Copied';
         setTimeout(() => { button.textContent = 'Copy'; }, 1400);
-      } catch { button.textContent = 'Select code to copy'; }
+      } catch {
+        button.textContent = 'Select code to copy';
+      }
     });
     pre.append(button);
   });
 
+  // ── Prose image lightbox ──
   document.querySelectorAll('.prose img').forEach((img) => {
     if (img.closest('a')) return;
     img.tabIndex = 0;
@@ -89,6 +126,7 @@
     });
   });
 
+  // ── Link prefetching ──
   const lowData = navigator.connection?.saveData || matchMedia('(prefers-reduced-data: reduce)').matches;
   if (!lowData && 'IntersectionObserver' in window) {
     const seen = new Set();
@@ -113,7 +151,8 @@
       }
     });
   }
-  // ── Neuron interactivity: organic drift + action potential ──
+
+  // ── Neuron interactivity: ambient drift + action potential ──
   const neuronFig = document.getElementById('neuron-figure');
   const apImpulse = document.getElementById('ap-impulse');
   const mvLabel   = document.getElementById('neuron-mv');
@@ -121,7 +160,7 @@
   const noMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (neuronFig && !noMotion && driftGroups.length) {
-    let mx = 0, my = 0, tx = [0,0,0], ty = [0,0,0], cx = [0,0,0], cy = [0,0,0];
+    let tx = [0, 0, 0], ty = [0, 0, 0], cx = [0, 0, 0], cy = [0, 0, 0];
     let rafId = null, idle = false, apCooldown = false;
     const DRIFT = [1, .6, 1.4]; // per-group drift multipliers
 
@@ -170,5 +209,4 @@
     neuronFig.addEventListener('pointerenter', fireAP, { passive: true });
     neuronFig.addEventListener('click', fireAP);
   }
-
 })();
