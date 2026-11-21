@@ -1,6 +1,6 @@
 ---
 title: "To the Loved Ones"
-description: "A letter about the abyss, and the people who keep it at bay."
+description: "Thoughts on mental illness, stigma, people, and relationships."
 date: 2026-11-20
 ---
 
