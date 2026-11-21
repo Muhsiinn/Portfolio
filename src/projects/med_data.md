@@ -18,7 +18,7 @@ draft: false
 
 The Klinikum Report Editor was created to help manage mental health data in a more organized and visual way. I built this tool to track daily wellness metrics, medication dosages, and emotional states over time. The goal was to create a simple yet powerful interface that could help visualize patterns in mental health data and make it easier to share comprehensive reports with healthcare providers.
 
-![An abstract line tracing changing observations over time](/assets/images/projects/neuroscience-psychiatry/memory-trace.svg "notebook:align=right;width=45;caption=Tracing changes over time;credit=Original abstract study")
+![An abstract line tracing changing observations over time](/assets/images/projects/neuroscience-psychiatry/memory-trace.svg "notebook:caption=Tracing changes over time;credit=Original abstract study")
 
 ## How it Works
 

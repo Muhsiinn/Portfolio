@@ -15,7 +15,7 @@ draft: false
 
 This was one of my early deep learning projects. The goal was to classify blood cell images as infected or uninfected with malaria using a Convolutional Neural Network (CNN).
 
-![Neural network layers passing image features toward a prediction](/assets/images/projects/ai/layered-network.svg "notebook:align=right;width=45;caption=From image features to a classification;credit=Original technical diagram")
+![Neural network layers passing image features toward a prediction](/assets/images/projects/ai/layered-network.svg "notebook:caption=From image features to a classification;credit=Original technical diagram")
 
 
 Prepared the dataset by resizing and normalizing images.

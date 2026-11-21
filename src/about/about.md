@@ -14,7 +14,7 @@ I study Artificial Intelligence at FH Hagenberg, and it gives me a technical fou
 
 Most of my skills are self-taught. I read, build things, explore ideas, and document what I learn along the way. This notebook is where I bring those interests together: my projects, my research interests, my reading, and the questions I'm still trying to make sense of.
 
-![Musi outdoors beside a lake](/assets/images/about/profile.jpg "notebook:align=center;width=42;caption=Musi")
+![Musi outdoors beside a lake](/assets/images/about/profile.jpg "notebook:caption=Musi")
 
 Muhsin Ahamed   
 +4369020067065  

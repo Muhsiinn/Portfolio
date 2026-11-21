@@ -1,21 +1,39 @@
-# Thoughts content guide
+# Content guide
 
-Markdown files under `src/thoughts/` are the writing database. Eleventy discovers entries from their category directories; there is no registry to update.
+Everything you write lives under `src/`. Nothing you write belongs in `_site/` — that folder is generated output and is wiped on every build.
 
-`_site/` is generated output. Never paste or edit content there: every build replaces it. Add Markdown files under `src/` instead. If a file seems to disappear, check that it is in `src/thoughts/...`, not `_site/thoughts/...`.
+## Where to put a new file
 
-As a safety net, `npm run build` looks for stray Markdown files (`.md`, `.markdown`, and similar extensions) in `_site/` and moves them into the matching `src/thoughts/...` or `src/projects/...` folder before rebuilding. Subfolders and extensions are kept. The move is printed in the terminal, and the build refuses to clean `_site/` if any Markdown file cannot be rescued. This protects accidental pastes, but editing `src/` directly is still the reliable way to update content.
+| What you're writing | Put the file in | Page URL |
+| --- | --- | --- |
+| A project | `src/projects/` | `/projects/<filename>/` |
+| An essay or longer reflection | `src/thoughts/blogs/` | `/thoughts/blogs/<filename>/` |
+| A note about a book, paper, or article | `src/thoughts/reading/` | `/thoughts/reading/<filename>/` |
+| A short observation, letter, or discovery | `src/thoughts/notes/` | `/thoughts/notes/<filename>/` |
+| One day's entries | `src/thoughts/notes/daily/YYYY-MM-DD.md` | `/thoughts/notes/daily/YYYY-MM-DD/` |
+| An image used on a page | `src/assets/images/` | `/assets/images/...` |
+
+Quick rule: **finished thought → Blogs; tied to a source → Reading Notes; small thought → Notes.**
+
+Folders that are *not* for new writing:
+
+- `src/thoughts/review/` — a migration holding area. Items here are never published. Don't add new entries.
+- `artwork/` — unpublished image originals. See `ASSET_GUIDE.md`.
+- `references/` — local design references, git-ignored.
+- `scripts/`, `src/_includes/`, `src/_data/` — site code.
+
+Subfolders inside a category are fine, except daily notes: those stay as `YYYY-MM-DD.md` files directly in `src/thoughts/notes/daily/`.
 
 ## Paste and go
 
-You can paste a normal Markdown file into a category folder without adding front matter first. The site fills in sensible defaults:
+You can paste a plain Markdown file into a category folder without adding front matter first. The site fills in sensible defaults:
 
 - **Title**: the first Markdown heading (for example `# My note`), otherwise the filename.
 - **Description**: the first paragraph of the file.
-- **Date**: a date in the filename for daily notes, otherwise the file's date.
+- **Date**: the date in the filename for daily notes, otherwise the file's date.
 - **Type**: supplied by the category folder itself.
 
-You only need front matter when you want to override those defaults, set tags, mark something as a draft, or add reading-source metadata. A bare file like this is enough:
+Only add front matter when you want to override those defaults, set tags, hide a draft, or add reading-source metadata. A bare file like this is enough:
 
 ```md
 # A pasted observation
@@ -25,11 +43,9 @@ The first paragraph becomes the description automatically.
 Everything below is normal Markdown.
 ```
 
-Subfolders inside a category are supported, except daily notes, which stay as `YYYY-MM-DD.md` files in `src/thoughts/notes/daily/`.
-
 ## Terminal shortcut
 
-`scripts/pnt.sh` adds pasted Markdown to the site. Add this alias to `~/.bashrc` (or `~/.zshrc`) and restart the shell:
+`scripts/pnt.sh` adds pasted Markdown to the right folder and rebuilds. Add this alias to `~/.bashrc` (or `~/.zshrc`) and restart the shell:
 
 ```bash
 alias p-n-t="$HOME/D/Github/Portfolio/scripts/pnt.sh"
@@ -47,24 +63,13 @@ p-n-t --project              # add to Projects
 p-n-t --url https://...      # fetch Markdown or a web page
 ```
 
-With no file argument, `p-n-t` reads `markdown.md` if it exists; use `p-n-t --stdin` to force pasting instead. It writes the file under `src/`, adds a simple title/date front matter when one is missing, and runs `npm run build`. `--no-build` saves without rebuilding, and `-t "Title"` overrides the derived title.
-
-## Categories and paths
-
-- Blogs: `src/thoughts/blogs/` for essays, technical articles, explanations, and reflections.
-- Reading Notes: `src/thoughts/reading/` for notes connected to books, papers, articles, and other sources.
-- Notes: `src/thoughts/notes/` for observations and small discoveries.
-- Daily Notes: `src/thoughts/notes/daily/YYYY-MM-DD.md`, one file for each date. Add all entries for that day to the existing file.
-
-Each category has a listing at `/thoughts/blogs/`, `/thoughts/reading/`, or `/thoughts/notes/`. The overview is `/thoughts/`; daily notes have an archive at `/thoughts/notes/daily/`.
-
-Empty sections do not disappear. They show a small placeholder — “Musi is too lazy to fix/update this section.” — until you add an entry. The text lives in `src/_data/site.json` as `emptySection` if you ever want to change it.
+With no file argument, `p-n-t` reads `markdown.md` if it exists; use `p-n-t --stdin` to force pasting. It adds simple title/date front matter when none is present. `--no-build` saves without rebuilding, and `-t "Title"` overrides the derived title. Run `p-n-t --help` for all options.
 
 ## Front matter
 
-Front matter is optional. When you include it, `title` and `description` are recommended but no longer required; missing values are derived from the heading, filename, and first paragraph. `date`, `tags`, `draft`, and `archived` default to the file date, no tags, `false`, and `false`.
+Front matter is optional. When you include it, `title` and `description` are recommended but not required; missing values are derived from the heading, filename, and first paragraph. `date`, `tags`, `draft`, and `archived` default to the file date, no tags, `false`, and `false`.
 
-Tags do **not** control whether an entry appears on the site. Every published entry appears in its category listing, the `/thoughts/` overview, and the homepage “Recent writing” section even with no tags. Tags only pin items to the optional “Currently working on” and “Currently reading / hyperfixating” sections.
+Tags do **not** control whether an entry appears on the site. Every published entry appears in its category listing, the `/thoughts/` overview, and the homepage "Recent writing" section even with no tags. Tags only pin items to the optional "Currently working on" and "Currently reading / hyperfixating" sections.
 
 ```yaml
 ---
@@ -80,36 +85,28 @@ archived: false
 
 `tags` can be a YAML list or a comma-separated string, so both `tags: [psychology, reading]` and `tags: psychology, reading` work.
 
-Reading notes can additionally use `sourceTitle`, `sourceAuthor`, `sourceType`, `sourceUrl` (URL or DOI), `chapter`, `pages`, and `dateRead`. Put your own annotations and attributed quotations in the Markdown body, with clear attribution to the original source.
+Reading notes can also use `sourceTitle`, `sourceAuthor`, `sourceType`, `sourceUrl` (URL or DOI), `chapter`, `pages`, and `dateRead`. Put your own annotations and attributed quotations in the Markdown body.
 
-## Write and manage entries
+Two common front matter mistakes:
 
-Create or paste a `.md` file in the appropriate category directory. Front matter is optional; add it only when you need to override the defaults above. The filename supplies the URL slug. The local Publishing Desk can create, edit, preview, archive, restore, and delete these files too.
+- `---` must be the **very first line** of the file. A blank line before it makes Eleventy treat the front matter as body text, so the header will show the filename and the raw `---` lines instead of your title and description.
+- `date` must be a real date in `YYYY-MM-DD` form (for example `2026-11-21`). Values like `ongoing` are not dates. If you don't care about the date, leave the `date` line out and the file's date is used.
 
-If a new file does not appear:
-
-1. Confirm it is under `src/thoughts/...`, not `_site/...`.
-2. Confirm it ends in `.md`.
-3. Check `draft: true` and `archived: true` in its front matter. New files created by the dashboard start as drafts. Set `draft: false` when the entry is ready for the public site.
-4. Run `npm run build` and check the terminal for an error.
-
-- `draft: true` hides an entry and its listing/RSS/sitemap output in production. Local Eleventy previews can show drafts.
-- `archived: true` hides an entry from normal category listings and feeds while retaining its individual page. Set it back to `false` to restore it.
-- Delete the Markdown file to remove its generated page and links on the next build.
-- Add `working` to the `tags` list on a project or reading note to show it in the homepage “Currently working on” section. Remove the tag when it is no longer active. Draft and archived items stay out of that section in production.
-- Add `currently-reading` or `hyperfixating` to a reading note to show it in the homepage reading section. These tags are independent of `working`.
-- Existing public `/notes/.../` addresses are retained for migrated entries through `legacyPermalink` metadata.
-- Files in `src/thoughts/review/` are preserved migration items whose category is unclear. Review and move them into a category manually; they are never published.
+- Add `working` to a project or reading note to show it in the homepage "Currently working on" section.
+- Add `currently-reading` or `hyperfixating` to a reading note for the homepage reading section.
+- `draft: true` hides an entry and its listing/RSS/sitemap output in production. Local previews can show drafts.
+- `archived: true` hides an entry from normal listings and feeds but keeps its individual page and lists it under `/thoughts/archive/`. Set it back to `false` to restore it.
+- Delete the Markdown file to remove its page and links on the next build.
 
 ## Daily notes
 
-Use the dashboard calendar or create `src/thoughts/notes/daily/2026-10-31.md`. The date in the filename is canonical. A second save for the same date edits the existing file. Do not create a second date file.
+Use `p-n-t --daily` or create `src/thoughts/notes/daily/2026-10-31.md`. The date in the filename is canonical. A second save for the same date edits the existing file; do not create a second date file.
 
-A daily note needs no front matter at all. The filename supplies its date, the title is generated from that date, and the category supplies its layout and URL. You can paste a plain Markdown file named `YYYY-MM-DD.md` straight into the daily folder. Set `draft: false` (or omit front matter) when it should be public.
+A daily note needs no front matter. The filename supplies the date, and the category supplies its title, layout, and URL. Omit `draft` or set `draft: false` to publish it.
 
 ## Images, math, and code
 
-Put images under `src/assets/images/` and reference them as `![Describe the image](/assets/images/example.webp "notebook:caption=Optional caption;credit=Source")`. Use useful alternative text. The dashboard Media Library inserts these references without overwriting existing assets.
+Put images under `src/assets/images/` and reference them as `![Musi outdoors beside a lake](/assets/images/about/profile.jpg)`. See `ASSET_GUIDE.md`.
 
 Inline math: `$x^2 + y^2 = z^2$`. Display math:
 
@@ -124,8 +121,18 @@ $$
 
 Use fenced code blocks with a language identifier for syntax highlighting. Mathematical expressions inside fenced code remain literal code.
 
+## If a file does not appear
+
+1. Confirm it is under `src/thoughts/...` or `src/projects/`, not `_site/...`.
+2. Confirm it ends in `.md`.
+3. Check `draft: true` and `archived: true` in its front matter.
+4. Run `npm run build` and read the terminal for an error.
+
+As a safety net, `npm run build` looks for stray Markdown files in `_site/` and moves them into the matching `src/` folder before rebuilding. This protects accidental pastes, but editing `src/` directly is the reliable way.
+
 ## Preview and publish
 
-Run the dashboard from its sibling checkout with `npm run dashboard`, or preview/build the public website in this repository with `npm run serve` / `npm run build`. Saving in the dashboard writes local Markdown and triggers a debounced website rebuild. Use Git independently from your terminal.
+- `npm run serve` — local preview server
+- `npm run build` — production build into `_site/`, excluding drafts
 
-The public site deploys through GitHub Actions. Enable GitHub Pages → Build and deployment → GitHub Actions in repository settings if it is not already configured.
+The public site deploys through GitHub Actions. Enable GitHub Pages → Build and deployment → GitHub Actions in repository settings if it is not already configured. Use Git from your terminal to commit and push changes.
