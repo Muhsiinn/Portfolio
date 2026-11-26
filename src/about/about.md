@@ -25,3 +25,16 @@ Austria
 
 
 [GitHub](https://github.com/Muhsiinn)
+
+<a href="#contact" target="_blank" rel="noopener noreferrer" data-email-code="96,120,101,126,100,99,108,101,96,105,77,125,127,98,121,98,99,35,96,104">Email me</a>
+
+## Movies, series & games
+
+### Series
+
+- **Watching:** Dexter
+- **Finished:** The Mentalist
+
+### Games
+
+- **Steam:** [pompaii2](https://steamcommunity.com/id/pompaii2/)

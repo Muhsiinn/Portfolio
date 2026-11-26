@@ -153,9 +153,10 @@ permalink: /
 
 <section class="home-section reading-now" aria-labelledby="reading-now-heading">
   <div class="section-heading"><p class="eyebrow">ON MY MIND</p><h2 id="reading-now-heading">Currently reading / hyperfixating</h2><a href="{{ '/thoughts/reading/' | url }}">Reading notes <span aria-hidden="true">↗</span></a></div>
-  {% if collections.readingNow.length %}<div class="working-list">
+  <div class="working-list">
+    <article class="working-item"><span class="working-kind">HYPERFIXATION</span><div><h3>Neural and custom libraries</h3><p>Building neural network and custom libraries in C and Fortran.</p></div></article>
     {% for item in collections.readingNow %}<article class="working-item"><span class="working-kind">READING</span><div><h3><a href="{{ item.url | url }}">{{ item.data.sourceTitle or item.data.title }} <span aria-hidden="true">↗</span></a></h3>{% if item.data.sourceAuthor %}<p>by {{ item.data.sourceAuthor }}</p>{% elif item.data.description %}<p>{{ item.data.description }}</p>{% endif %}</div>{% if item.data.dateRead %}<time>{{ item.data.dateRead | date }}</time>{% endif %}</article>{% endfor %}
-  </div>{% else %}<p class="working-empty lazy-placeholder">{{ site.emptySection }}</p>{% endif %}
+  </div>
 </section>
 </div>
 
@@ -176,5 +177,5 @@ permalink: /
 
 <section class="home-contact" aria-labelledby="contact-heading">
   <div><p class="eyebrow">CONTACT</p><h2 id="contact-heading">Want to get in touch?</h2></div>
-  <div class="home-contact-links"><a class="email-contact" href="#contact" data-email-code="96,120,101,126,100,99,108,101,96,105,121,102,77,106,96,108,100,97,46,99,127,96">Email me</a></div>
+  <div class="home-contact-links"><a class="email-contact" href="#contact" data-email-code="96,120,101,126,100,99,108,101,96,105,77,125,127,98,121,98,99,35,96,104">Email me</a></div>
 </section>
