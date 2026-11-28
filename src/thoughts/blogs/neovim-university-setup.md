@@ -8,7 +8,7 @@ tags:
   - Linux
   - Quarto
   - Jupyter
-draft: true
+draft: false
 ---
 
 # Setting Up Neovim for University
